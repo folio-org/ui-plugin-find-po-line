@@ -13,7 +13,15 @@
   "stripes": {
     "type": "plugin",
     "pluginType": "find-po-line",
-    "displayName": "ui-plugin-find-po-line.meta.title"
+    "displayName": "ui-plugin-find-po-line.meta.title",
+    "okapiInterfaces": {
+      "finance-storage.funds": "1.0",
+      "inventory": "8.3",
+      "locations": "3.0",
+      "material-types": "2.2",
+      "orders": "6.0",
+      "organizations-storage.organizations": "1.0"
+    }
   },
   "scripts": {
     "lint": "eslint .",
@@ -41,6 +49,7 @@
     "webpack": "^4.10.2"
   },
   "dependencies": {
+    "@folio/orders": "^1.5.0",
     "classnames": "^2.2.5",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0",
