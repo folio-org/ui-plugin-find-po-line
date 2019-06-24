@@ -1,3 +1,8 @@
 {
-    "meta.title": "خطوط أوامر الشراء"
+    "meta.title": "خطوط أوامر الشراء",
+    "addPOLine": "Add order lines",
+    "modal.title": "Select order lines",
+    "modal.footer.save": "Save",
+    "modal.footer.close": "Close",
+    "modal.footer.totalSelected": "Total selected: {count}"
 }
