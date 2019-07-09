@@ -44,6 +44,7 @@ class FindPOLine extends React.Component {
       marginBottom0,
       stripes,
       addLines,
+      isSingleSelect,
     } = this.props;
 
     return (
@@ -64,6 +65,7 @@ class FindPOLine extends React.Component {
             onCloseModal={this.closeModal}
             stripes={stripes}
             addLines={addLines}
+            isSingleSelect={isSingleSelect}
           />
         )}
       </div>
@@ -80,6 +82,7 @@ FindPOLine.propTypes = {
   stripes: PropTypes.object,
   dataKey: PropTypes.string.isRequired,
   addLines: PropTypes.func.isRequired,
+  isSingleSelect: PropTypes.bool,
 };
 
 FindPOLine.defaultProps = {
@@ -88,6 +91,7 @@ FindPOLine.defaultProps = {
   marginTop0: true,
   searchButtonStyle: 'primary',
   searchLabel: <FormattedMessage id="ui-plugin-find-po-line.addPOLine" />,
+  isSingleSelect: false,
 };
 
 export default FindPOLine;
