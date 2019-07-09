@@ -6,10 +6,10 @@ import FindPOLineInteractor from '../interactors/findPOLines';
 
 const LINES_COUNT = 15;
 
-describe('Find PO Lines plugin', function () {
+describe('Find PO Lines plugin with single select option', function () {
   const findPOLines = new FindPOLineInteractor();
 
-  setupApplication();
+  setupApplication({ isSingleSelect: true });
 
   beforeEach(async function () {
     this.server.createList('line', LINES_COUNT);
@@ -42,27 +42,13 @@ describe('Find PO Lines plugin', function () {
       expect(findPOLines.modal.instances().length).to.be.equal(LINES_COUNT);
     });
 
-    it('should display disabled save button', function () {
-      expect(findPOLines.modal.save.isDisabled).to.be.true;
-    });
-
-    describe('select a line', function () {
+    describe('select a line (click on it)', function () {
       beforeEach(async function () {
         await findPOLines.modal.instances(1).click();
       });
 
-      it('should enable Save button', function () {
-        expect(findPOLines.modal.save.isDisabled).to.be.false;
-      });
-    });
-
-    describe('select all', function () {
-      beforeEach(async function () {
-        await findPOLines.modal.selectAll.click();
-      });
-
-      it('should enable Save button', function () {
-        expect(findPOLines.modal.save.isDisabled).to.be.false;
+      it('modal is closed', function () {
+        expect(findPOLines.modal.isPresent).to.be.false;
       });
     });
   });

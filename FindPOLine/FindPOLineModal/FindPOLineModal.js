@@ -36,7 +36,7 @@ const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 
 const title = <FormattedMessage id="ui-plugin-find-po-line.meta.title" />;
-const visibleColumns = ['isChecked', 'poLineNumber', 'title', 'productIds', 'vendorRefNumber', 'funCodes'];
+const baseVisibleColumns = ['poLineNumber', 'title', 'productIds', 'vendorRefNumber', 'funCodes'];
 const sortableColumns = ['poLineNumber', 'title', 'vendorRefNumber'];
 const columnWidths = {
   isChecked: '7%',
@@ -78,15 +78,20 @@ class FindPOLineModal extends React.Component {
   }
 
   onSelectRow = (e, line) => {
-    const { id } = line;
+    if (this.props.isSingleSelect) {
+      this.props.addLines([line]);
+      this.closeModal();
+    } else {
+      const { id } = line;
 
-    this.setState(({ checkedLinesMap }) => ({
-      checkedLinesMap: {
-        ...checkedLinesMap,
-        [id]: checkedLinesMap[id] ? null : line,
-      },
-      isAllChecked: false,
-    }));
+      this.setState(({ checkedLinesMap }) => ({
+        checkedLinesMap: {
+          ...checkedLinesMap,
+          [id]: checkedLinesMap[id] ? null : line,
+        },
+        isAllChecked: false,
+      }));
+    }
   }
 
   save = () => {
@@ -110,33 +115,37 @@ class FindPOLineModal extends React.Component {
   }
 
   render() {
-    const { resources, mutator, stripes } = this.props;
+    const { isSingleSelect, resources, mutator, stripes } = this.props;
     const { checkedLinesMap, isAllChecked } = this.state;
 
     const checkedLinesLength = Object.values(pickBy(checkedLinesMap)).length;
-    const columnMapping = {
-      ...baseColumnMapping,
-      isChecked: (
-        <Checkbox
-          checked={isAllChecked}
-          onChange={this.selectAll}
-          type="checkbox"
-        />
-      ),
-    };
+    const columnMapping = isSingleSelect
+      ? baseColumnMapping
+      : {
+        ...baseColumnMapping,
+        isChecked: (
+          <Checkbox
+            checked={isAllChecked}
+            onChange={this.selectAll}
+            type="checkbox"
+          />
+        ),
+      };
 
     const translatedSearchableIndexes = OrderLinesList.prototype.getTranslateSearchableIndexes.call(this);
 
-    const resultsFormatter = {
-      ...OrderLinesList.prototype.getResultsFormatter.call(this),
-      isChecked: data => (
-        <Checkbox
-          data-test-find-po-line-modal-select-all
-          type="checkbox"
-          checked={Boolean(checkedLinesMap[data.id])}
-        />
-      ),
-    };
+    const resultsFormatter = isSingleSelect
+      ? OrderLinesList.prototype.getResultsFormatter.call(this)
+      : {
+        ...OrderLinesList.prototype.getResultsFormatter.call(this),
+        isChecked: data => (
+          <Checkbox
+            data-test-find-po-line-modal-select-all
+            type="checkbox"
+            checked={Boolean(checkedLinesMap[data.id])}
+          />
+        ),
+      };
 
     const footer = (
       <div className={css.findPOLineModalFooter}>
@@ -147,23 +156,31 @@ class FindPOLineModal extends React.Component {
         >
           <FormattedMessage id="ui-plugin-find-po-line.modal.footer.close" />
         </Button>
-        <div>
-          <FormattedMessage
-            id="ui-plugin-find-po-line.modal.footer.totalSelected"
-            values={{ count: checkedLinesLength }}
-          />
-        </div>
-        <Button
-          marginBottom0
-          data-test-find-po-line-modal-save
-          onClick={this.save}
-          disabled={!checkedLinesLength}
-          buttonStyle="primary"
-        >
-          <FormattedMessage id="ui-plugin-find-po-line.modal.footer.save" />
-        </Button>
+        {!isSingleSelect && (
+          <React.Fragment>
+            <div>
+              <FormattedMessage
+                id="ui-plugin-find-po-line.modal.footer.totalSelected"
+                values={{ count: checkedLinesLength }}
+              />
+            </div>
+            <Button
+              marginBottom0
+              data-test-find-po-line-modal-save
+              onClick={this.save}
+              disabled={!checkedLinesLength}
+              buttonStyle="primary"
+            >
+              <FormattedMessage id="ui-plugin-find-po-line.modal.footer.save" />
+            </Button>
+          </React.Fragment>
+        )}
       </div>
     );
+
+    const visibleColumns = isSingleSelect
+      ? baseVisibleColumns
+      : ['isChecked', ...baseVisibleColumns];
 
     return (
       <Modal
@@ -216,6 +233,7 @@ FindPOLineModal.propTypes = {
   resources: PropTypes.object.isRequired,
   onCloseModal: PropTypes.func.isRequired,
   addLines: PropTypes.func.isRequired,
+  isSingleSelect: PropTypes.bool.isRequired,
   // eslint-disable-next-line react/no-unused-prop-types
   intl: intlShape.isRequired,
 };

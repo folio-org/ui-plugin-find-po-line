@@ -31,6 +31,10 @@ import {
   });
 
   modal = new PluginModalInteractor();
+
+  whenLoaded() {
+    return this.timeout(5000).when(() => this.modal.instances.isPresent);
+  }
 }
 
 export default FindPOLineInteractor;

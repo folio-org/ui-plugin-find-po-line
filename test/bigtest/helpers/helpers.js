@@ -1,8 +1,14 @@
 import { setupStripesCore } from '@folio/stripes/core/test';
+import orderTranslations from '@folio/orders/translations/ui-orders/en';
+import translations from '@folio/stripes-acq-components/translations/stripes-acq-components/en';
+import prefixKeys from '@folio/stripes-acq-components/test/bigtest/helpers/prefixKeys';
+
 import mirageOptions from '../network';
 import PluginHarness from './PluginHarness';
+import PluginHarnessSingleSelect from './PluginHarnessSingleSelect';
 
 export default function setupApplication({
+  isSingleSelect,
   scenarios,
   hasAllPerms = true,
 } = {}) {
@@ -17,11 +23,13 @@ export default function setupApplication({
       name: '@folio/ui-dummy',
       displayName: 'dummy.title',
       route: '/dummy',
-      module: PluginHarness,
+      module: isSingleSelect ? PluginHarnessSingleSelect : PluginHarness,
     }],
 
     translations: {
       'dummy.title': 'Dummy',
+      ...prefixKeys(orderTranslations, 'ui-orders'),
+      ...prefixKeys(translations, 'stripes-acq-components'),
     },
   });
 }

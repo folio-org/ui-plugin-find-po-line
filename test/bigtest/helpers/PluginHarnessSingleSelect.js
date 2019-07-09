@@ -2,7 +2,7 @@ import React from 'react';
 import noop from 'lodash/noop';
 import { Pluggable, withStripes } from '@folio/stripes/core';
 
-class PluginHarness extends React.Component {
+class PluginHarnessSingleSelect extends React.Component {
   render() {
     return (
       <Pluggable
@@ -14,6 +14,7 @@ class PluginHarness extends React.Component {
         searchButtonStyle="link"
         dataKey="poLinesTest"
         addLines={noop}
+        isSingleSelect
         {...this.props}
       >
         <span data-test-no-plugin-available>No plugin available!</span>
@@ -22,4 +23,4 @@ class PluginHarness extends React.Component {
   }
 }
 
-export default withStripes(PluginHarness);
+export default withStripes(PluginHarnessSingleSelect);
