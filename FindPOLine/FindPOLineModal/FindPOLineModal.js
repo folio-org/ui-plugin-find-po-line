@@ -77,21 +77,34 @@ class FindPOLineModal extends React.Component {
     this.props.onCloseModal();
   }
 
+  clickCheckbox = (e) => e.stopPropagation();
+
+  toggleLine = (e, line) => {
+    const { id } = line;
+
+    this.setState((state) => {
+      const checkedLinesMap = { ...state.checkedLinesMap };
+
+      if (checkedLinesMap[id]) {
+        delete checkedLinesMap[id];
+      } else {
+        checkedLinesMap[id] = line;
+      }
+
+      return {
+        checkedLinesMap,
+        isAllChecked: false,
+      };
+    });
+  }
+
   onSelectRow = (e, line) => {
     if (this.props.isSingleSelect) {
       this.props.addLines([line]);
       this.closeModal();
-    } else {
-      const { id } = line;
-
-      this.setState(({ checkedLinesMap }) => ({
-        checkedLinesMap: {
-          ...checkedLinesMap,
-          [id]: checkedLinesMap[id] ? null : line,
-        },
-        isAllChecked: false,
-      }));
     }
+
+    return false;
   }
 
   save = () => {
@@ -143,6 +156,8 @@ class FindPOLineModal extends React.Component {
             data-test-find-po-line-modal-select-all
             type="checkbox"
             checked={Boolean(checkedLinesMap[data.id])}
+            onClick={this.clickCheckbox}
+            onChange={(e) => this.toggleLine(e, data)}
           />
         ),
       };
