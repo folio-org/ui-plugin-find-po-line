@@ -12,6 +12,7 @@ import {
 
   instances = collection('[role=row] a', {
     click: clickable(),
+    selectLine: clickable('input[type="checkbox"]'),
   });
 
   save = scoped('[data-test-find-po-line-modal-save]', {

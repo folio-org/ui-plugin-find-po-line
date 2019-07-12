@@ -11,7 +11,7 @@
     "node": ">=8.9.4"
   },
   "stripes": {
-    "type": "plugin",
+    "actsAs": ["plugin"],
     "pluginType": "find-po-line",
     "displayName": "ui-plugin-find-po-line.meta.title",
     "okapiInterfaces": {
