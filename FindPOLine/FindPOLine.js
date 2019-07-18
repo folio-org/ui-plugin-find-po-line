@@ -56,7 +56,6 @@ class FindPOLine extends React.Component {
           key="searchButton"
           marginBottom0={marginBottom0}
           onClick={this.openModal}
-          tabIndex="-1"
         >
           {searchLabel}
         </Button>
