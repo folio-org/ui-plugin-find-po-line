@@ -1,8 +1,8 @@
 {
-    "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}"
+    "meta.title": "订单行",
+    "addPOLine": "添加订单行",
+    "modal.title": "选择订单行",
+    "modal.footer.save": "保存",
+    "modal.footer.close": "关闭",
+    "modal.footer.totalSelected": "已选总数： {count}"
 }
