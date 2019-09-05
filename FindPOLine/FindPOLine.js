@@ -5,7 +5,7 @@ import { FormattedMessage } from 'react-intl';
 import {
   PluginFindRecord,
   PluginFindRecordModal,
-} from '@folio/stripes/smart-components';
+} from '@folio/stripes-acq-components';
 
 import FindPOLineContainer from './FindPOLineContainer';
 
