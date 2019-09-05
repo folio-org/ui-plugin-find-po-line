@@ -15,7 +15,6 @@ import {
 } from '@folio/orders/src/OrderLinesList/OrderLinesList';
 import OrderLinesFilters from '@folio/orders/src/OrderLinesList/OrderLinesFilters';
 
-const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const columnWidths = {
   isChecked: '7%',
@@ -94,15 +93,6 @@ class FindPOLineContainer extends React.Component {
       />
     );
   }
-
-  onFilterChangeHandler = (filter) => {
-    const {
-      mutator: { resultCount },
-    } = this.props;
-
-    resultCount.replace(INITIAL_RESULT_COUNT);
-    this.onFilterChange(filter);
-  };
 
   render() {
     const {
