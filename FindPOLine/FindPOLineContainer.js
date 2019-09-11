@@ -101,6 +101,10 @@ class FindPOLineContainer extends React.Component {
     } = this.props;
     const resultsFormatter = OrderLinesList.prototype.getResultsFormatter.call(this);
 
+    if (this.source) {
+      this.source.update(this.props);
+    }
+
     return children({
       columnMapping,
       columnWidths,
