@@ -2,7 +2,7 @@
     "meta.title": "Righe d'ordine",
     "addPOLine": "Add order lines",
     "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
+    "modal.footer.save": "Salva",
+    "modal.footer.close": "Chiudi",
     "modal.footer.totalSelected": "Total selected: {count}"
 }
