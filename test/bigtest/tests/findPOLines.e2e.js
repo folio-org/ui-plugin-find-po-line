@@ -13,9 +13,6 @@ describe('Find PO Lines plugin', function () {
 
   beforeEach(async function () {
     this.server.createList('line', LINES_COUNT);
-    this.server.create('vendor');
-    this.server.create('location');
-    this.server.create('fund');
     this.visit('/dummy');
     await findPOLines.whenLoaded();
   });
@@ -39,6 +36,8 @@ describe('Find PO Lines plugin', function () {
   describe('modal list', function () {
     beforeEach(async function () {
       await findPOLines.button.click();
+      await findPOLines.filter.searchInput('TEST');
+      await findPOLines.filter.searchButton.click();
     });
 
     it('should return a set of results', function () {

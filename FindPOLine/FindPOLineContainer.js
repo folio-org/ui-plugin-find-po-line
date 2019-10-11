@@ -69,7 +69,7 @@ class FindPOLineContainer extends React.Component {
   }
 
   renderFilters = (activeFilters, onChangeHandlers) => {
-    const { mutator: { query }, resources } = this.props;
+    const { resources } = this.props;
     const locations = get(resources, 'locations.records') || [];
     const materialTypes = get(resources, 'materialTypes.records') || [];
     const funds = get(resources, 'funds.records') || [];
@@ -88,7 +88,6 @@ class FindPOLineContainer extends React.Component {
         locations={locations}
         materialTypes={materialTypes}
         onChange={onChange}
-        queryMutator={query}
         vendors={vendors}
       />
     );

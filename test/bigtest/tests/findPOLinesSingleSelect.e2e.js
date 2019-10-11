@@ -36,6 +36,8 @@ describe('Find PO Lines plugin with single select option', function () {
   describe('modal list', function () {
     beforeEach(async function () {
       await findPOLines.button.click();
+      await findPOLines.filter.searchInput('TEST');
+      await findPOLines.filter.searchButton.click();
     });
 
     it('should return a set of results', function () {

@@ -1,11 +1,21 @@
 import {
-  interactor,
-  scoped,
-  collection,
   clickable,
+  collection,
+  fillable,
+  interactor,
   is,
   property,
+  scoped,
 } from '@bigtest/interactor';
+
+import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+
+@interactor class OrderLinesFilterInteractor {
+  static defaultScope = '#uiPluginFindPOLine--paneset';
+
+  searchInput = fillable('[data-test-plugin-search-input]');
+  searchButton = new ButtonInteractor('[data-test-plugin-search-submit]');
+}
 
 @interactor class PluginModalInteractor {
   static defaultScope = '[data-test-find-records-modal]';
@@ -32,6 +42,7 @@ import {
   });
 
   modal = new PluginModalInteractor();
+  filter = new OrderLinesFilterInteractor();
 
   whenLoaded() {
     return this.timeout(5000).when(() => this.modal.instances.isPresent);
