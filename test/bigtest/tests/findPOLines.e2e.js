@@ -13,9 +13,6 @@ describe('Find PO Lines plugin', function () {
 
   beforeEach(async function () {
     this.server.createList('line', LINES_COUNT);
-    this.server.create('vendor');
-    this.server.create('location');
-    this.server.create('fund');
     this.visit('/dummy');
     await findPOLines.whenLoaded();
   });

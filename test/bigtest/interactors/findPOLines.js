@@ -8,13 +8,13 @@ import {
   scoped,
 } from '@bigtest/interactor';
 
-import { Button } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class OrderLinesFilterInteractor {
-  static defaultScope = '#pane-filter';
+  static defaultScope = '#uiPluginFindPOLine--paneset';
 
-  searchInput = fillable('#input-order-line-search');
-  searchButton = new Button('[data-test-search-and-sort-submit]');
+  searchInput = fillable('[data-test-plugin-search-input]');
+  searchButton = new ButtonInteractor('[data-test-plugin-search-submit]');
 }
 
 @interactor class PluginModalInteractor {
