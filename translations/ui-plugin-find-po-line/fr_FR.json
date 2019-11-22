@@ -1,7 +1,7 @@
 {
-    "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
+    "meta.title": "Lignes de commande",
+    "addPOLine": "Ajouter des lignes de commande",
+    "modal.title": "Sélectionner les lignes de commande",
     "modal.footer.save": "Save",
     "modal.footer.close": "Close",
     "modal.footer.totalSelected": "Total selected: {count}"
