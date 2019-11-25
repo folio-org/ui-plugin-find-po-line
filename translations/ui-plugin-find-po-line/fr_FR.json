@@ -3,6 +3,6 @@
     "addPOLine": "Ajouter des lignes de commande",
     "modal.title": "Sélectionner les lignes de commande",
     "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}"
+    "modal.footer.close": "Fermer",
+    "modal.footer.totalSelected": "Total sélectionné: {count}"
 }
