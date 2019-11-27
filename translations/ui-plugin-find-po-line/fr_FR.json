@@ -2,7 +2,7 @@
     "meta.title": "Lignes de commande",
     "addPOLine": "Ajouter des lignes de commande",
     "modal.title": "Sélectionner les lignes de commande",
-    "modal.footer.save": "Save",
+    "modal.footer.save": "Sauvegarder",
     "modal.footer.close": "Fermer",
     "modal.footer.totalSelected": "Total sélectionné: {count}"
 }
