@@ -7,6 +7,8 @@ import mirageOptions from '../network';
 import PluginHarness from './PluginHarness';
 import PluginHarnessSingleSelect from './PluginHarnessSingleSelect';
 
+mirageOptions.serverType = 'miragejs';
+
 export default function setupApplication({
   isSingleSelect,
   scenarios,
