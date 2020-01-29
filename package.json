@@ -22,7 +22,7 @@
       "locations": "3.0",
       "material-types": "2.2",
       "order-lines": "1.0",
-      "organizations-storage.organizations": "2.1 2.2"
+      "organizations-storage.organizations": "3.0"
     }
   },
   "scripts": {
