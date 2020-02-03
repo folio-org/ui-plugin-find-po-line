@@ -1,8 +1,8 @@
 {
     "meta.title": "Righe d'ordine",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
+    "addPOLine": "Aggiungi righe ordine",
+    "modal.title": "Seleziona righe ordine",
     "modal.footer.save": "Salva",
     "modal.footer.close": "Chiudi",
-    "modal.footer.totalSelected": "Total selected: {count}"
+    "modal.footer.totalSelected": "Totale selezionato: {count}"
 }
