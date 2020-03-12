@@ -30,17 +30,6 @@ export const FILTERS = {
   TAGS: 'tags',
 };
 
-export const BOOLEAN_OPTIONS = [
-  {
-    value: 'true',
-    label: <FormattedMessage id="ui-orders.filter.true" />,
-  },
-  {
-    value: 'false',
-    label: <FormattedMessage id="ui-orders.filter.false" />,
-  },
-];
-
 export const ACQUISITION_METHOD = {
   approvalPlan: 'Approval Plan',
   dda: 'Demand Driven Acquisitions (DDA)',

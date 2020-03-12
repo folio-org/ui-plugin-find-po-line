@@ -11,13 +11,13 @@ import {
   SourceFilter,
   PluggableOrganizationFilter,
   AcqDateRangeFilter,
+  BooleanFilter,
 } from '@folio/stripes-acq-components';
 
 import MaterialTypeFilter from './MaterialTypeFilter';
 import OrdersTextFilter from './OrdersTextFilter';
 import FundFilter from './FundFilter';
 import {
-  BOOLEAN_OPTIONS,
   FILTERS,
   ACQUISITION_METHOD_FILTER_OPTIONS,
   ORDER_FORMAT_FILTER_OPTIONS,
@@ -118,21 +118,26 @@ function OrderLinesFilters({ activeFilters, onChange, funds, materialTypes }) {
         name={FILTERS.SOURCE_CODE}
         onChange={onChange}
       />
-      <AcqCheckboxFilter
+      <BooleanFilter
         activeFilters={activeFilters[FILTERS.COLLECTION]}
         id={FILTERS.COLLECTION}
         labelId="ui-orders.filter.collection"
         name={FILTERS.COLLECTION}
         onChange={onChange}
-        options={BOOLEAN_OPTIONS}
       />
-      <AcqCheckboxFilter
+      <BooleanFilter
+        activeFilters={activeFilters[FILTERS.COLLECTION]}
+        id={FILTERS.COLLECTION}
+        labelId="ui-orders.filter.collection"
+        name={FILTERS.COLLECTION}
+        onChange={onChange}
+      />
+      <BooleanFilter
         activeFilters={activeFilters[FILTERS.RUSH]}
         id={FILTERS.RUSH}
         labelId="ui-orders.filter.rush"
         name={FILTERS.RUSH}
         onChange={onChange}
-        options={BOOLEAN_OPTIONS}
       />
       <PluggableOrganizationFilter
         id={FILTERS.ACCESS_PROVIDER}
@@ -141,13 +146,12 @@ function OrderLinesFilters({ activeFilters, onChange, funds, materialTypes }) {
         name={FILTERS.ACCESS_PROVIDER}
         onChange={onChange}
       />
-      <AcqCheckboxFilter
+      <BooleanFilter
         activeFilters={activeFilters[FILTERS.ACTIVATED]}
         id={FILTERS.ACTIVATED}
         labelId="ui-orders.filter.activated"
         name={FILTERS.ACTIVATED}
         onChange={onChange}
-        options={BOOLEAN_OPTIONS}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.EXPECTED_ACTIVATION_DATE]}
@@ -156,13 +160,12 @@ function OrderLinesFilters({ activeFilters, onChange, funds, materialTypes }) {
         name={FILTERS.EXPECTED_ACTIVATION_DATE}
         onChange={onChange}
       />
-      <AcqCheckboxFilter
+      <BooleanFilter
         activeFilters={activeFilters[FILTERS.TRIAL]}
         id={FILTERS.TRIAL}
         labelId="ui-orders.filter.trial"
         name={FILTERS.TRIAL}
         onChange={onChange}
-        options={BOOLEAN_OPTIONS}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.SUBSCRIPTION_FROM]}
@@ -199,13 +202,12 @@ function OrderLinesFilters({ activeFilters, onChange, funds, materialTypes }) {
         name={FILTERS.RECEIPT_DUE}
         onChange={onChange}
       />
-      <AcqCheckboxFilter
+      <BooleanFilter
         activeFilters={activeFilters[FILTERS.CLAIM]}
         id={FILTERS.CLAIM}
         labelId="ui-orders.filter.claim"
         name={FILTERS.CLAIM}
         onChange={onChange}
-        options={BOOLEAN_OPTIONS}
       />
       <OrdersTextFilter
         id={FILTERS.CLAIM_GRACE}
