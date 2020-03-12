@@ -4,17 +4,30 @@ import get from 'lodash/get';
 import { FormattedMessage } from 'react-intl';
 
 import {
+  makeQueryFunction,
   StripesConnectedSource,
 } from '@folio/stripes/smart-components';
 import {
   stripesConnect,
 } from '@folio/stripes/core';
 import {
-  OrderLinesList,
-  columnMapping,
-} from '@folio/orders/src/OrderLinesList/OrderLinesList';
-import OrderLinesFilters from '@folio/orders/src/OrderLinesList/OrderLinesFilters';
+  baseManifest,
+  contributorNameTypesManifest,
+  DICT_CONTRIBUTOR_NAME_TYPES,
+  DICT_IDENTIFIER_TYPES,
+  FolioFormattedDate,
+  fundsManifest,
+  identifierTypesManifest,
+  LINES_API,
+  locationsManifest,
+  organizationsManifest,
+} from '@folio/stripes-acq-components';
 
+import { filterConfig } from './OrdersLinesFilterConfig';
+import { queryTemplate } from './OrdersLinesSearchConfig';
+import OrderLinesFilters from './OrderLinesFilters';
+
+const INITIAL_RESULT_COUNT = 30;
 const RESULT_COUNT_INCREMENT = 30;
 const columnWidths = {
   isChecked: '7%',
@@ -28,10 +41,68 @@ const visibleColumns = ['poLineNumber', 'title', 'productIds', 'vendorRefNumber'
 const sortableColumns = ['poLineNumber', 'title', 'vendorRefNumber'];
 const idPrefix = 'uiPluginFindPOLine-';
 const modalLabel = <FormattedMessage id="ui-plugin-find-po-line.modal.title" />;
+const columnMapping = {
+  poLineNumber: <FormattedMessage id="ui-orders.orderLineList.poLineNumber" />,
+  updatedDate: <FormattedMessage id="ui-orders.orderLineList.updatedDate" />,
+  title: <FormattedMessage id="ui-orders.orderLineList.titleOrPackage" />,
+  productIds: <FormattedMessage id="ui-orders.orderLineList.productIds" />,
+  vendorRefNumber: <FormattedMessage id="ui-orders.orderLineList.vendorRefNumber" />,
+  funCodes: <FormattedMessage id="ui-orders.orderLineList.funCodes" />,
+};
+const resultsFormatter = {
+  updatedDate: line => <FolioFormattedDate value={get(line, 'metadata.updatedDate')} />,
+  productIds: line => get(line, 'details.productIds', []).map(product => product.productId).join(', '),
+  vendorRefNumber: line => get(line, 'vendorDetail.refNumber', ''),
+  title: line => get(line, 'titleOrPackage', ''),
+};
 
 class FindPOLineContainer extends React.Component {
   static manifest = Object.freeze({
-    ...OrderLinesList.manifest,
+    query: {
+      initialValue: {
+        qindex: '',
+        query: '',
+        filters: '',
+        sort: 'poLineNumber',
+      },
+    },
+    resultCount: { initialValue: INITIAL_RESULT_COUNT },
+    records: {
+      type: 'okapi',
+      throwErrors: false,
+      path: LINES_API,
+      records: 'poLines',
+      recordsRequired: '%{resultCount}',
+      perRequest: RESULT_COUNT_INCREMENT,
+      GET: {
+        params: {
+          query: makeQueryFunction(
+            'cql.allRecords=1',
+            queryTemplate,
+            {
+              updatedDate: 'metadata.updatedDate',
+              vendorRefNumber: 'vendorDetail.refNumber',
+            },
+            filterConfig,
+            2,
+          ),
+        },
+        staticFallback: { params: {} },
+      },
+    },
+    locations: locationsManifest,
+    materialTypes: {
+      ...baseManifest,
+      path: 'material-types',
+      params: {
+        query: 'cql.allRecords=1 sortby name',
+      },
+      records: 'mtypes',
+    },
+    vendors: organizationsManifest,
+    funds: fundsManifest,
+    [DICT_IDENTIFIER_TYPES]: identifierTypesManifest,
+    [DICT_CONTRIBUTOR_NAME_TYPES]: contributorNameTypesManifest,
   });
 
   constructor(props, context) {
@@ -64,13 +135,26 @@ class FindPOLineContainer extends React.Component {
     }
   }
 
+  getResultsFormatter() {
+    const { resources } = this.props;
+    const fundsMap = get(resources, 'funds.records', []).reduce((acc, fund) => {
+      acc[fund.id] = fund.code;
+
+      return acc;
+    }, {});
+
+    return {
+      ...resultsFormatter,
+      funCodes: line => get(line, 'fundDistribution', []).map(fund => fundsMap[fund.fundId]).join(', '),
+    };
+  }
+
   queryGetter = () => {
     return get(this.props.resources, 'query', {});
   }
 
   renderFilters = (activeFilters, onChangeHandlers) => {
     const { resources } = this.props;
-    const locations = get(resources, 'locations.records') || [];
     const materialTypes = get(resources, 'materialTypes.records') || [];
     const funds = get(resources, 'funds.records') || [];
     const vendors = get(resources, 'vendors.records') || [];
@@ -85,7 +169,6 @@ class FindPOLineContainer extends React.Component {
       <OrderLinesFilters
         activeFilters={activeFilters}
         funds={funds}
-        locations={locations}
         materialTypes={materialTypes}
         onChange={onChange}
         vendors={vendors}
@@ -98,7 +181,6 @@ class FindPOLineContainer extends React.Component {
       resources,
       children,
     } = this.props;
-    const resultsFormatter = OrderLinesList.prototype.getResultsFormatter.call(this);
 
     if (this.source) {
       this.source.update(this.props);
@@ -113,7 +195,7 @@ class FindPOLineContainer extends React.Component {
       queryGetter: this.queryGetter,
       querySetter: this.querySetter,
       renderFilters: this.renderFilters,
-      resultsFormatter,
+      resultsFormatter: this.getResultsFormatter(),
       sortableColumns,
       source: this.source,
       visibleColumns,

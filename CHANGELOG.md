@@ -1,7 +1,10 @@
 # Change history for ui-plugin-find-po-line
 
-## 1.3.0 (IN PROGRESS)
+## (IN PROGRESS)
 
+### Stories
+
+* [UIPFPOL-7](https://issues.folio.org/browse/UIPFPOL-7) TECH-DEBT refactor ui-plugin-find-po-line to not use ui-orders
 * Update inventory okapiInterface to version `10.0`. Part of UIPFPOL-4.
 
 ## [1.2.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v1.2.0) (2019-12-04)
