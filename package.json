@@ -52,7 +52,6 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/orders": "^2.0.0",
     "@folio/stripes-acq-components": "^1.1.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0"
