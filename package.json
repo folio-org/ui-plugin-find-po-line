@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-po-line",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "Find and select PO lines plugin for Stripes",
   "repository": "folio-org/ui-plugin-find-po-line",
   "publishConfig": {
@@ -47,12 +47,16 @@
     "miragejs": "^0.1.32",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-hot-loader": "^4.3.12",
     "react-intl": "^2.8.0",
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "redux": "^3.7.2",
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "^1.1.0",
+    "@folio/stripes-acq-components": "^2.0.1",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0"
   },
@@ -60,6 +64,9 @@
     "@folio/stripes": "^3.0.0",
     "react": "*",
     "react-intl": "^2.8.0",
-    "react-router-dom": "^4.3.1"
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "redux": "^3.7.2"
   }
 }
