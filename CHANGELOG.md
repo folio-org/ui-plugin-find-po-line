@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
 * [UIPFPOL-9](https://issues.folio.org/browse/UIPFPOL-9) ui-plugin-find-po-line: Update to Stripes v4
 
 ## [2.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.0.0) (2020-03-13)
