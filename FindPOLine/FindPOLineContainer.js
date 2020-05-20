@@ -114,7 +114,13 @@ class FindPOLineContainer extends React.Component {
 
   componentDidMount() {
     this.source = new StripesConnectedSource(this.props, this.logger);
-    this.props.mutator.query.replace('');
+    const { filters, mutator } = this.props;
+    let query = '';
+
+    if (filters) {
+      query = { filters };
+    }
+    mutator.query.replace(query);
   }
 
   componentDidUpdate() {
@@ -209,6 +215,7 @@ class FindPOLineContainer extends React.Component {
 FindPOLineContainer.propTypes = {
   stripes: PropTypes.object.isRequired,
   children: PropTypes.func,
+  filters: PropTypes.string,
   mutator: PropTypes.object.isRequired,
   resources: PropTypes.object.isRequired,
 };

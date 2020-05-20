@@ -148,4 +148,9 @@ export const filterConfig = [
     cql: 'tags.tagList',
     values: [],
   },
+  {
+    name: FILTERS.IS_PACKAGE,
+    cql: FILTERS.IS_PACKAGE,
+    values: [],
+  },
 ];

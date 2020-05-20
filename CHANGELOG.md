@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 ### Stories
+* [UIOR-564](https://issues.folio.org/browse/UIOR-564) Ability to provide default filters in plugin
 * [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
 * [UIPFPOL-9](https://issues.folio.org/browse/UIPFPOL-9) ui-plugin-find-po-line: Update to Stripes v4
 

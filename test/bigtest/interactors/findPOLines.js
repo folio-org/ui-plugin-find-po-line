@@ -8,13 +8,18 @@ import {
   scoped,
 } from '@bigtest/interactor';
 
-import { ButtonInteractor } from '@folio/stripes-acq-components/test/bigtest/interactors';
+import {
+  ButtonInteractor,
+  CheckboxInteractor,
+} from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class OrderLinesFilterInteractor {
   static defaultScope = '#uiPluginFindPOLine--paneset';
 
   searchInput = fillable('[data-test-plugin-search-input]');
   searchButton = new ButtonInteractor('[data-test-plugin-search-submit]');
+  receiptStatusAwaiting = new CheckboxInteractor('#clickable-filter-receiptStatus-awaiting-receipt');
+  resetAll = new ButtonInteractor('#clickable-reset-all');
 }
 
 @interactor class PluginModalInteractor {
