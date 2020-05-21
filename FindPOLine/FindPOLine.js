@@ -9,17 +9,18 @@ import {
 
 import FindPOLineContainer from './FindPOLineContainer';
 
-const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => (
+const FindPOLine = ({ addLines, filters, initialFilterState, isSingleSelect, ...rest }) => (
   <PluginFindRecord
     {...rest}
     selectRecordsCb={addLines}
   >
     {(modalProps) => (
-      <FindPOLineContainer>
+      <FindPOLineContainer filters={filters}>
         {(viewProps) => (
           <PluginFindRecordModal
             {...viewProps}
             {...modalProps}
+            initialFilterState={initialFilterState}
             isMultiSelect={!isSingleSelect}
           />
         )}
@@ -30,6 +31,8 @@ const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => (
 
 FindPOLine.propTypes = {
   disabled: PropTypes.bool,
+  filters: PropTypes.string,
+  initialFilterState: PropTypes.object,
   marginBottom0: PropTypes.bool,
   marginTop0: PropTypes.bool,
   searchButtonStyle: PropTypes.string,

@@ -10,6 +10,7 @@ mirageOptions.serverType = 'miragejs';
 
 export default function setupApplication({
   isSingleSelect,
+  module,
   scenarios,
   hasAllPerms = true,
 } = {}) {
@@ -24,7 +25,7 @@ export default function setupApplication({
       name: '@folio/ui-dummy',
       displayName: 'dummy.title',
       route: '/dummy',
-      module: isSingleSelect ? PluginHarnessSingleSelect : PluginHarness,
+      module: module || (isSingleSelect ? PluginHarnessSingleSelect : PluginHarness),
     }],
 
     translations: {

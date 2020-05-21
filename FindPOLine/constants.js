@@ -14,6 +14,7 @@ export const FILTERS = {
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
   FUND_CODE: 'fundDistribution',
+  IS_PACKAGE: 'isPackage',
   LOCATION: 'locations',
   MATERIAL_TYPE_ELECTRONIC: 'materialTypeElectronic',
   MATERIAL_TYPE_PHYSICAL: 'materialTypePhysical',
@@ -25,9 +26,9 @@ export const FILTERS = {
   SOURCE_CODE: 'source',
   SUBSCRIPTION_FROM: 'subscriptionFrom',
   SUBSCRIPTION_TO: 'subscriptionTo',
+  TAGS: 'tags',
   TRIAL: 'trial',
   VENDOR: 'vendor',
-  TAGS: 'tags',
 };
 
 export const ACQUISITION_METHOD = {
