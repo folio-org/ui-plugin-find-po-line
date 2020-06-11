@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.1.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.1.0) (2020-06-11)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.0.0...v2.1.0)
+
 ### Stories
 * [UIOR-564](https://issues.folio.org/browse/UIOR-564) Ability to provide default filters in plugin
 * [UIORGS-178](https://issues.folio.org/browse/UIORGS-178) Redirect API calls from mod-organizations-storage to mod-organzations
