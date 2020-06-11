@@ -21,7 +21,7 @@
       "inventory": "10.0",
       "locations": "3.0",
       "material-types": "2.2",
-      "order-lines": "1.0",
+      "order-lines": "1.3",
       "organizations.organizations": "1.0"
     }
   },
