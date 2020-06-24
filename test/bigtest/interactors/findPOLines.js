@@ -8,9 +8,9 @@ import {
   scoped,
 } from '@bigtest/interactor';
 
+import CheckboxInteractor from '@folio/stripes-components/lib/Checkbox/tests/interactor';
 import {
   ButtonInteractor,
-  CheckboxInteractor,
 } from '@folio/stripes-acq-components/test/bigtest/interactors';
 
 @interactor class OrderLinesFilterInteractor {
@@ -18,7 +18,7 @@ import {
 
   searchInput = fillable('[data-test-plugin-search-input]');
   searchButton = new ButtonInteractor('[data-test-plugin-search-submit]');
-  receiptStatusAwaiting = new CheckboxInteractor('#clickable-filter-receiptStatus-awaiting-receipt');
+  receiptStatusAwaiting = scoped('#accordion1', CheckboxInteractor);
   resetAll = new ButtonInteractor('#clickable-reset-all');
 }
 
@@ -27,7 +27,7 @@ import {
 
   instances = collection('[data-row-inner]', {
     click: clickable(),
-    selectLine: clickable('input[type="checkbox"]'),
+    selectLine: scoped('[data-test-checkbox]', CheckboxInteractor),
   });
 
   save = scoped('[data-test-find-records-modal-save]', {

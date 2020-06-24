@@ -50,7 +50,7 @@ describe('Find PO Lines plugin', function () {
 
     describe('select a line', function () {
       beforeEach(async function () {
-        await findPOLines.modal.instances(1).selectLine();
+        await findPOLines.modal.instances(1).selectLine.clickInput();
       });
 
       it('should enable Save button', function () {
