@@ -38,7 +38,6 @@ FindPOLine.propTypes = {
   searchButtonStyle: PropTypes.string,
   searchLabel: PropTypes.node,
   stripes: PropTypes.object,
-  dataKey: PropTypes.string.isRequired,
   addLines: PropTypes.func.isRequired,
   isSingleSelect: PropTypes.bool,
 };

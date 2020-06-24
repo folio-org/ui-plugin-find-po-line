@@ -27,7 +27,7 @@ import {
 
   instances = collection('[data-row-inner]', {
     click: clickable(),
-    selectLine: clickable('input[type="checkbox"]'),
+    selectLine: new CheckboxInteractor('[data-row-inner] input[type="checkbox"]'),
   });
 
   save = scoped('[data-test-find-records-modal-save]', {

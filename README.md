@@ -21,7 +21,6 @@ of the Module Developer's Guide.
 | `stripes` | object | stripes-core glue object | Yes |
 | `searchButtonStyle` | string | optional styling of plugin's button | No |
 | `searchLabel` | React.node | optional jsx for plugin's button label | No |
-| `dataKey` | string | dataKey passed to stripes/connect when creating the connected Agreements component. | Yes |
 | `isSingleSelect` | boolean | Flag to control if user can select only one PO Line, default is `false` | No |
 | `addLines` | function | Callback with selected array of PO Lines | Yes |
 
