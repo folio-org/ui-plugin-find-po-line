@@ -18,7 +18,7 @@ import {
 
   searchInput = fillable('[data-test-plugin-search-input]');
   searchButton = new ButtonInteractor('[data-test-plugin-search-submit]');
-  receiptStatusAwaiting = scoped('#accordion1', CheckboxInteractor);
+  receiptStatusAwaiting = scoped('#receiptStatus [data-test-checkbox]', CheckboxInteractor);
   resetAll = new ButtonInteractor('#clickable-reset-all');
 }
 
