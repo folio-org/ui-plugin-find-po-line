@@ -63,6 +63,7 @@
   "peerDependencies": {
     "@folio/stripes": "^5.0.0",
     "react": "*",
+    "react-dom": "*",
     "react-intl": "^4.5.1",
     "react-redux": "*",
     "redux": "*"
