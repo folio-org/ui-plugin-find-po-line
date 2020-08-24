@@ -15,7 +15,7 @@
     "pluginType": "find-po-line",
     "displayName": "ui-plugin-find-po-line.meta.title",
     "stripesDeps": [
-      "@folio/orders",
+      "@folio/ui-orders",
       "@folio/stripes-acq-components"
     ],
     "okapiInterfaces": {
