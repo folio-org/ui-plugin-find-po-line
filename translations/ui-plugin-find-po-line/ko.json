@@ -1,0 +1,8 @@
+{
+    "meta.title": "주문 라인",
+    "addPOLine": "주문 라인 추가",
+    "modal.title": "주문 라인 선택",
+    "modal.footer.save": "저장",
+    "modal.footer.close": "닫기",
+    "modal.footer.totalSelected": "선택한 총: {수}"
+}
