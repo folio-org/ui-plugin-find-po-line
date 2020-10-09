@@ -9,6 +9,8 @@ const LINES_COUNT = 15;
 describe('Find PO Lines plugin', function () {
   const findPOLines = new FindPOLineInteractor();
 
+  this.timeout(10000);
+
   setupApplication();
 
   beforeEach(async function () {
@@ -38,6 +40,7 @@ describe('Find PO Lines plugin', function () {
       await findPOLines.button.click();
       await findPOLines.filter.searchInput('TEST');
       await findPOLines.filter.searchButton.click();
+      await findPOLines.whenLoaded();
     });
 
     it('should return a set of results', function () {
