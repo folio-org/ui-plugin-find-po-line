@@ -38,6 +38,7 @@ describe('Find PO Lines plugin', function () {
       await findPOLines.button.click();
       await findPOLines.filter.searchInput('TEST');
       await findPOLines.filter.searchButton.click();
+      await findPOLines.whenLoaded();
     });
 
     it('should return a set of results', function () {
