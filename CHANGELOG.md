@@ -2,6 +2,11 @@
 
 ## (IN PROGRESS)
 
+## [2.2.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.2.1) (2020-11-10)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.2.0...v2.2.1)
+
+* fix tests timeouts, translations
+
 ## [2.2.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.2.0) (2020-10-09)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.1.0...v2.2.0)
 
