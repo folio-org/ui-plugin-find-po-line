@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Add personal data disclosure form. Refs UIPFPOL-13.
+
 ## [2.2.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.2.1) (2020-11-10)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.2.0...v2.2.1)
 
