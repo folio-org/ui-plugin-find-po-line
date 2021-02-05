@@ -147,10 +147,27 @@ export const filterConfig = [
     name: FILTERS.TAGS,
     cql: 'tags.tagList',
     values: [],
+    operator: '=',
   },
   {
     name: FILTERS.IS_PACKAGE,
     cql: FILTERS.IS_PACKAGE,
+    values: [],
+  },
+  {
+    name: FILTERS.ACQUISITIONS_UNIT,
+    cql: FILTERS.ACQUISITIONS_UNIT,
+    values: [],
+    operator: '=',
+  },
+  {
+    name: FILTERS.PREFIX,
+    cql: FILTERS.PREFIX,
+    values: [],
+  },
+  {
+    name: FILTERS.SUFFIX,
+    cql: FILTERS.SUFFIX,
     values: [],
   },
 ];
