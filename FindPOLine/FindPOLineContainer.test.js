@@ -91,14 +91,10 @@ describe('FindPOLineContainer component', () => {
   });
 
   it('should render Order lines filters', async () => {
-    let getByText;
-
     await act(async () => {
-      const rerender = renderFindPOLineContainer(mutator);
-
-      getByText = rerender.getByText;
+      renderFindPOLineContainer(mutator);
     });
 
-    expect(getByText('OrderLinesFilters')).toBeDefined();
+    expect(screen.getByText('OrderLinesFilters')).toBeDefined();
   });
 });
