@@ -2,6 +2,7 @@
 
 ## (IN PROGRESS)
 
+* UI tests replacement with RTL/Jest. Refs FAT-46.
 * Add personal data disclosure form. Refs UIPFPOL-13.
 
 ## [2.2.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.2.1) (2020-11-10)
