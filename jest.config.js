@@ -6,5 +6,6 @@ module.exports = {
   collectCoverageFrom: [
     '**/FindPOLine/**/*.{js,jsx}',
     '!**/node_modules/**',
+    '!**/test/**',
   ],
 };
