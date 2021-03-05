@@ -1,8 +1,8 @@
 {
-    "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}"
+    "meta.title": "Pozycje zamówień",
+    "addPOLine": "Dodaj pozycje zamówienia",
+    "modal.title": "Wybierz pozycje zamówienia",
+    "modal.footer.save": "Zapisz",
+    "modal.footer.close": "Zamknij",
+    "modal.footer.totalSelected": "Wybrano łącznie: {count}"
 }
