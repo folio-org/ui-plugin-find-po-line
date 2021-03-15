@@ -9,6 +9,7 @@ const LINES_COUNT = 15;
 describe('Find PO Lines plugin with single select option', function () {
   const findPOLines = new FindPOLineInteractor();
 
+  this.timeout(10000);
   setupApplication({ isSingleSelect: true });
 
   beforeEach(async function () {
