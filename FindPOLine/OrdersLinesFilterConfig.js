@@ -1,6 +1,5 @@
 import { FILTERS } from './constants';
 
-// eslint-disable-next-line import/prefer-default-export
 export const filterConfig = [
   {
     name: FILTERS.RECEIPT_STATUS,
@@ -44,7 +43,7 @@ export const filterConfig = [
   },
   {
     name: FILTERS.DATE_CREATED,
-    cql: `metadata.${FILTERS.DATE_CREATED}`,
+    cql: FILTERS.DATE_CREATED,
     isRange: true,
     rangeSeparator: ':',
     values: [],
@@ -71,36 +70,36 @@ export const filterConfig = [
   },
   {
     name: FILTERS.ACCESS_PROVIDER,
-    cql: `eresource.${FILTERS.ACCESS_PROVIDER}`,
+    cql: FILTERS.ACCESS_PROVIDER,
     values: [],
   },
   {
     name: FILTERS.ACTIVATED,
-    cql: `eresource.${FILTERS.ACTIVATED}`,
+    cql: FILTERS.ACTIVATED,
     values: [],
   },
   {
     name: FILTERS.EXPECTED_ACTIVATION_DATE,
-    cql: `eresource.${FILTERS.EXPECTED_ACTIVATION_DATE}`,
+    cql: FILTERS.EXPECTED_ACTIVATION_DATE,
     isRange: true,
     rangeSeparator: ':',
     values: [],
   },
   {
     name: FILTERS.TRIAL,
-    cql: `eresource.${FILTERS.TRIAL}`,
+    cql: FILTERS.TRIAL,
     values: [],
   },
   {
     name: FILTERS.SUBSCRIPTION_FROM,
-    cql: `details.${FILTERS.SUBSCRIPTION_FROM}`,
+    cql: FILTERS.SUBSCRIPTION_FROM,
     isRange: true,
     rangeSeparator: ':',
     values: [],
   },
   {
     name: FILTERS.SUBSCRIPTION_TO,
-    cql: `details.${FILTERS.SUBSCRIPTION_TO}`,
+    cql: FILTERS.SUBSCRIPTION_TO,
     isRange: true,
     rangeSeparator: ':',
     values: [],
@@ -114,14 +113,14 @@ export const filterConfig = [
   },
   {
     name: FILTERS.EXPECTED_RECEIPT_DATE,
-    cql: `physical.${FILTERS.EXPECTED_RECEIPT_DATE}`,
+    cql: FILTERS.EXPECTED_RECEIPT_DATE,
     isRange: true,
     rangeSeparator: ':',
     values: [],
   },
   {
     name: FILTERS.RECEIPT_DUE,
-    cql: `physical.${FILTERS.RECEIPT_DUE}`,
+    cql: FILTERS.RECEIPT_DUE,
     isRange: true,
     rangeSeparator: ':',
     values: [],
