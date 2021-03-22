@@ -34,12 +34,12 @@ export const filterConfig = [
   },
   {
     name: FILTERS.MATERIAL_TYPE_ELECTRONIC,
-    cql: 'eresource.materialType',
+    cql: FILTERS.MATERIAL_TYPE_ELECTRONIC,
     values: [],
   },
   {
     name: FILTERS.MATERIAL_TYPE_PHYSICAL,
-    cql: 'physical.materialType',
+    cql: FILTERS.MATERIAL_TYPE_PHYSICAL,
     values: [],
   },
   {
