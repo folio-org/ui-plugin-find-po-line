@@ -2,8 +2,6 @@
 
 ## (IN PROGRESS)
 
-* Material type E and P Filters not working in POL search. Refs UIOR-679.
-
 ## [2.3.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.3.0) (2021-03-15)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.2.1...v2.3.0)
 
