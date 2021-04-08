@@ -21,11 +21,13 @@ export const filterConfig = [
     name: FILTERS.LOCATION,
     cql: FILTERS.LOCATION,
     values: [],
+    operator: '=',
   },
   {
     name: FILTERS.FUND_CODE,
     cql: FILTERS.FUND_CODE,
     values: [],
+    operator: '=',
   },
   {
     name: FILTERS.ORDER_FORMAT,
