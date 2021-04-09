@@ -25,7 +25,13 @@ export const filterConfig = [
   },
   {
     name: FILTERS.FUND_CODE,
-    cql: FILTERS.FUND_CODE,
+    cql: 'fundDistribution',
+    values: [],
+    operator: '=',
+  },
+  {
+    name: FILTERS.EXPENSE_CLASS,
+    cql: 'fundDistribution',
     values: [],
     operator: '=',
   },
