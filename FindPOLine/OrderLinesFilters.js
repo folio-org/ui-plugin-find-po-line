@@ -21,6 +21,7 @@ import MaterialTypeFilter from './MaterialTypeFilter';
 import PrefixFilter from './PrefixFilter';
 import SuffixFilter from './SuffixFilter';
 import FundFilter from './FundFilter';
+import ExpenseClassFilter from './ExpenseClassFilter';
 import {
   FILTERS,
   ACQUISITION_METHOD_FILTER_OPTIONS,
@@ -100,6 +101,14 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         name={FILTERS.FUND_CODE}
         onChange={onChange}
         funds={funds}
+      />
+      <ExpenseClassFilter
+        activeFilters={activeFilters[FILTERS.EXPENSE_CLASS]}
+        disabled={disabled}
+        id={FILTERS.EXPENSE_CLASS}
+        labelId="ui-orders.filter.expenseClass"
+        name={FILTERS.EXPENSE_CLASS}
+        onChange={onChange}
       />
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.ORDER_FORMAT]}

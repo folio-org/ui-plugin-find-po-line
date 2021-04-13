@@ -3,6 +3,10 @@ import { render } from '@testing-library/react';
 
 import OrderLinesFilters from './OrderLinesFilters';
 
+jest.mock('./ExpenseClassFilter/useExpenseClassOptions', () => ({
+  useExpenseClassOptions: jest.fn().mockReturnValue([]),
+}));
+
 const renderOrderLinesFilters = () => (render(
   <OrderLinesFilters
     activeFilters={{}}
@@ -29,5 +33,6 @@ describe('OrderLinesFilters component', () => {
     expect(getByText('ui-orders.filter.rush')).toBeDefined();
     expect(getByText('ui-orders.eresource.accessProvider')).toBeDefined();
     expect(getByText('ui-orders.eresource.expectedActivation')).toBeDefined();
+    expect(getByText('ui-orders.filter.expenseClass')).toBeDefined();
   });
 });
