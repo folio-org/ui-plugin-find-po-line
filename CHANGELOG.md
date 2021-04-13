@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [2.3.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.3.1) (2021-04-13)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.3.0...v2.3.1)
+
 * Fund code and Location filters not working for POL search. Refs UIPFPOL-17.
 
 ## [2.3.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.3.0) (2021-03-15)
