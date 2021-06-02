@@ -4,6 +4,7 @@
 
 * Filter order lines by Expense class. Refs UIOR-678.
 * Compile Translation Files into AST Format. Refs UIPFPOL-19.
+* Support cross index queries for GET /orders/order-lines endpoint. Refs UIPFPOL-20.
 
 ## [2.3.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.3.1) (2021-04-13)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.3.0...v2.3.1)
