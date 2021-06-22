@@ -53,7 +53,6 @@ const resultsFormatter = {
   updatedDate: line => <FolioFormattedDate value={get(line, 'metadata.updatedDate')} />,
   productIds: line => get(line, 'details.productIds', []).map(product => product.productId).join(', '),
   vendorRefNumber: line => get(line, 'vendorDetail.refNumber', ''),
-  titleOrPackage: line => get(line, 'titleOrPackage', ''),
 };
 
 class FindPOLineContainer extends React.Component {
