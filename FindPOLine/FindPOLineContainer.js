@@ -32,19 +32,19 @@ const RESULT_COUNT_INCREMENT = 30;
 const columnWidths = {
   isChecked: '7%',
   poLineNumber: '11%',
-  title: '32%',
+  titleOrPackage: '32%',
   productIds: '18%',
   vendorRefNumber: '14%',
   funCodes: '18%',
 };
-const visibleColumns = ['poLineNumber', 'title', 'productIds', 'vendorRefNumber', 'funCodes'];
-const sortableColumns = ['poLineNumber', 'title', 'vendorRefNumber'];
+const visibleColumns = ['poLineNumber', 'titleOrPackage', 'productIds', 'vendorRefNumber', 'funCodes'];
+const sortableColumns = ['poLineNumber', 'titleOrPackage', 'vendorRefNumber'];
 const idPrefix = 'uiPluginFindPOLine-';
 const modalLabel = <FormattedMessage id="ui-plugin-find-po-line.modal.title" />;
 const columnMapping = {
   poLineNumber: <FormattedMessage id="ui-orders.orderLineList.poLineNumber" />,
   updatedDate: <FormattedMessage id="ui-orders.orderLineList.updatedDate" />,
-  title: <FormattedMessage id="ui-orders.orderLineList.titleOrPackage" />,
+  titleOrPackage: <FormattedMessage id="ui-orders.orderLineList.titleOrPackage" />,
   productIds: <FormattedMessage id="ui-orders.orderLineList.productIds" />,
   vendorRefNumber: <FormattedMessage id="ui-orders.orderLineList.vendorRefNumber" />,
   funCodes: <FormattedMessage id="ui-orders.orderLineList.funCodes" />,
@@ -53,7 +53,6 @@ const resultsFormatter = {
   updatedDate: line => <FolioFormattedDate value={get(line, 'metadata.updatedDate')} />,
   productIds: line => get(line, 'details.productIds', []).map(product => product.productId).join(', '),
   vendorRefNumber: line => get(line, 'vendorDetail.refNumber', ''),
-  title: line => get(line, 'titleOrPackage', ''),
 };
 
 class FindPOLineContainer extends React.Component {
