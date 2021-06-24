@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 * The data is not sorted alphabetically in the "Title or package name" column in the look-up window POL. Refs UIPFPO-21.
+* The data is not displayed in the "Vendor reference number" column in the look-up window POL. Refs UIPFPOL-22.
 
 ## [2.4.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.4.0) (2021-06-17)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.3.1...v2.4.0)

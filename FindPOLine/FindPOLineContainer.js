@@ -10,6 +10,7 @@ import {
 import {
   stripesConnect,
 } from '@folio/stripes/core';
+import { NoValue } from '@folio/stripes/components';
 import {
   baseManifest,
   contributorNameTypesManifest,
@@ -38,7 +39,7 @@ const columnWidths = {
   funCodes: '18%',
 };
 const visibleColumns = ['poLineNumber', 'titleOrPackage', 'productIds', 'vendorRefNumber', 'funCodes'];
-const sortableColumns = ['poLineNumber', 'titleOrPackage', 'vendorRefNumber'];
+const sortableColumns = ['poLineNumber', 'titleOrPackage'];
 const idPrefix = 'uiPluginFindPOLine-';
 const modalLabel = <FormattedMessage id="ui-plugin-find-po-line.modal.title" />;
 const columnMapping = {
@@ -52,7 +53,9 @@ const columnMapping = {
 const resultsFormatter = {
   updatedDate: line => <FolioFormattedDate value={get(line, 'metadata.updatedDate')} />,
   productIds: line => get(line, 'details.productIds', []).map(product => product.productId).join(', '),
-  vendorRefNumber: line => get(line, 'vendorDetail.refNumber', ''),
+  vendorRefNumber: line => (
+    line.vendorDetail?.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+  ),
 };
 
 class FindPOLineContainer extends React.Component {
