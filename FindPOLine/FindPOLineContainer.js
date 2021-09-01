@@ -12,6 +12,7 @@ import {
 } from '@folio/stripes/core';
 import { NoValue } from '@folio/stripes/components';
 import {
+  AmountWithCurrencyField,
   baseManifest,
   contributorNameTypesManifest,
   DICT_CONTRIBUTOR_NAME_TYPES,
@@ -38,7 +39,7 @@ const columnWidths = {
   vendorRefNumber: '14%',
   funCodes: '18%',
 };
-const visibleColumns = ['poLineNumber', 'titleOrPackage', 'productIds', 'vendorRefNumber', 'funCodes'];
+const visibleColumns = ['poLineNumber', 'titleOrPackage', 'productIds', 'estimatedPrice', 'vendorRefNumber', 'funCodes'];
 const sortableColumns = ['poLineNumber', 'titleOrPackage'];
 const idPrefix = 'uiPluginFindPOLine-';
 const modalLabel = <FormattedMessage id="ui-plugin-find-po-line.modal.title" />;
@@ -46,6 +47,7 @@ const columnMapping = {
   poLineNumber: <FormattedMessage id="ui-orders.orderLineList.poLineNumber" />,
   updatedDate: <FormattedMessage id="ui-orders.orderLineList.updatedDate" />,
   titleOrPackage: <FormattedMessage id="ui-orders.orderLineList.titleOrPackage" />,
+  estimatedPrice: <FormattedMessage id="ui-orders.cost.estimatedPrice" />,
   productIds: <FormattedMessage id="ui-orders.orderLineList.productIds" />,
   vendorRefNumber: <FormattedMessage id="ui-orders.orderLineList.vendorRefNumber" />,
   funCodes: <FormattedMessage id="ui-orders.orderLineList.funCodes" />,
@@ -55,6 +57,12 @@ const resultsFormatter = {
   productIds: line => get(line, 'details.productIds', []).map(product => product.productId).join(', '),
   vendorRefNumber: line => (
     line.vendorDetail?.referenceNumbers?.map(({ refNumber }) => refNumber)?.join(', ') || <NoValue />
+  ),
+  estimatedPrice: line => (
+    <AmountWithCurrencyField
+      amount={line?.cost?.poLineEstimatedPrice}
+      currency={line?.cost?.currency}
+    />
   ),
 };
 
