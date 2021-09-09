@@ -25,7 +25,7 @@
       "configuration.reasons-for-closure": "1.0",
       "configuration.suffixes": "1.1",
       "contributor-name-types": "1.2",
-      "finance.expense-classes": "1.0",
+      "finance.expense-classes": "1.0 2.0",
       "finance.funds": "1.4",
       "identifier-types": "1.2",
       "inventory": "10.0",
