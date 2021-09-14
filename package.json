@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-po-line",
-  "version": "2.4.1",
+  "version": "3.0.0",
   "description": "Find and select PO lines plugin for Stripes",
   "repository": "folio-org/ui-plugin-find-po-line",
   "publishConfig": {
@@ -52,7 +52,7 @@
     "@bigtest/mocha": "^0.5.2",
     "@bigtest/react": "^0.1.2",
     "@folio/eslint-config-stripes": "^5.0.0",
-    "@folio/stripes": "^6.0.0",
+    "@folio/stripes": "^7.0.0",
     "@folio/stripes-cli": "^2.0.0",
     "@formatjs/cli": "^4.2.16",
     "@testing-library/dom": "^7.29.6",
@@ -73,8 +73,8 @@
     "jest": "^26.6.3",
     "jest-junit": "^12.0.0",
     "miragejs": "^0.1.32",
-    "react": "^16.5.1",
-    "react-dom": "^16.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-intl": "^5.8.1",
     "react-query": "^3.6.0",
     "react-redux": "^7.2.2",
@@ -84,14 +84,14 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~2.4.0",
+    "@folio/stripes-acq-components": "~3.0.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0"
   },
   "peerDependencies": {
-    "@folio/stripes": "^6.0.0",
-    "react": "*",
-    "react-dom": "*",
+    "@folio/stripes": "^7.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-intl": "^5.8.1",
     "react-query": "^3.6.0",
     "react-redux": "*",
