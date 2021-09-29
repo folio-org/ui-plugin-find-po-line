@@ -22,7 +22,7 @@ describe('OrderLinesFilters component', () => {
     expect(getByText('ui-orders.poLine.paymentStatus')).toBeDefined();
     expect(getByText('ui-orders.orderDetails.orderNumberPrefix')).toBeDefined();
     expect(getByText('ui-orders.orderDetails.orderNumberSuffix')).toBeDefined();
-    expect(getByText('ui-orders.order.acquisitionsUnit')).toBeDefined();
+    expect(getByText('stripes-acq-components.filter.acqUnit')).toBeDefined();
     expect(getByText('ui-orders.poLine.acquisitionMethod')).toBeDefined();
     expect(getByText('ui-orders.line.accordion.location')).toBeDefined();
     expect(getByText('ui-orders.filter.fundCode')).toBeDefined();

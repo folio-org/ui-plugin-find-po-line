@@ -4,6 +4,7 @@
 
 * Add POL price to search plugin-display in invoices app. Refs UIPFPOL-25.
 * Increment stripes to v7. Refs UIPFPOL-24.
+* Filter label contains extra "s". Refs UIPFPOL-28.
 
 ## [2.4.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v2.4.1) (2021-07-30)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v2.4.0...v2.4.1)
