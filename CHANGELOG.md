@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.0.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.0.1) (2021-11-11)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.0.0...v3.0.1)
+
 * Expense class filter shows only 10 expense classes despite a longer list in the tenant. Refs UIPFPOL-31.
 
 ## [3.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.0.0) (2021-10-05)
