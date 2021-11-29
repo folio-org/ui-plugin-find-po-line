@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 import { MultiSelectionFilter } from '@folio/stripes/smart-components';
 import { stripesConnect } from '@folio/stripes/core';
 import {
-  FilterAccordion,
   acquisitionMethodsResource,
+  FilterAccordion,
 } from '@folio/stripes-acq-components';
+
+import { getAcqMethodsOptions } from './getAcqMethodsOptions';
 
 const AcqMethodsFilter = ({
   activeFilters,
@@ -18,9 +20,7 @@ const AcqMethodsFilter = ({
   onChange,
   resources,
 }) => {
-  const options = resources.acquisitionMethods?.records?.map(({ id: acqMethodId, value }) => (
-    { label: value, value: acqMethodId }
-  ));
+  const options = getAcqMethodsOptions(resources.acquisitionMethods?.records);
 
   return (
     <FilterAccordion
