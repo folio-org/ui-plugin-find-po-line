@@ -18,7 +18,7 @@ const AcqMethodsFilter = ({
   onChange,
   resources,
 }) => {
-  const options = resources.acquisitionMethods.records?.map(({ id: acqMethodId, value }) => (
+  const options = resources.acquisitionMethods?.records?.map(({ id: acqMethodId, value }) => (
     { label: value, value: acqMethodId }
   ));
 

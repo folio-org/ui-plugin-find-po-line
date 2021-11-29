@@ -1,37 +1,45 @@
-import { cleanup, render, screen } from '@testing-library/react';
+import React from 'react';
+import { screen, render } from '@testing-library/react';
 import { noop } from 'lodash';
-import '@folio/stripes-acq-components/test/jest/__mock__';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
 
 const records = [
-  { value: 'Gift', id: '001' },
-  { value: 'Other', id: '002' },
+  { id: '001', value: 'Acq-method 1' },
+  { id: '002', value: 'Acq-method 2' },
 ];
 
-const defaultProps = {
-  id: 'acq-methods',
-  labelId: 'acq-methods',
-  name: 'acq-methods',
-  onChange: noop,
-  activeFilters: [],
-  resources: { acquisitionMethods: { records } },
-};
+const filterAccordionTitle = 'ui-orders.poLine.acquisitionMethod';
 
-const renderAcqMethodsFilter = (props = {}) => (render(
+const renderFilter = () => render(
   <AcqMethodsFilter
-    {...defaultProps}
-    {...props}
+    id="acq-methods"
+    activeFilters={[]}
+    name="acq-methods"
+    onChange={noop}
+    labelId={filterAccordionTitle}
+    resources={{ acquisitionMethods: { records } }}
   />,
-));
+);
 
 describe('AcqMethodsFilter component', () => {
-  afterEach(cleanup);
+  it('should display passed title', () => {
+    renderFilter();
 
-  it('should render all passed options', () => {
-    renderAcqMethodsFilter();
+    expect(screen.getByText(filterAccordionTitle)).toBeDefined();
+  });
 
-    expect(screen.getByText(records[0].value)).toBeInTheDocument();
-    expect(screen.getByText(records[1].value)).toBeInTheDocument();
+  it('should be closed by default', () => {
+    const { getByLabelText } = renderFilter();
+
+    expect(getByLabelText(`${filterAccordionTitle} filter list`).getAttribute('aria-expanded') || 'false').toBe('false');
+  });
+
+  it('should render all passed options', async () => {
+    renderFilter();
+
+    const renderedFilterOptions = await screen.findAllByText(/Acq-method [0-9]/);
+
+    expect(renderedFilterOptions.length).toBe(2);
   });
 });
