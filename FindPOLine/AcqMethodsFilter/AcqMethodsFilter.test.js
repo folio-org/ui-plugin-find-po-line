@@ -28,7 +28,7 @@ const renderAcqMethodsFilter = (props = {}) => (render(
 describe('AcqMethodsFilter component', () => {
   afterEach(cleanup);
 
-  it('should render all passed options', async () => {
+  it('should render all passed options', () => {
     renderAcqMethodsFilter();
 
     expect(screen.getByText(records[0].value)).toBeInTheDocument();
