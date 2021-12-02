@@ -16,6 +16,7 @@ import {
   BooleanFilter,
 } from '@folio/stripes-acq-components';
 
+import AcqMethodsFilter from './AcqMethodsFilter';
 import MaterialTypeFilter from './MaterialTypeFilter';
 // import OrdersTextFilter from '../common/OrdersTextFilter';
 import PrefixFilter from './PrefixFilter';
@@ -24,7 +25,6 @@ import FundFilter from './FundFilter';
 import ExpenseClassFilter from './ExpenseClassFilter';
 import {
   FILTERS,
-  ACQUISITION_METHOD_FILTER_OPTIONS,
   PAYMENT_STATUS_FILTER_OPTIONS,
   RECEIPT_STATUS_FILTER_OPTIONS,
 } from './constants';
@@ -75,14 +75,13 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         onChange={onChange}
         disabled={disabled}
       />
-      <AcqCheckboxFilter
+      <AcqMethodsFilter
         activeFilters={activeFilters[FILTERS.ACQUISITION_METHOD]}
         disabled={disabled}
         id={FILTERS.ACQUISITION_METHOD}
         labelId="ui-orders.poLine.acquisitionMethod"
         name={FILTERS.ACQUISITION_METHOD}
         onChange={onChange}
-        options={ACQUISITION_METHOD_FILTER_OPTIONS}
       />
       <LocationFilterContainer
         id="pol-location-filter"

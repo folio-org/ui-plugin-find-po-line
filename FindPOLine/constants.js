@@ -2,7 +2,6 @@ import React from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import {
-  ACQUISITION_METHOD,
   PAYMENT_STATUS,
   RECEIPT_STATUS,
 } from '@folio/stripes-acq-components';
@@ -40,11 +39,6 @@ export const FILTERS = {
   TRIAL: 'trial',
   VENDOR: 'purchaseOrder.vendor',
 };
-
-export const ACQUISITION_METHOD_FILTER_OPTIONS = Object.keys(ACQUISITION_METHOD).map(key => ({
-  value: ACQUISITION_METHOD[key],
-  label: <FormattedMessage id={`ui-orders.acquisition_method.${key}`} />,
-}));
 
 export const PAYMENT_STATUS_FILTER_OPTIONS = Object.keys(PAYMENT_STATUS).map(status => ({
   value: PAYMENT_STATUS[status],
