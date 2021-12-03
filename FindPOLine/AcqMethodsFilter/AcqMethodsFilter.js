@@ -6,9 +6,8 @@ import { stripesConnect } from '@folio/stripes/core';
 import {
   acquisitionMethodsResource,
   FilterAccordion,
+  useAcqMethodsOptions,
 } from '@folio/stripes-acq-components';
-
-import { getAcqMethodsOptions } from './getAcqMethodsOptions';
 
 const AcqMethodsFilter = ({
   activeFilters,
@@ -20,7 +19,7 @@ const AcqMethodsFilter = ({
   onChange,
   resources,
 }) => {
-  const options = getAcqMethodsOptions(resources.acquisitionMethods?.records);
+  const options = useAcqMethodsOptions(resources.acquisitionMethods?.records);
 
   return (
     <FilterAccordion
