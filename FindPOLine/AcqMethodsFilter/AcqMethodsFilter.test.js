@@ -1,4 +1,5 @@
 import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { screen, render } from '@testing-library/react';
 import { noop } from 'lodash';
 
@@ -11,6 +12,15 @@ const records = [
 
 const filterAccordionTitle = 'ui-orders.poLine.acquisitionMethod';
 
+const queryClient = new QueryClient();
+
+// eslint-disable-next-line react/prop-types
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
+
 const renderFilter = () => render(
   <AcqMethodsFilter
     id="acq-methods"
@@ -20,6 +30,7 @@ const renderFilter = () => render(
     labelId={filterAccordionTitle}
     resources={{ acquisitionMethods: { records } }}
   />,
+  { wrapper },
 );
 
 describe('AcqMethodsFilter component', () => {

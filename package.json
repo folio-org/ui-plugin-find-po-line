@@ -20,6 +20,7 @@
       "@folio/stripes-acq-components"
     ],
     "okapiInterfaces": {
+      "acquisition-methods": "1.0",
       "acquisitions-units": "1.1",
       "configuration.prefixes": "1.1",
       "configuration.reasons-for-closure": "1.0",
