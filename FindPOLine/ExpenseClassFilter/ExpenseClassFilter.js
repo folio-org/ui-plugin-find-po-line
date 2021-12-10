@@ -1,18 +1,57 @@
-import React from 'react';
+import PropTypes from 'prop-types';
 
-import { SelectionFilter } from '@folio/stripes-acq-components';
+import { MultiSelectionFilter } from '@folio/stripes/smart-components';
+import { FilterAccordion } from '@folio/stripes-acq-components';
 
 import { useExpenseClassOptions } from './useExpenseClassOptions';
 
-const ExpenseClassFilter = (props) => {
+const ExpenseClassFilter = ({
+  activeFilters,
+  disabled,
+  closedByDefault,
+  id,
+  labelId,
+  name,
+  onChange,
+}) => {
   const options = useExpenseClassOptions();
 
   return (
-    <SelectionFilter
-      {...props}
-      options={options}
-    />
+    <FilterAccordion
+      activeFilters={activeFilters}
+      closedByDefault={closedByDefault}
+      disabled={disabled}
+      id={id}
+      labelId={labelId}
+      name={name}
+      onChange={onChange}
+    >
+      <MultiSelectionFilter
+        ariaLabelledBy={`accordion-toggle-button-${id}`}
+        dataOptions={options}
+        disabled={disabled}
+        id="expense-class-filter"
+        name={name}
+        onChange={onChange}
+        selectedValues={activeFilters}
+      />
+    </FilterAccordion>
   );
+};
+
+ExpenseClassFilter.propTypes = {
+  activeFilters: PropTypes.arrayOf(PropTypes.string),
+  closedByDefault: PropTypes.bool,
+  disabled: PropTypes.bool,
+  id: PropTypes.string.isRequired,
+  labelId: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+};
+
+ExpenseClassFilter.defaultProps = {
+  closedByDefault: true,
+  disabled: false,
 };
 
 export default ExpenseClassFilter;
