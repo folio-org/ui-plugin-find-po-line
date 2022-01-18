@@ -178,4 +178,11 @@ export const filterConfig = [
     cql: FILTERS.SUFFIX,
     values: [],
   },
+  {
+    name: FILTERS.EXPORT_DATE,
+    cql: FILTERS.EXPORT_DATE,
+    isRange: true,
+    rangeSeparator: ':',
+    values: [],
+  },
 ];

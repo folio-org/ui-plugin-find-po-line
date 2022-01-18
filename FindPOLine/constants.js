@@ -20,6 +20,7 @@ export const FILTERS = {
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
   EXPENSE_CLASS: 'expenseClass',
+  EXPORT_DATE: 'purchaseOrder.lastEDIExportDate',
   FUND_CODE: 'fundCode',
   IS_PACKAGE: 'isPackage',
   LOCATION: 'locations',

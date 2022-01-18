@@ -252,6 +252,14 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         name={FILTERS.RECEIPT_DUE}
         onChange={onChange}
       />
+      <AcqDateRangeFilter
+        id={FILTERS.EXPORT_DATE}
+        activeFilters={activeFilters[FILTERS.EXPORT_DATE]}
+        labelId="ui-orders.export.exportDate"
+        name={FILTERS.EXPORT_DATE}
+        onChange={onChange}
+        disabled={disabled}
+      />
       {/* <BooleanFilter
         activeFilters={activeFilters[FILTERS.CLAIM]}
         disabled={disabled}
