@@ -34,5 +34,6 @@ describe('OrderLinesFilters component', () => {
     expect(getByText('ui-orders.eresource.accessProvider')).toBeDefined();
     expect(getByText('ui-orders.eresource.expectedActivation')).toBeDefined();
     expect(getByText('ui-orders.filter.expenseClass')).toBeDefined();
+    expect(getByText('ui-orders.export.exportDate')).toBeDefined();
   });
 });
