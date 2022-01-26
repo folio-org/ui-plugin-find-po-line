@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import OrderLinesFilters from './OrderLinesFilters';
+import { OrderLinesFilters } from './OrderLinesFilters';
 
 jest.mock('./ExpenseClassFilter/useExpenseClassOptions', () => ({
   useExpenseClassOptions: jest.fn().mockReturnValue([]),
