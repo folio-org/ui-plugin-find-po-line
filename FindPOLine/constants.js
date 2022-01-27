@@ -20,7 +20,7 @@ export const FILTERS = {
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
   EXPENSE_CLASS: 'expenseClass',
-  EXPORT_DATE: 'purchaseOrder.lastEDIExportDate',
+  EXPORT_DATE: 'lastEDIExportDate',
   FUND_CODE: 'fundCode',
   IS_PACKAGE: 'isPackage',
   LOCATION: 'locations',
@@ -50,3 +50,5 @@ export const RECEIPT_STATUS_FILTER_OPTIONS = Object.keys(RECEIPT_STATUS).map(sta
   value: RECEIPT_STATUS[status],
   label: <FormattedMessage id={`ui-orders.receipt_status.${status}`} />,
 }));
+
+export const QUALIFIER_SEPARATOR = ' ';

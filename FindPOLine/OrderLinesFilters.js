@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import {
@@ -18,7 +18,7 @@ import {
 
 import AcqMethodsFilter from './AcqMethodsFilter';
 import MaterialTypeFilter from './MaterialTypeFilter';
-// import OrdersTextFilter from '../common/OrdersTextFilter';
+// import OrdersTextFilter from './OrdersTextFilter';
 import PrefixFilter from './PrefixFilter';
 import SuffixFilter from './SuffixFilter';
 import FundFilter from './FundFilter';
@@ -29,7 +29,14 @@ import {
   RECEIPT_STATUS_FILTER_OPTIONS,
 } from './constants';
 
-function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialTypes }) {
+const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
+
+export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds = [], materialTypes = [] }) {
+  const adaptedApplyFilters = useCallback(
+    applyFiltersAdapter(applyFilters),
+    [applyFilters],
+  );
+
   return (
     <AccordionSet>
       <AcqCheckboxFilter
@@ -39,7 +46,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.RECEIPT_STATUS}
         labelId="ui-orders.poLine.receiptStatus"
         name={FILTERS.RECEIPT_STATUS}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         options={RECEIPT_STATUS_FILTER_OPTIONS}
       />
       <AcqCheckboxFilter
@@ -49,7 +56,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.PAYMENT_STATUS}
         labelId="ui-orders.poLine.paymentStatus"
         name={FILTERS.PAYMENT_STATUS}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         options={PAYMENT_STATUS_FILTER_OPTIONS}
       />
       <PrefixFilter
@@ -57,7 +64,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         activeFilters={activeFilters[FILTERS.PREFIX]}
         labelId="ui-orders.orderDetails.orderNumberPrefix"
         name={FILTERS.PREFIX}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         disabled={disabled}
       />
       <SuffixFilter
@@ -65,14 +72,14 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         activeFilters={activeFilters[FILTERS.SUFFIX]}
         labelId="ui-orders.orderDetails.orderNumberSuffix"
         name={FILTERS.SUFFIX}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         disabled={disabled}
       />
       <AcqUnitFilter
         id={FILTERS.ACQUISITIONS_UNIT}
         activeFilters={activeFilters[FILTERS.ACQUISITIONS_UNIT]}
         name={FILTERS.ACQUISITIONS_UNIT}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         disabled={disabled}
       />
       <AcqMethodsFilter
@@ -81,7 +88,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.ACQUISITION_METHOD}
         labelId="ui-orders.poLine.acquisitionMethod"
         name={FILTERS.ACQUISITION_METHOD}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <LocationFilterContainer
         id="pol-location-filter"
@@ -89,7 +96,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         disabled={disabled}
         labelId="ui-orders.line.accordion.location"
         name={FILTERS.LOCATION}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <FundFilter
         activeFilters={activeFilters[FILTERS.FUND_CODE]}
@@ -97,7 +104,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.FUND_CODE}
         labelId="ui-orders.filter.fundCode"
         name={FILTERS.FUND_CODE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         funds={funds}
       />
       <ExpenseClassFilter
@@ -106,7 +113,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.EXPENSE_CLASS}
         labelId="ui-orders.filter.expenseClass"
         name={FILTERS.EXPENSE_CLASS}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.ORDER_FORMAT]}
@@ -114,7 +121,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.ORDER_FORMAT}
         labelId="ui-orders.poLine.orderFormat"
         name={FILTERS.ORDER_FORMAT}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         options={ORDER_FORMAT_OPTIONS}
       />
       <MaterialTypeFilter
@@ -123,7 +130,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.MATERIAL_TYPE_ELECTRONIC}
         isElectronic
         name={FILTERS.MATERIAL_TYPE_ELECTRONIC}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         materialTypes={materialTypes}
       />
       <MaterialTypeFilter
@@ -131,7 +138,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         disabled={disabled}
         id={FILTERS.MATERIAL_TYPE_PHYSICAL}
         name={FILTERS.MATERIAL_TYPE_PHYSICAL}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         materialTypes={materialTypes}
       />
       <AcqDateRangeFilter
@@ -140,7 +147,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.DATE_CREATED}
         labelId="ui-orders.poLine.dateCreated"
         name={FILTERS.DATE_CREATED}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <PluggableOrganizationFilter
         id={FILTERS.VENDOR}
@@ -148,21 +155,21 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         disabled={disabled}
         labelId="ui-orders.line.accordion.vendor"
         name={FILTERS.VENDOR}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqTagsFilter
         activeFilters={activeFilters[FILTERS.TAGS]}
         disabled={disabled}
         id={FILTERS.TAGS}
         name={FILTERS.TAGS}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <SourceFilter
         activeFilters={activeFilters[FILTERS.SOURCE_CODE]}
         disabled={disabled}
         id={FILTERS.SOURCE_CODE}
         name={FILTERS.SOURCE_CODE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <BooleanFilter
         activeFilters={activeFilters[FILTERS.COLLECTION]}
@@ -170,7 +177,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.COLLECTION}
         labelId="ui-orders.filter.collection"
         name={FILTERS.COLLECTION}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <BooleanFilter
         activeFilters={activeFilters[FILTERS.RUSH]}
@@ -178,7 +185,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.RUSH}
         labelId="ui-orders.filter.rush"
         name={FILTERS.RUSH}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <PluggableOrganizationFilter
         id={FILTERS.ACCESS_PROVIDER}
@@ -186,7 +193,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         disabled={disabled}
         labelId="ui-orders.eresource.accessProvider"
         name={FILTERS.ACCESS_PROVIDER}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <BooleanFilter
         activeFilters={activeFilters[FILTERS.ACTIVATED]}
@@ -194,7 +201,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.ACTIVATED}
         labelId="ui-orders.filter.activated"
         name={FILTERS.ACTIVATED}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.EXPECTED_ACTIVATION_DATE]}
@@ -202,7 +209,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.EXPECTED_ACTIVATION_DATE}
         labelId="ui-orders.eresource.expectedActivation"
         name={FILTERS.EXPECTED_ACTIVATION_DATE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <BooleanFilter
         activeFilters={activeFilters[FILTERS.TRIAL]}
@@ -210,7 +217,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.TRIAL}
         labelId="ui-orders.filter.trial"
         name={FILTERS.TRIAL}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.SUBSCRIPTION_FROM]}
@@ -218,7 +225,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.SUBSCRIPTION_FROM}
         labelId="ui-orders.itemDetails.subscriptionFrom"
         name={FILTERS.SUBSCRIPTION_FROM}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.SUBSCRIPTION_TO]}
@@ -226,7 +233,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.SUBSCRIPTION_TO}
         labelId="ui-orders.itemDetails.subscriptionTo"
         name={FILTERS.SUBSCRIPTION_TO}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.ACTUAL_RECEIPT_DATE]}
@@ -234,7 +241,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.ACTUAL_RECEIPT_DATE}
         labelId="ui-orders.filter.actualReceiptDate"
         name={FILTERS.ACTUAL_RECEIPT_DATE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.EXPECTED_RECEIPT_DATE]}
@@ -242,7 +249,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.EXPECTED_RECEIPT_DATE}
         labelId="ui-orders.physical.expectedReceiptDate"
         name={FILTERS.EXPECTED_RECEIPT_DATE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.RECEIPT_DUE]}
@@ -250,14 +257,14 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.RECEIPT_DUE}
         labelId="ui-orders.physical.receiptDue"
         name={FILTERS.RECEIPT_DUE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         id={FILTERS.EXPORT_DATE}
         activeFilters={activeFilters[FILTERS.EXPORT_DATE]}
         labelId="ui-orders.export.exportDate"
         name={FILTERS.EXPORT_DATE}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
         disabled={disabled}
       />
       {/* <BooleanFilter
@@ -266,7 +273,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.CLAIM}
         labelId="ui-orders.filter.claim"
         name={FILTERS.CLAIM}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <OrdersTextFilter
         id={FILTERS.CLAIM_GRACE}
@@ -275,7 +282,7 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         labelId="ui-orders.filter.claimGrace"
         name={FILTERS.CLAIM_GRACE}
         type="number"
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.CLAIM_SENT]}
@@ -283,14 +290,14 @@ function OrderLinesFilters({ activeFilters, onChange, funds, disabled, materialT
         id={FILTERS.CLAIM_SENT}
         labelId="ui-orders.filter.claimSent"
         name={FILTERS.CLAIM_SENT}
-        onChange={onChange}
+        onChange={adaptedApplyFilters}
       /> */}
     </AccordionSet>
   );
 }
 
 OrderLinesFilters.propTypes = {
-  onChange: PropTypes.func.isRequired,
+  applyFilters: PropTypes.func.isRequired,
   activeFilters: PropTypes.object.isRequired,
   disabled: PropTypes.bool,
   funds: PropTypes.arrayOf(PropTypes.object),
@@ -300,5 +307,3 @@ OrderLinesFilters.propTypes = {
 OrderLinesFilters.defaultProps = {
   disabled: false,
 };
-
-export default OrderLinesFilters;
