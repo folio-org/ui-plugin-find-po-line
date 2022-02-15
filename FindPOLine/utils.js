@@ -76,7 +76,7 @@ export const getNormalizedISBN = async (isbnNumber, ky) => {
 
     return { isbn, isbnType: identifierTypes[0]?.id };
   } catch (e) {
-    return {};
+    return { isError: true };
   }
 };
 
@@ -86,6 +86,8 @@ export function getLinesQuery(queryParams, ky) {
 
   return async () => {
     const isbnData = await (isISBNSearch ? getNormalizedISBN(isbnNumber, ky) : Promise.resolve({}));
+    
+    if (isbnData?.isError) return undefined;
 
     return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType);
   };
