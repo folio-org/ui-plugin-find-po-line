@@ -86,7 +86,7 @@ export function getLinesQuery(queryParams, ky) {
 
   return async () => {
     const isbnData = await (isISBNSearch ? getNormalizedISBN(isbnNumber, ky) : Promise.resolve({}));
-    
+
     if (isbnData?.isError) return undefined;
 
     return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType);
