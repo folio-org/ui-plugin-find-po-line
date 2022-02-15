@@ -71,9 +71,13 @@ export const getNormalizedISBN = async (isbnNumber, ky) => {
   const isbnTypesPromise = ky.get(IDENTIFIER_TYPES_API, { searchParams: isbnTypeSearchParams }).json();
   const isbnPromise = ky.get(`isbn/convertTo13?isbn=${isbnNumber}&hyphens=false`).json();
 
-  const [{ identifierTypes }, { isbn }] = await Promise.all([isbnTypesPromise, isbnPromise]);
+  try {
+    const [{ identifierTypes }, { isbn }] = await Promise.all([isbnTypesPromise, isbnPromise]);
 
-  return { isbn, isbnType: identifierTypes[0]?.id };
+    return { isbn, isbnType: identifierTypes[0]?.id };
+  } catch (e) {
+    return {};
+  }
 };
 
 export function getLinesQuery(queryParams, ky) {
@@ -81,9 +85,7 @@ export function getLinesQuery(queryParams, ky) {
   const isbnNumber = queryParams[SEARCH_PARAMETER]?.split(QUALIFIER_SEPARATOR)[0];
 
   return async () => {
-    const { data: isbnData, isError } = await (isISBNSearch ? getNormalizedISBN(isbnNumber, ky) : Promise.resolve({}));
-
-    if (isError) return undefined;
+    const isbnData = await (isISBNSearch ? getNormalizedISBN(isbnNumber, ky) : Promise.resolve({}));
 
     return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType);
   };
