@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.1.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.1.0) (2022-03-02)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.0.1...v3.1.0)
+
 * Select 'Acquisition method' filter from controlled vocabulary list. Refs UIPFPOL-33.
 * Update expense class filter to support multi-select. Refs UIOR-870.
 * Filter orders lines by export date. Refs UIPFPOL-38.
