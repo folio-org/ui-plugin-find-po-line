@@ -3,8 +3,12 @@ import { render } from '@testing-library/react';
 
 import FindPOLine from './FindPOLine';
 
-jest.mock('./hooks', () => ({
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
   useFunds: jest.fn().mockReturnValue({ funds: [] }),
+}));
+
+jest.mock('./hooks', () => ({
   useMaterialTypes: jest.fn().mockReturnValue({ materialTypes: [] }),
   useFetchOrderLines: jest.fn().mockReturnValue({ fetchOrderLines: jest.fn() }),
 }));

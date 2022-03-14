@@ -14,6 +14,8 @@ import {
   PluggableOrganizationFilter,
   AcqDateRangeFilter,
   BooleanFilter,
+  FundFilter,
+  ExpenseClassFilter,
 } from '@folio/stripes-acq-components';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
@@ -21,8 +23,6 @@ import MaterialTypeFilter from './MaterialTypeFilter';
 // import OrdersTextFilter from './OrdersTextFilter';
 import PrefixFilter from './PrefixFilter';
 import SuffixFilter from './SuffixFilter';
-import FundFilter from './FundFilter';
-import ExpenseClassFilter from './ExpenseClassFilter';
 import {
   FILTERS,
   PAYMENT_STATUS_FILTER_OPTIONS,
@@ -102,7 +102,6 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         activeFilters={activeFilters[FILTERS.FUND_CODE]}
         disabled={disabled}
         id={FILTERS.FUND_CODE}
-        labelId="ui-orders.filter.fundCode"
         name={FILTERS.FUND_CODE}
         onChange={adaptedApplyFilters}
         funds={funds}
@@ -111,7 +110,6 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         activeFilters={activeFilters[FILTERS.EXPENSE_CLASS]}
         disabled={disabled}
         id={FILTERS.EXPENSE_CLASS}
-        labelId="ui-orders.filter.expenseClass"
         name={FILTERS.EXPENSE_CLASS}
         onChange={adaptedApplyFilters}
       />
