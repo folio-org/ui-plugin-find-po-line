@@ -8,13 +8,13 @@ import {
   AmountWithCurrencyField,
   FindRecords,
   FolioFormattedDate,
+  useFunds,
 } from '@folio/stripes-acq-components';
 
 import { OrderLinesFilters } from './OrderLinesFilters';
 import { searchableIndexes } from './OrderLinesSearchConfig';
 import {
   useFetchOrderLines,
-  useFunds,
   useMaterialTypes,
 } from './hooks';
 
