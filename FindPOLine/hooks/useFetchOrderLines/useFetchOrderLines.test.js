@@ -10,6 +10,7 @@ import { useFetchOrderLines } from './useFetchOrderLines';
 jest.mock('@folio/stripes/core', () => ({
   ...jest.requireActual('@folio/stripes/core'),
   useOkapiKy: jest.fn(),
+  useStripes: () => ({ timezone: 'UTC' }),
 }));
 
 const poLine = { id: 'poLineId' };
