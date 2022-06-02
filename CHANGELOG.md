@@ -2,6 +2,8 @@
 
 ## (IN PROGRESS)
 
+* Backport recent zh_TW translations. Refs UIPFPOL-47.
+
 ## [3.1.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.1.0) (2022-03-02)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.0.1...v3.1.0)
 
