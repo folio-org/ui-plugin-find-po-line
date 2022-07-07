@@ -2,6 +2,9 @@
 
 ## (IN PROGRESS)
 
+## [3.2.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.2.0) (2022-07-07)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.1.0...v3.2.0)
+
 * Fund and Expense class filters usage from stripes-acq-components. Refs UIPFPOL-41.
 * Date filter search results do not match "Date created" period specified. Refs UIPFPOL-42.
 * Replace `babel-eslint` with `@babel/eslint-parser`. Refs UIPFPOL-44.
