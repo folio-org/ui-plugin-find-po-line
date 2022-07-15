@@ -1,6 +1,6 @@
 {
     "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
+    "addPOLine": "Přidání řádků objednávky",
     "modal.title": "Select order lines",
     "modal.footer.save": "Save",
     "modal.footer.close": "Close",
