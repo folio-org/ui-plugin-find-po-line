@@ -8,6 +8,7 @@ import {
   AmountWithCurrencyField,
   FindRecords,
   FolioFormattedDate,
+  PLUGIN_RESULT_COUNT_INCREMENT,
   useFunds,
 } from '@folio/stripes-acq-components';
 
@@ -17,8 +18,6 @@ import {
   useFetchOrderLines,
   useMaterialTypes,
 } from './hooks';
-
-const RESULT_COUNT_INCREMENT = 30;
 
 const idPrefix = 'uiPluginFindPOLine-';
 const modalLabel = <FormattedMessage id="ui-plugin-find-po-line.modal.title" />;
@@ -57,14 +56,16 @@ const resultsFormatter = {
   ),
 };
 
+const INIT_PAGINATION = { limit: PLUGIN_RESULT_COUNT_INCREMENT, offset: 0 };
+
 const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
-  const [offset, setOffset] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [records, setRecords] = useState([]);
   const [searchParams, setSearchParams] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const { funds } = useFunds();
   const { materialTypes } = useMaterialTypes();
+  const [pagination, setPagination] = useState(INIT_PAGINATION);
 
   const { fetchOrderLines } = useFetchOrderLines();
 
@@ -73,10 +74,10 @@ const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
 
     setRecords([]);
     setTotalCount(0);
-    setOffset(0);
+    setPagination(INIT_PAGINATION);
     setSearchParams(filters);
 
-    fetchOrderLines({ offset: 0, searchParams: filters })
+    fetchOrderLines({ ...INIT_PAGINATION, searchParams: filters })
       .then(({ poLines, totalRecords }) => {
         setTotalCount(totalRecords);
         setRecords(poLines);
@@ -84,18 +85,16 @@ const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
       .finally(() => setIsLoading(false));
   }, [fetchOrderLines]);
 
-  const onNeedMoreData = () => {
-    const newOffset = offset + RESULT_COUNT_INCREMENT;
-
+  const onNeedMoreData = useCallback((newPagination) => {
     setIsLoading(true);
 
-    fetchOrderLines({ offset: newOffset, searchParams })
+    fetchOrderLines({ ...newPagination, searchParams })
       .then(({ poLines }) => {
-        setOffset(newOffset);
-        setRecords(prev => [...prev, ...poLines]);
+        setPagination(newPagination);
+        setRecords(poLines);
       })
       .finally(() => setIsLoading(false));
-  };
+  }, [fetchOrderLines, searchParams]);
 
   const getResultsFormatter = useCallback(() => {
     const fundsMap = funds.reduce((acc, fund) => {
@@ -142,6 +141,7 @@ const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
       isLoading={isLoading}
       selectRecords={addLines}
       renderFilters={renderFilters}
+      pagination={pagination}
     />
   );
 };
