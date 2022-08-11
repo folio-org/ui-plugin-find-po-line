@@ -8,6 +8,7 @@ import {
 import {
   LINES_API,
   getFiltersCount,
+  PLUGIN_RESULT_COUNT_INCREMENT,
 } from '@folio/stripes-acq-components';
 
 import {
@@ -21,6 +22,7 @@ export const useFetchOrderLines = () => {
   const fetchOrderLines = useCallback(async ({
     searchParams = {},
     offset = 0,
+    limit = PLUGIN_RESULT_COUNT_INCREMENT,
   }) => {
     const buildLinesQuery = getLinesQuery(searchParams, ky);
     const filtersCount = getFiltersCount(searchParams);
@@ -37,7 +39,7 @@ export const useFetchOrderLines = () => {
 
     const builtSearchParams = {
       query,
-      limit: 30,
+      limit,
       offset,
     };
 
