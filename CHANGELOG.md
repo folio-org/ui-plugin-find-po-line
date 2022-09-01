@@ -3,6 +3,7 @@
 ## (IN PROGRESS)
 
 * Find a purchase order line - Implement MCL Next/Previous pagination. Refs UIPFPOL-48.
+* Add version 12.0 for `inventory` interface. Refs UIPFPOL-50.
 
 ## [3.2.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.2.0) (2022-07-07)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.1.0...v3.2.0)
