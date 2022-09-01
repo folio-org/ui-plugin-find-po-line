@@ -4,6 +4,9 @@ import { renderHook } from '@testing-library/react-hooks';
 import {
   useOkapiKy,
 } from '@folio/stripes/core';
+import {
+  PLUGIN_RESULT_COUNT_INCREMENT,
+} from '@folio/stripes-acq-components';
 
 import { useFetchOrderLines } from './useFetchOrderLines';
 
@@ -47,7 +50,7 @@ describe('useFetchOrderLines', () => {
       'orders/order-lines',
       {
         searchParams: {
-          limit: 30,
+          limit: PLUGIN_RESULT_COUNT_INCREMENT,
           offset: 15,
           query: '(receiptStatus==("pending")) sortby metadata.updatedDate/sort.descending',
         },
