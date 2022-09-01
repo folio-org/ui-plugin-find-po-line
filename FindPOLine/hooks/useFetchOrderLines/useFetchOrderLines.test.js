@@ -47,7 +47,7 @@ describe('useFetchOrderLines', () => {
       'orders/order-lines',
       {
         searchParams: {
-          limit: 30,
+          limit: 50,
           offset: 15,
           query: '(receiptStatus==("pending")) sortby metadata.updatedDate/sort.descending',
         },
