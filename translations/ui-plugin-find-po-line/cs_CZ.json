@@ -1,8 +1,8 @@
 {
-    "meta.title": "Order lines",
+    "meta.title": "Řádky objednávek",
     "addPOLine": "Přidání řádků objednávky",
-    "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}"
+    "modal.title": "Vyberte řádky objednávky",
+    "modal.footer.save": "Uložit",
+    "modal.footer.close": "Zavřít",
+    "modal.footer.totalSelected": "Celkem vybráno: {count}"
 }
