@@ -1,9 +1,9 @@
 # Change history for ui-plugin-find-po-line
 
 ## (4.0.0 IN PROGRESS)
-* Bump stripes to `v8`. Upgrade `react-redux` to `v8`. Refs UIPFPOL-54.
-
+* *BREAKING*: Upgrade `react-redux` to `v8`. Refs UIPFPOL-54.
 * Support `inventory` interface version `13.0`. Refs UIPFPOL-52.
+* *BREAKING*: Update `@folio/stripes` to `8.0.0`. Refs UIPFPOL-53.
 
 ## [3.3.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v3.3.0) (2022-10-21)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.2.0...v3.3.0)
