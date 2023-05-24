@@ -44,7 +44,7 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN) => {
       [FILTERS.RECEIPT_DUE]: buildDateRangeQuery.bind(null, `physical.${FILTERS.RECEIPT_DUE}`),
       [FILTERS.CLAIM_SENT]: buildDateRangeQuery.bind(null, [FILTERS.CLAIM_SENT]),
       [FILTERS.TAGS]: buildArrayFieldQuery.bind(null, [FILTERS.TAGS]),
-      [FILTERS.FUND_CODE]: buildArrayFieldQuery.bind(null, ['fundDistribution']),
+      [FILTERS.FUND_CODE]: (filterValue) => `fundDistribution =/@fundId ${filterValue}`,
       [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, ['fundDistribution']),
       [FILTERS.LOCATION]: buildArrayFieldQuery.bind(null, [FILTERS.LOCATION]),
       [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
