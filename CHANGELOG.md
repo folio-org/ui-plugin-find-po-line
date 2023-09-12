@@ -1,7 +1,8 @@
 # Change history for ui-plugin-find-po-line
 
-## (4.1.0 IN PROGRESS)
+## (5.0.0 IN PROGRESS)
 * Optimize query when selecting a fund for po lines. Refs UIPFPOL-57.
+* *BREAKING* bump `react-intl` to `v6.4.4`. Refs UIPFPOL-60.
 
 ## [4.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v4.0.0) (2023-02-17)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.3.0...v4.0.0)
