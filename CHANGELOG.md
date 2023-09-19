@@ -2,6 +2,7 @@
 
 ## (5.0.0 IN PROGRESS)
 * Optimize query when selecting a fund for po lines. Refs UIPFPOL-57.
+* Upgrade `Node.js` to `18` version in GitHub Actions. Refs UIPFPOL-59.
 * *BREAKING* bump `react-intl` to `v6.4.4`. Refs UIPFPOL-60.
 
 ## [4.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v4.0.0) (2023-02-17)
