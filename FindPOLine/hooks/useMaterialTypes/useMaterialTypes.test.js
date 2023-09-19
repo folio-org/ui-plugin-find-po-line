@@ -1,7 +1,6 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { renderHook } from '@testing-library/react-hooks';
 
+import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
 
 import { useMaterialTypes } from './useMaterialTypes';
@@ -26,11 +25,9 @@ describe('useMaterialTypes', () => {
       }),
     });
 
-    const { result, waitFor } = renderHook(() => useMaterialTypes(), { wrapper });
+    const { result } = renderHook(() => useMaterialTypes(), { wrapper });
 
-    await waitFor(() => {
-      return !result.current.isLoading;
-    });
+    await waitFor(() => expect(result.current.isLoading).toBeFalsy());
 
     expect(result.current.materialTypes.length).toEqual(1);
   });
