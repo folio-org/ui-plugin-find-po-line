@@ -1,7 +1,7 @@
-import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { screen, render } from '@testing-library/react';
 import { noop } from 'lodash';
+
+import { screen, render } from '@folio/jest-config-stripes/testing-library/react';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
 
