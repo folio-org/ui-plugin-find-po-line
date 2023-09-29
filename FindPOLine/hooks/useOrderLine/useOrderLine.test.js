@@ -2,8 +2,8 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { renderHook, waitFor } from '@folio/jest-config-stripes/testing-library/react';
 import { useOkapiKy } from '@folio/stripes/core';
+import { orderLine } from '@folio/stripes-acq-components/test/jest/fixtures';
 
-import { orderLine } from 'fixtures';
 import { useOrderLine } from './useOrderLine';
 
 const queryClient = new QueryClient();
