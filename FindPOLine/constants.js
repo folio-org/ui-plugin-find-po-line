@@ -28,6 +28,7 @@ export const FILTERS = {
   MATERIAL_TYPE_PHYSICAL: 'materialTypePhysical',
   ORDER_FORMAT: 'orderFormat',
   PAYMENT_STATUS: 'paymentStatus',
+  PACKAGE_PO_LINE: 'packagePoLineId',
   PREFIX: 'purchaseOrder.poNumberPrefix',
   RECEIPT_DUE: 'receiptDue',
   RECEIPT_STATUS: 'receiptStatus',

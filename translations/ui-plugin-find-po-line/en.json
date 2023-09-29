@@ -3,6 +3,9 @@
 
   "addPOLine": "Add order lines",
 
+  "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+  "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
+
   "modal.title": "Select order lines",
 
   "modal.footer.save": "Save",

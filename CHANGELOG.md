@@ -5,6 +5,7 @@
 * Upgrade `Node.js` to `18` version in GitHub Actions. Refs UIPFPOL-59.
 * *BREAKING:* Upgrade `React` to `18` version. Refs UIPFPOL-58.
 * *BREAKING* bump `react-intl` to `v6.4.4`. Refs UIPFPOL-60.
+* Add filter by linked package PO Line for order lines filters. Refs UIPFPOL-61.
 
 ## [4.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v4.0.0) (2023-02-17)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v3.3.0...v4.0.0)
