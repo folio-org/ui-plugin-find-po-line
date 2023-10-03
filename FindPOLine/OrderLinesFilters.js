@@ -28,6 +28,7 @@ import {
   PAYMENT_STATUS_FILTER_OPTIONS,
   RECEIPT_STATUS_FILTER_OPTIONS,
 } from './constants';
+import { LinkedPackagePOLineFilter } from './LinkedPackagePOLineFilter';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
@@ -111,6 +112,14 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         disabled={disabled}
         id={FILTERS.EXPENSE_CLASS}
         name={FILTERS.EXPENSE_CLASS}
+        onChange={adaptedApplyFilters}
+      />
+      <LinkedPackagePOLineFilter
+        id={FILTERS.PACKAGE_PO_LINE}
+        activeFilters={activeFilters[FILTERS.PACKAGE_PO_LINE]}
+        disabled={disabled}
+        labelId="ui-plugin-find-po-line.filter.linkedPackagePOLine.accordion.label"
+        name={FILTERS.PACKAGE_PO_LINE}
         onChange={adaptedApplyFilters}
       />
       <AcqCheckboxFilter

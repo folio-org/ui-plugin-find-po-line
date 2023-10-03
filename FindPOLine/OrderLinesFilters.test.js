@@ -1,3 +1,5 @@
+import { QueryClient, QueryClientProvider } from 'react-query';
+
 import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import { OrderLinesFilters } from './OrderLinesFilters';
@@ -6,13 +8,23 @@ jest.mock('@folio/stripes-acq-components/lib/ExpenseClassFilter/useExpenseClassO
   useExpenseClassOptions: jest.fn().mockReturnValue([]),
 }));
 
-const renderOrderLinesFilters = () => (render(
+const queryClient = new QueryClient();
+
+// eslint-disable-next-line react/prop-types
+const wrapper = ({ children }) => (
+  <QueryClientProvider client={queryClient}>
+    {children}
+  </QueryClientProvider>
+);
+
+const renderOrderLinesFilters = () => render(
   <OrderLinesFilters
     activeFilters={{}}
     onChange={jest.fn}
     applyFilters={jest.fn}
   />,
-));
+  { wrapper },
+);
 
 describe('OrderLinesFilters component', () => {
   it('should display filters', () => {
