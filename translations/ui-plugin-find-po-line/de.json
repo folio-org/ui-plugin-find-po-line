@@ -4,5 +4,7 @@
     "modal.title": "Bestellposten auswählen",
     "modal.footer.save": "Speichern",
     "modal.footer.close": "Schließen",
-    "modal.footer.totalSelected": "Insgesamt ausgewählt: {count}"
+    "modal.footer.totalSelected": "Insgesamt ausgewählt: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

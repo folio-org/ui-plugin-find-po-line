@@ -4,5 +4,7 @@
     "modal.title": "주문 라인 선택",
     "modal.footer.save": "저장",
     "modal.footer.close": "닫기",
-    "modal.footer.totalSelected": "선택된 총계: {count}"
+    "modal.footer.totalSelected": "선택된 총계: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

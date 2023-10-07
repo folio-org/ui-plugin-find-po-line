@@ -4,5 +4,7 @@
     "modal.title": "Select order lines",
     "modal.footer.save": "Gem",
     "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}"
+    "modal.footer.totalSelected": "Total selected: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

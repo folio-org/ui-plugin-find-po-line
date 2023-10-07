@@ -4,5 +4,7 @@
     "modal.title": "Vyberte řádky objednávky",
     "modal.footer.save": "Uložit",
     "modal.footer.close": "Zavřít",
-    "modal.footer.totalSelected": "Celkem vybráno: {count}"
+    "modal.footer.totalSelected": "Celkem vybráno: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

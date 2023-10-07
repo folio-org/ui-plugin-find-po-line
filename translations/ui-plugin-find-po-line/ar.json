@@ -4,5 +4,7 @@
     "modal.title": "تحديد سطور الطلبيات",
     "modal.footer.save": "حفظ",
     "modal.footer.close": "إغلاق",
-    "modal.footer.totalSelected": "إجمالي المحدد: {count}"
+    "modal.footer.totalSelected": "إجمالي المحدد: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

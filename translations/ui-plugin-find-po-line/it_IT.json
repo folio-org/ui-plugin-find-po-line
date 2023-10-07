@@ -4,5 +4,7 @@
     "modal.title": "Seleziona righe ordine",
     "modal.footer.save": "Salva",
     "modal.footer.close": "Chiudi",
-    "modal.footer.totalSelected": "Totale selezionato: {count}"
+    "modal.footer.totalSelected": "Totale selezionato: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

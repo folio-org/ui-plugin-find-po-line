@@ -4,5 +4,7 @@
     "modal.title": "Sélectionner les lignes de commande",
     "modal.footer.save": "Sauvegarder",
     "modal.footer.close": "Fermer",
-    "modal.footer.totalSelected": "Total sélectionné: {count}"
+    "modal.footer.totalSelected": "Total sélectionné: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

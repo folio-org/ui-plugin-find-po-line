@@ -4,5 +4,7 @@
     "modal.title": "Seleccionar líneas de pedido",
     "modal.footer.save": "Guardar",
     "modal.footer.close": "Cerrar",
-    "modal.footer.totalSelected": "Total seleccionadas: {count}"
+    "modal.footer.totalSelected": "Total seleccionadas: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

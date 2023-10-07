@@ -4,5 +4,7 @@
     "modal.title": "選擇訂單細項",
     "modal.footer.save": "儲存",
     "modal.footer.close": "關閉",
-    "modal.footer.totalSelected": "已選總數：{count}"
+    "modal.footer.totalSelected": "已選總數：{count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }

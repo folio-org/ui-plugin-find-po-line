@@ -4,5 +4,7 @@
     "modal.title": "Select order lines",
     "modal.footer.save": "Save",
     "modal.footer.close": "閉じる",
-    "modal.footer.totalSelected": "選択済合計： {count}"
+    "modal.footer.totalSelected": "選択済合計： {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }
