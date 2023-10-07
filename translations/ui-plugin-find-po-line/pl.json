@@ -4,5 +4,7 @@
     "modal.title": "Wybierz pozycje zamówienia",
     "modal.footer.save": "Zapisz",
     "modal.footer.close": "Zamknij",
-    "modal.footer.totalSelected": "Wybrano łącznie: {count}"
+    "modal.footer.totalSelected": "Wybrano łącznie: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
 }
