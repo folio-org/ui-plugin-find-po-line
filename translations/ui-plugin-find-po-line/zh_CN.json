@@ -5,6 +5,6 @@
     "modal.footer.save": "保存",
     "modal.footer.close": "关闭",
     "modal.footer.totalSelected": "已选总数： {count}",
-    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
-    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
+    "filter.linkedPackagePOLine.accordion.label": "链接资源包订单行",
+    "filter.linkedPackagePOLine.lookup.label": "链接资源包订单行查找"
 }
