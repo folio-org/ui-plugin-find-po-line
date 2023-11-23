@@ -47,5 +47,6 @@ describe('OrderLinesFilters component', () => {
     expect(getByText('ui-orders.eresource.expectedActivation')).toBeDefined();
     expect(getByText('stripes-acq-components.filter.expenseClass')).toBeDefined();
     expect(getByText('ui-orders.export.exportDate')).toBeDefined();
+    expect(getByText('ui-orders.line.accordion.donor')).toBeDefined();
   });
 });
