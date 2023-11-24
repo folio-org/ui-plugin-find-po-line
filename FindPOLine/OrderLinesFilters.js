@@ -16,7 +16,7 @@ import {
   BooleanFilter,
   FundFilter,
   ExpenseClassFilter,
-  PluggableDonorFilter,
+  PluggableDonorsFilter,
 } from '@folio/stripes-acq-components';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
@@ -157,7 +157,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         name={FILTERS.DATE_CREATED}
         onChange={adaptedApplyFilters}
       />
-      <PluggableDonorFilter
+      <PluggableDonorsFilter
         id={FILTERS.DONOR}
         activeFilters={activeFilters[FILTERS.DONOR]}
         disabled={disabled}
