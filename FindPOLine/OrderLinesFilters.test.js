@@ -28,7 +28,7 @@ const renderOrderLinesFilters = () => render(
 
 describe('OrderLinesFilters component', () => {
   it('should display filters', () => {
-    const { getByText } = renderOrderLinesFilters();
+    const { getByText, getAllByText } = renderOrderLinesFilters();
 
     expect(getByText('ui-orders.poLine.receiptStatus')).toBeDefined();
     expect(getByText('ui-orders.poLine.paymentStatus')).toBeDefined();
@@ -47,6 +47,6 @@ describe('OrderLinesFilters component', () => {
     expect(getByText('ui-orders.eresource.expectedActivation')).toBeDefined();
     expect(getByText('stripes-acq-components.filter.expenseClass')).toBeDefined();
     expect(getByText('ui-orders.export.exportDate')).toBeDefined();
-    expect(getByText('ui-orders.line.accordion.donor')).toBeDefined();
+    expect(getAllByText('ui-orders.line.accordion.donor')).toHaveLength(2);
   });
 });
