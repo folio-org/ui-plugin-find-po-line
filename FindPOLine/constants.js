@@ -17,6 +17,7 @@ export const FILTERS = {
   CLAIM: 'claims',
   COLLECTION: 'collection',
   DATE_CREATED: 'createdDate',
+  DONOR: 'donorOrganizationIds',
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
   EXPENSE_CLASS: 'expenseClass',
