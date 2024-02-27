@@ -30,6 +30,7 @@ import {
   RECEIPT_STATUS_FILTER_OPTIONS,
 } from './constants';
 import { LinkedPackagePOLineFilter } from './LinkedPackagePOLineFilter';
+import { getDateRangeValueAsString } from './utils';
 
 const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters(name, values);
 
@@ -38,6 +39,12 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
     applyFiltersAdapter(applyFilters),
     [applyFilters],
   );
+
+  const handleDateRangeFilter = useCallback(({ name, values }) => {
+    const valueAsString = getDateRangeValueAsString(values);
+
+    return adaptedApplyFilters({ name, values: valueAsString });
+  }, [adaptedApplyFilters]);
 
   return (
     <AccordionSet>
@@ -155,7 +162,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.DATE_CREATED}
         labelId="ui-orders.poLine.dateCreated"
         name={FILTERS.DATE_CREATED}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <PluggableDonorsFilter
         id={FILTERS.DONOR}
@@ -225,7 +232,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.EXPECTED_ACTIVATION_DATE}
         labelId="ui-orders.eresource.expectedActivation"
         name={FILTERS.EXPECTED_ACTIVATION_DATE}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <BooleanFilter
         activeFilters={activeFilters[FILTERS.TRIAL]}
@@ -241,7 +248,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.SUBSCRIPTION_FROM}
         labelId="ui-orders.itemDetails.subscriptionFrom"
         name={FILTERS.SUBSCRIPTION_FROM}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.SUBSCRIPTION_TO]}
@@ -249,7 +256,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.SUBSCRIPTION_TO}
         labelId="ui-orders.itemDetails.subscriptionTo"
         name={FILTERS.SUBSCRIPTION_TO}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.ACTUAL_RECEIPT_DATE]}
@@ -257,7 +264,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.ACTUAL_RECEIPT_DATE}
         labelId="ui-orders.filter.actualReceiptDate"
         name={FILTERS.ACTUAL_RECEIPT_DATE}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.EXPECTED_RECEIPT_DATE]}
@@ -265,7 +272,7 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.EXPECTED_RECEIPT_DATE}
         labelId="ui-orders.physical.expectedReceiptDate"
         name={FILTERS.EXPECTED_RECEIPT_DATE}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <AcqDateRangeFilter
         activeFilters={activeFilters[FILTERS.RECEIPT_DUE]}
@@ -273,14 +280,14 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         id={FILTERS.RECEIPT_DUE}
         labelId="ui-orders.physical.receiptDue"
         name={FILTERS.RECEIPT_DUE}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
       />
       <AcqDateRangeFilter
         id={FILTERS.EXPORT_DATE}
         activeFilters={activeFilters[FILTERS.EXPORT_DATE]}
         labelId="ui-orders.export.exportDate"
         name={FILTERS.EXPORT_DATE}
-        onChange={adaptedApplyFilters}
+        onChange={handleDateRangeFilter}
         disabled={disabled}
       />
       {/* <BooleanFilter
