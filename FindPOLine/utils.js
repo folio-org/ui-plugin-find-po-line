@@ -25,6 +25,14 @@ function defaultSearchFn(query, qindex) {
   return getKeywordQuery(query);
 }
 
+export const getDateRangeValueAsString = (filterValue = '') => {
+  if (Array.isArray(filterValue)) {
+    return filterValue[0];
+  }
+
+  return filterValue;
+};
+
 export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN) => {
   const searchFn = normalizedISBN
     ? () => `details.productIds all \\"productId\\": \\"${normalizedISBN}\\"  AND details.productIds all  \\"productIdType\\": \\"${isbnId}\\"`
