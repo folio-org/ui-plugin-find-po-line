@@ -49,7 +49,15 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
   const getActiveDateRangeFilters = useCallback((filterName) => {
     const filterValue = activeFilters[filterName];
 
-    return filterValue ? [filterValue] : '';
+    if (!filterValue) {
+      return '';
+    }
+
+    if (Array.isArray(filterValue)) {
+      return filterValue;
+    }
+
+    return [filterValue];
   }, [activeFilters]);
 
   return (
