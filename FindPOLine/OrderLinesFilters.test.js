@@ -54,10 +54,14 @@ describe('OrderLinesFilters component', () => {
   it('should display filters', async () => {
     AcqDateRangeFilter.mockClear();
     const applyFilters = jest.fn();
-    const filterValues = { name: 'dateCreated', values: ['2021-01-01:2021-01-31'] };
+    const filterValues = { name: 'createdDate', values: ['2021-01-01:2021-01-31'] };
 
     renderOrderLinesFilters({
       applyFilters,
+      activeFilters: {
+        createdDate: filterValues.values[0],
+        expectedReceiptDate: ['2021-01-01:2021-01-31'],
+      },
     });
 
     act(() => {
