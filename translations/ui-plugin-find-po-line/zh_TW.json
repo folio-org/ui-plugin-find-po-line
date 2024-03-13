@@ -1,10 +1,10 @@
 {
-    "meta.title": "訂單細項",
-    "addPOLine": "新增訂單細項",
-    "modal.title": "選擇訂單細項",
+    "meta.title": "採購品項",
+    "addPOLine": "新增採購品項",
+    "modal.title": "選擇採購品項",
     "modal.footer.save": "儲存",
     "modal.footer.close": "關閉",
     "modal.footer.totalSelected": "已選總數：{count}",
-    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
-    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
+    "filter.linkedPackagePOLine.accordion.label": "訂購資源連結",
+    "filter.linkedPackagePOLine.lookup.label": "訂購資源連結查詢"
 }
