@@ -36,7 +36,7 @@ const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters
 
 export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds = [], materialTypes = [] }) {
   const adaptedApplyFilters = useCallback(
-    applyFiltersAdapter(applyFilters),
+    (filter) => applyFiltersAdapter(applyFilters)(filter),
     [applyFilters],
   );
 
