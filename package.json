@@ -1,6 +1,6 @@
 {
   "name": "@folio/plugin-find-po-line",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "description": "Find and select PO lines plugin for Stripes",
   "repository": "folio-org/ui-plugin-find-po-line",
   "publishConfig": {
@@ -77,7 +77,7 @@
     "regenerator-runtime": "^0.13.3"
   },
   "dependencies": {
-    "@folio/stripes-acq-components": "~5.0.0",
+    "@folio/stripes-acq-components": "~5.1.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.0"
   },

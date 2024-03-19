@@ -1,6 +1,9 @@
 # Change history for ui-plugin-find-po-line
 
-## (5.1.0 IN PROGRESS)
+## (5.2.0 IN PROGRESS)
+
+## [5.1.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.1.0) (2024-03-19)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.0.0...v5.1.0)
 
 * Add Donor Filter for POLines. Refs UIPFPOL-65.
 * Fix date range-related filters due to sending dates as an Array while the expected result must be in String. Refs UIPFPOL-66.
