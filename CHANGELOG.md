@@ -2,6 +2,8 @@
 
 ## (5.2.0 IN PROGRESS)
 
+* Align the `finance.fund` interface version (`3.0`). Refs UIPFPOL-68.
+
 ## [5.1.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.1.0) (2024-03-19)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.0.0...v5.1.0)
 

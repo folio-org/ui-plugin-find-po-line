@@ -24,7 +24,7 @@
       "configuration.suffixes": "1.1",
       "contributor-name-types": "1.2",
       "finance.expense-classes": "2.0 3.0",
-      "finance.funds": "1.4 2.0",
+      "finance.funds": "1.4 2.0 3.0",
       "identifier-types": "1.2",
       "inventory": "10.0 11.0 12.0 13.0",
       "location-units": "2.0",
