@@ -18,5 +18,5 @@ describe('Utils', () => {
 
       expect(query).toContain('(locations=="*locationId*" or searchLocationIds=="*locationId*")');
     });
-  })
+  });
 });
