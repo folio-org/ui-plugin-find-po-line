@@ -43,7 +43,8 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN) => {
     searchFn,
     {
       [FILTERS.EXPORT_DATE]: buildDateRangeQuery.bind(null, FILTERS.EXPORT_DATE),
-      [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, `metadata.${FILTERS.DATE_CREATED}`),
+      [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, FILTERS.DATE_CREATED),
+      [FILTERS.DATE_UPDATED]: buildDateTimeRangeQuery.bind(null, FILTERS.DATE_UPDATED),
       [FILTERS.EXPECTED_ACTIVATION_DATE]: buildDateRangeQuery.bind(null, `eresource.${FILTERS.EXPECTED_ACTIVATION_DATE}`),
       [FILTERS.SUBSCRIPTION_FROM]: buildDateRangeQuery.bind(null, `details.${FILTERS.SUBSCRIPTION_FROM}`),
       [FILTERS.SUBSCRIPTION_TO]: buildDateRangeQuery.bind(null, `details.${FILTERS.SUBSCRIPTION_TO}`),

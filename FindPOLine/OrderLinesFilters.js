@@ -17,11 +17,11 @@ import {
   FundFilter,
   ExpenseClassFilter,
   PluggableDonorsFilter,
+  PluggableUserFilter,
 } from '@folio/stripes-acq-components';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
 import MaterialTypeFilter from './MaterialTypeFilter';
-// import OrdersTextFilter from './OrdersTextFilter';
 import PrefixFilter from './PrefixFilter';
 import SuffixFilter from './SuffixFilter';
 import {
@@ -170,14 +170,6 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         onChange={adaptedApplyFilters}
         materialTypes={materialTypes}
       />
-      <AcqDateRangeFilter
-        activeFilters={getActiveDateRangeFilters(FILTERS.DATE_CREATED)}
-        disabled={disabled}
-        id={FILTERS.DATE_CREATED}
-        labelId="ui-orders.poLine.dateCreated"
-        name={FILTERS.DATE_CREATED}
-        onChange={handleDateRangeFilter}
-      />
       <PluggableDonorsFilter
         id={FILTERS.DONOR}
         activeFilters={activeFilters[FILTERS.DONOR]}
@@ -304,31 +296,41 @@ export function OrderLinesFilters({ activeFilters, applyFilters, disabled, funds
         onChange={handleDateRangeFilter}
         disabled={disabled}
       />
-      {/* <BooleanFilter
-        activeFilters={activeFilters[FILTERS.CLAIM]}
-        disabled={disabled}
-        id={FILTERS.CLAIM}
-        labelId="ui-orders.filter.claim"
-        name={FILTERS.CLAIM}
+      <PluggableUserFilter
+        id={FILTERS.CREATED_BY}
+        activeFilters={activeFilters[FILTERS.CREATED_BY]}
+        labelId="ui-orders.filter.createdBy"
+        name={FILTERS.CREATED_BY}
         onChange={adaptedApplyFilters}
-      />
-      <OrdersTextFilter
-        id={FILTERS.CLAIM_GRACE}
-        activeFilters={activeFilters[FILTERS.CLAIM_GRACE]}
         disabled={disabled}
-        labelId="ui-orders.filter.claimGrace"
-        name={FILTERS.CLAIM_GRACE}
-        type="number"
-        onChange={adaptedApplyFilters}
       />
+
       <AcqDateRangeFilter
-        activeFilters={activeFilters[FILTERS.CLAIM_SENT]}
+        activeFilters={getActiveDateRangeFilters(FILTERS.DATE_CREATED)}
         disabled={disabled}
-        id={FILTERS.CLAIM_SENT}
-        labelId="ui-orders.filter.claimSent"
-        name={FILTERS.CLAIM_SENT}
+        id={FILTERS.DATE_CREATED}
+        labelId="ui-orders.poLine.dateCreated"
+        name={FILTERS.DATE_CREATED}
+        onChange={handleDateRangeFilter}
+      />
+
+      <PluggableUserFilter
+        id={FILTERS.UPDATED_BY}
+        activeFilters={activeFilters[FILTERS.UPDATED_BY]}
+        labelId="ui-orders.filter.updatedBy"
+        name={FILTERS.UPDATED_BY}
         onChange={adaptedApplyFilters}
-      /> */}
+        disabled={disabled}
+      />
+
+      <AcqDateRangeFilter
+        activeFilters={getActiveDateRangeFilters(FILTERS.DATE_UPDATED)}
+        disabled={disabled}
+        id={FILTERS.DATE_UPDATED}
+        labelId="ui-orders.filter.dateUpdated"
+        name={FILTERS.DATE_UPDATED}
+        onChange={handleDateRangeFilter}
+      />
     </AccordionSet>
   );
 }

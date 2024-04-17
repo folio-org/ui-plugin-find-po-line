@@ -16,7 +16,7 @@ export const FILTERS = {
   CLAIM_SENT: 'sent',
   CLAIM: 'claims',
   COLLECTION: 'collection',
-  DATE_CREATED: 'createdDate',
+  DATE_CREATED: 'metadata.createdDate',
   DONOR: 'donorOrganizationIds',
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
@@ -41,6 +41,9 @@ export const FILTERS = {
   TAGS: 'tags',
   TRIAL: 'trial',
   VENDOR: 'purchaseOrder.vendor',
+  CREATED_BY: 'metadata.createdByUserId',
+  UPDATED_BY: 'metadata.updatedByUserId',
+  DATE_UPDATED: 'metadata.updatedDate',
 };
 
 export const PAYMENT_STATUS_FILTER_OPTIONS = Object.keys(PAYMENT_STATUS).map(status => ({
