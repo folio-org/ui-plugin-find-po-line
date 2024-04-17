@@ -55,7 +55,11 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN) => {
       [FILTERS.TAGS]: buildArrayFieldQuery.bind(null, [FILTERS.TAGS]),
       [FILTERS.FUND_CODE]: (filterValue) => `fundDistribution =/@fundId ${filterValue}`,
       [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, ['fundDistribution']),
-      [FILTERS.LOCATION]: buildArrayFieldQuery.bind(null, [FILTERS.LOCATION]),
+      [FILTERS.LOCATION]: (filterValue) => `(${
+        [FILTERS.LOCATION, 'searchLocationIds']
+          .map((filterKey) => buildArrayFieldQuery(filterKey, filterValue))
+          .join(' or ')
+      })`,
       [FILTERS.DONOR]: buildArrayFieldQuery.bind(null, [FILTERS.DONOR]),
       [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
       [FILTERS.MATERIAL_TYPE_PHYSICAL]: (filterValue) => `physical.materialType == ${filterValue}`,
