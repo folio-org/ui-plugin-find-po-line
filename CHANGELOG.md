@@ -1,6 +1,7 @@
 # Change history for ui-plugin-find-po-line
 
-## (5.2.0 IN PROGRESS)
+## [5.1.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.1.1) (2024-04-18)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.1.0...v5.1.1)
 
 * Add additional order filters to support reporting requirements. Refs UIPFPOL-71.
 * Update the order lines query with location filtering to include the `searchLocationIds` field. Refs UIPFPOL-72.
