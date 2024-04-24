@@ -1,4 +1,11 @@
-import { generateQueryTemplate } from '@folio/stripes-acq-components';
+import {
+  CUSTOM_FIELDS_FILTER,
+  CUSTOM_FIELDS_TYPES,
+  DATE_FORMAT,
+  generateQueryTemplate,
+  getCustomFieldsKeywordIndexes,
+} from '@folio/stripes-acq-components';
+import moment from 'moment';
 
 const indexes = [
   'contributors',
@@ -28,15 +35,35 @@ export const searchableIndexes = [
   indexISBN,
 ];
 
+export const getCqlQuery = (query, sIndex, localeDateFormat, customFields) => {
+  const customField = customFields?.find(
+    (cf) => `${CUSTOM_FIELDS_FILTER}.${cf.refId}` === sIndex,
+  );
+
+  if (customField?.type === CUSTOM_FIELDS_TYPES.DATE_PICKER) {
+    const isoDate = moment.utc(query, localeDateFormat).format(DATE_FORMAT);
+
+    return `${isoDate}*`;
+  }
+
+  return `*${query}*`;
+};
+
 export const queryTemplate = generateQueryTemplate(indexes);
 
-export const getKeywordQuery = query => indexes.reduce(
-  (acc, sIndex) => {
-    if (acc) {
-      return `${acc} or ${sIndex}=="*${query}*"`;
-    } else {
-      return `${sIndex}=="*${query}*"`;
-    }
-  },
-  '',
-);
+export const getKeywordQuery = (query, localeDateFormat, customFields) => {
+  const customFieldIndexes = getCustomFieldsKeywordIndexes(customFields);
+
+  return [...indexes, ...customFieldIndexes].reduce(
+    (acc, sIndex) => {
+      const cqlQuery = getCqlQuery(query, sIndex, localeDateFormat, customFields);
+
+      if (acc) {
+        return `${acc} or ${sIndex}=="${cqlQuery}"`;
+      } else {
+        return `${sIndex}=="${cqlQuery}"`;
+      }
+    },
+    '',
+  );
+};
