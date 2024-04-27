@@ -3,6 +3,7 @@
 ## (5.2.0 IN PROGRESS)
 
 * Align the `finance.fund` interface version (`3.0`). Refs UIPFPOL-68.
+* Add support for filtering and searching for custom fields. Refs UIPFPOL-73.
 
 ## [5.1.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.1.1) (2024-04-18)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.1.0...v5.1.1)

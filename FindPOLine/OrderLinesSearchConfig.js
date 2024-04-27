@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import {
   CUSTOM_FIELDS_FILTER,
   CUSTOM_FIELDS_TYPES,
@@ -5,7 +7,6 @@ import {
   generateQueryTemplate,
   getCustomFieldsKeywordIndexes,
 } from '@folio/stripes-acq-components';
-import moment from 'moment';
 
 const indexes = [
   'contributors',
