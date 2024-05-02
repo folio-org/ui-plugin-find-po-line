@@ -58,7 +58,12 @@ const resultsFormatter = {
 
 const INIT_PAGINATION = { limit: PLUGIN_RESULT_COUNT_INCREMENT, offset: 0 };
 
-const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
+const FindPOLine = ({
+  addLines,
+  crossTenant = false,
+  isSingleSelect,
+  ...rest
+}) => {
   const [totalCount, setTotalCount] = useState(0);
   const [records, setRecords] = useState([]);
   const [searchParams, setSearchParams] = useState({});
@@ -117,9 +122,10 @@ const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
         funds={funds}
         materialTypes={materialTypes}
         disabled={isLoading}
+        crossTenant={crossTenant}
       />
     );
-  }, [funds, materialTypes, isLoading]);
+  }, [crossTenant, funds, isLoading, materialTypes]);
 
   return (
     <FindRecords
@@ -148,6 +154,7 @@ const FindPOLine = ({ addLines, isSingleSelect, ...rest }) => {
 
 FindPOLine.propTypes = {
   disabled: PropTypes.bool,
+  crossTenant: PropTypes.bool,
   marginBottom0: PropTypes.bool,
   searchButtonStyle: PropTypes.string,
   searchLabel: PropTypes.node,
