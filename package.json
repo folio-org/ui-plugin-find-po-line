@@ -35,6 +35,9 @@
       "tags": "1.0"
     }
   },
+  "optionalOkapiInterfaces": {
+    "consortia": "1.0"
+  },
   "scripts": {
     "lint": "eslint .",
     "test:unit": "jest --ci --coverage && yarn run test:unit:report",
