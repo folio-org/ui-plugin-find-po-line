@@ -1,14 +1,23 @@
-import React, { useState, useCallback } from 'react';
+import get from 'lodash/get';
+import isUndefined from 'lodash/isUndefined';
 import PropTypes from 'prop-types';
+import {
+  useState,
+  useCallback,
+} from 'react';
 import { FormattedMessage } from 'react-intl';
-import { get } from 'lodash';
 
 import { NoValue } from '@folio/stripes/components';
+import {
+  checkIfUserInCentralTenant,
+  useStripes,
+} from '@folio/stripes/core';
 import {
   AmountWithCurrencyField,
   FindRecords,
   FolioFormattedDate,
   PLUGIN_RESULT_COUNT_INCREMENT,
+  useCentralOrderingSettings,
   useFunds,
 } from '@folio/stripes-acq-components';
 
@@ -60,10 +69,12 @@ const INIT_PAGINATION = { limit: PLUGIN_RESULT_COUNT_INCREMENT, offset: 0 };
 
 const FindPOLine = ({
   addLines,
-  crossTenant = false,
+  crossTenant: crossTenantProp,
   isSingleSelect,
   ...rest
 }) => {
+  const stripes = useStripes();
+
   const [totalCount, setTotalCount] = useState(0);
   const [records, setRecords] = useState([]);
   const [searchParams, setSearchParams] = useState({});
@@ -71,6 +82,14 @@ const FindPOLine = ({
   const { funds } = useFunds();
   const { materialTypes } = useMaterialTypes();
   const [pagination, setPagination] = useState(INIT_PAGINATION);
+
+  const { enabled: isCentralOrderingEnabled } = useCentralOrderingSettings({
+    enabled: isUndefined(crossTenantProp) && checkIfUserInCentralTenant(stripes),
+  });
+
+  const crossTenant = isUndefined(crossTenantProp)
+    ? isCentralOrderingEnabled
+    : crossTenantProp;
 
   const { fetchOrderLines } = useFetchOrderLines();
 
