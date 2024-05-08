@@ -1,9 +1,7 @@
-import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useCallback } from 'react';
 
-import {
-  AccordionSet,
-} from '@folio/stripes/components';
+import { AccordionSet } from '@folio/stripes/components';
 import {
   AcqCheckboxFilter,
   AcqDateRangeFilter,
@@ -39,8 +37,9 @@ const applyFiltersAdapter = (applyFilters) => ({ name, values }) => applyFilters
 export function OrderLinesFilters({
   activeFilters,
   applyFilters,
+  crossTenant = false,
   customFields,
-  disabled,
+  disabled = false,
   funds = [],
   materialTypes = [],
 }) {
@@ -124,11 +123,12 @@ export function OrderLinesFilters({
       />
       <LocationFilterContainer
         id="pol-location-filter"
-        activeFilter={activeFilters[FILTERS.LOCATION] && activeFilters[FILTERS.LOCATION][0]}
+        activeFilter={activeFilters[FILTERS.LOCATION]}
         disabled={disabled}
         labelId="ui-orders.line.accordion.location"
         name={FILTERS.LOCATION}
         onChange={adaptedApplyFilters}
+        crossTenant={crossTenant}
       />
       <FundFilter
         activeFilters={activeFilters[FILTERS.FUND_CODE]}
@@ -355,12 +355,9 @@ export function OrderLinesFilters({
 OrderLinesFilters.propTypes = {
   applyFilters: PropTypes.func.isRequired,
   activeFilters: PropTypes.object.isRequired,
+  crossTenant: PropTypes.bool,
   customFields: PropTypes.arrayOf(PropTypes.object),
   disabled: PropTypes.bool,
   funds: PropTypes.arrayOf(PropTypes.object),
   materialTypes: PropTypes.arrayOf(PropTypes.object),
-};
-
-OrderLinesFilters.defaultProps = {
-  disabled: false,
 };
