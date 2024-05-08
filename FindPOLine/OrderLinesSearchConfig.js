@@ -1,5 +1,4 @@
-import moment from 'moment';
-
+import { dayjs } from '@folio/stripes/components';
 import {
   CUSTOM_FIELDS_FILTER,
   CUSTOM_FIELDS_TYPES,
@@ -42,7 +41,7 @@ export const getCqlQuery = (query, sIndex, localeDateFormat, customFields) => {
   );
 
   if (customField?.type === CUSTOM_FIELDS_TYPES.DATE_PICKER) {
-    const isoDate = moment.utc(query, localeDateFormat).format(DATE_FORMAT);
+    const isoDate = dayjs.utc(query, localeDateFormat).format(DATE_FORMAT);
 
     return `${isoDate}*`;
   }

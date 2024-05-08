@@ -66,7 +66,7 @@ describe('Utils', () => {
         CUSTOM_FIELDS_FIXTURE,
       );
       const parts = [
-        'datepicker=="Invalid date*"',
+        'datepicker=="Invalid Date*"',
         'shorttext=="*abc*"',
         'longtext=="*abc*"',
       ].map((s) => `${CUSTOM_FIELDS_FILTER}.${s}`);
