@@ -4,6 +4,7 @@ import FindPOLine from './FindPOLine';
 
 jest.mock('@folio/stripes-acq-components', () => ({
   ...jest.requireActual('@folio/stripes-acq-components'),
+  useCentralOrderingSettings: jest.fn(() => ({ enabled: false })),
   useFunds: jest.fn().mockReturnValue({ funds: [] }),
 }));
 
