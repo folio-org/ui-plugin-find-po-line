@@ -4,18 +4,20 @@ import { useCallback } from 'react';
 import { AccordionSet } from '@folio/stripes/components';
 import {
   AcqCheckboxFilter,
+  AcqDateRangeFilter,
   AcqTagsFilter,
   AcqUnitFilter,
-  LocationFilterContainer,
-  SourceFilter,
-  ORDER_FORMAT_OPTIONS,
-  PluggableOrganizationFilter,
-  AcqDateRangeFilter,
   BooleanFilter,
-  FundFilter,
+  CUSTOM_FIELDS_FILTER,
+  CustomFieldsFilters,
   ExpenseClassFilter,
+  FundFilter,
+  LocationFilterContainer,
+  ORDER_FORMAT_OPTIONS,
   PluggableDonorsFilter,
+  PluggableOrganizationFilter,
   PluggableUserFilter,
+  SourceFilter,
 } from '@folio/stripes-acq-components';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
@@ -36,6 +38,7 @@ export function OrderLinesFilters({
   activeFilters,
   applyFilters,
   crossTenant = false,
+  customFields,
   disabled = false,
   funds = [],
   materialTypes = [],
@@ -337,6 +340,14 @@ export function OrderLinesFilters({
         name={FILTERS.DATE_UPDATED}
         onChange={handleDateRangeFilter}
       />
+      <CustomFieldsFilters
+        activeFilters={activeFilters}
+        customFields={customFields}
+        disabled={disabled}
+        id={CUSTOM_FIELDS_FILTER}
+        name={CUSTOM_FIELDS_FILTER}
+        onChange={adaptedApplyFilters}
+      />
     </AccordionSet>
   );
 }
@@ -345,6 +356,7 @@ OrderLinesFilters.propTypes = {
   applyFilters: PropTypes.func.isRequired,
   activeFilters: PropTypes.object.isRequired,
   crossTenant: PropTypes.bool,
+  customFields: PropTypes.arrayOf(PropTypes.object),
   disabled: PropTypes.bool,
   funds: PropTypes.arrayOf(PropTypes.object),
   materialTypes: PropTypes.arrayOf(PropTypes.object),

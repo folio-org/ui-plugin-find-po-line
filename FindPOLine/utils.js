@@ -5,25 +5,31 @@ import {
   buildFilterQuery,
   buildSortingQuery,
   connectQuery,
+  getCustomFieldsFilterMap,
+  IDENTIFIER_TYPES_API,
   SEARCH_INDEX_PARAMETER,
   SEARCH_PARAMETER,
-  IDENTIFIER_TYPES_API,
 } from '@folio/stripes-acq-components';
 
 import { FILTERS, QUALIFIER_SEPARATOR } from './constants';
-import { getKeywordQuery } from './OrderLinesSearchConfig';
+import {
+  getCqlQuery,
+  getKeywordQuery,
+} from './OrderLinesSearchConfig';
 
-function defaultSearchFn(query, qindex) {
+const defaultSearchFn = (localeDateFormat, customFields = []) => (query, qindex) => {
   if (qindex === 'details.productIds') {
     return `details.productIds = "/@productId = "${query}"* `;
   }
 
   if (qindex) {
-    return `(${qindex}=="*${query}*")`;
+    const cqlQuery = getCqlQuery(query, qindex, localeDateFormat, customFields);
+
+    return `(${qindex}==${cqlQuery})`;
   }
 
-  return getKeywordQuery(query);
-}
+  return getKeywordQuery(query, localeDateFormat, customFields);
+};
 
 export const getDateRangeValueAsString = (filterValue = '') => {
   if (Array.isArray(filterValue)) {
@@ -33,10 +39,10 @@ export const getDateRangeValueAsString = (filterValue = '') => {
   return filterValue;
 };
 
-export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN) => {
+export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN, localeDateFormat, customFields) => {
   const searchFn = normalizedISBN
     ? () => `details.productIds all \\"productId\\": \\"${normalizedISBN}\\"  AND details.productIds all  \\"productIdType\\": \\"${isbnId}\\"`
-    : defaultSearchFn;
+    : defaultSearchFn(localeDateFormat, customFields);
 
   const queryParamsFilterQuery = buildFilterQuery(
     queryParams,
@@ -67,6 +73,7 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN) => {
       [FILTERS.ACCESS_PROVIDER]: (filterValue) => `eresource.${FILTERS.ACCESS_PROVIDER} == ${filterValue}`,
       [FILTERS.ACTIVATED]: (filterValue) => `eresource.${FILTERS.ACTIVATED} == ${filterValue}`,
       [FILTERS.TRIAL]: (filterValue) => `eresource.${FILTERS.TRIAL} == ${filterValue}`,
+      ...getCustomFieldsFilterMap(customFields),
     },
   );
 
@@ -94,7 +101,7 @@ export const getNormalizedISBN = async (isbnNumber, ky) => {
   }
 };
 
-export function getLinesQuery(queryParams, ky) {
+export function getLinesQuery(queryParams, ky, localeDateFormat, customFields) {
   const isISBNSearch = queryParams[SEARCH_INDEX_PARAMETER] === 'productIdISBN';
   const isbnNumber = queryParams[SEARCH_PARAMETER]?.split(QUALIFIER_SEPARATOR)[0];
 
@@ -103,6 +110,6 @@ export function getLinesQuery(queryParams, ky) {
 
     if (isbnData?.isError) return undefined;
 
-    return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType);
+    return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType, localeDateFormat, customFields);
   };
 }

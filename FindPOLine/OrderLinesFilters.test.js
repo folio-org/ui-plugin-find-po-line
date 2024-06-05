@@ -1,7 +1,14 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import { render, act } from '@folio/jest-config-stripes/testing-library/react';
-import { AcqDateRangeFilter } from '@folio/stripes-acq-components';
+import {
+  act,
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
+import {
+  AcqDateRangeFilter,
+  CUSTOM_FIELDS_FIXTURE,
+} from '@folio/stripes-acq-components';
 
 import { OrderLinesFilters } from './OrderLinesFilters';
 
@@ -68,5 +75,15 @@ describe('OrderLinesFilters component', () => {
       AcqDateRangeFilter.mock.calls[0][0].onChange(filterValues);
     });
     expect(applyFilters).toHaveBeenCalledWith(filterValues.name, filterValues.values[0]);
+  });
+
+  it('should display correct filters for custom fields', () => {
+    renderOrderLinesFilters({ 'customFields': CUSTOM_FIELDS_FIXTURE });
+
+    expect(screen.getByText('stripes-smart-components.customFields Datepicker')).toBeInTheDocument();
+    expect(screen.getByText('stripes-smart-components.customFields Singleselect')).toBeInTheDocument();
+    expect(screen.getByText('stripes-smart-components.customFields Multiselect')).toBeInTheDocument();
+    expect(screen.queryByText('stripes-smart-components.customFields Long text')).toBeNull();
+    expect(screen.queryByText('stripes-smart-components.customFields Short text')).toBeNull();
   });
 });
