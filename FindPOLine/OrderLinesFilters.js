@@ -42,6 +42,7 @@ export function OrderLinesFilters({
   disabled = false,
   funds = [],
   materialTypes = [],
+  tenantId,
 }) {
   const adaptedApplyFilters = useCallback(
     (filter) => applyFiltersAdapter(applyFilters)(filter),
@@ -97,6 +98,7 @@ export function OrderLinesFilters({
         name={FILTERS.PREFIX}
         onChange={adaptedApplyFilters}
         disabled={disabled}
+        tenantId={tenantId}
       />
       <SuffixFilter
         id={FILTERS.SUFFIX}
@@ -105,6 +107,7 @@ export function OrderLinesFilters({
         name={FILTERS.SUFFIX}
         onChange={adaptedApplyFilters}
         disabled={disabled}
+        tenantId={tenantId}
       />
       <AcqUnitFilter
         id={FILTERS.ACQUISITIONS_UNIT}
@@ -112,6 +115,7 @@ export function OrderLinesFilters({
         name={FILTERS.ACQUISITIONS_UNIT}
         onChange={adaptedApplyFilters}
         disabled={disabled}
+        tenantId={tenantId}
       />
       <AcqMethodsFilter
         activeFilters={activeFilters[FILTERS.ACQUISITION_METHOD]}
@@ -120,6 +124,7 @@ export function OrderLinesFilters({
         labelId="ui-orders.poLine.acquisitionMethod"
         name={FILTERS.ACQUISITION_METHOD}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <LocationFilterContainer
         id="pol-location-filter"
@@ -129,6 +134,7 @@ export function OrderLinesFilters({
         name={FILTERS.LOCATION}
         onChange={adaptedApplyFilters}
         crossTenant={crossTenant}
+        tenantId={tenantId}
       />
       <FundFilter
         activeFilters={activeFilters[FILTERS.FUND_CODE]}
@@ -144,6 +150,7 @@ export function OrderLinesFilters({
         id={FILTERS.EXPENSE_CLASS}
         name={FILTERS.EXPENSE_CLASS}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <LinkedPackagePOLineFilter
         id={FILTERS.PACKAGE_PO_LINE}
@@ -152,6 +159,7 @@ export function OrderLinesFilters({
         labelId="ui-plugin-find-po-line.filter.linkedPackagePOLine.accordion.label"
         name={FILTERS.PACKAGE_PO_LINE}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <AcqCheckboxFilter
         activeFilters={activeFilters[FILTERS.ORDER_FORMAT]}
@@ -170,6 +178,7 @@ export function OrderLinesFilters({
         name={FILTERS.MATERIAL_TYPE_ELECTRONIC}
         onChange={adaptedApplyFilters}
         materialTypes={materialTypes}
+        tenantId={tenantId}
       />
       <MaterialTypeFilter
         activeFilters={activeFilters[FILTERS.MATERIAL_TYPE_PHYSICAL]}
@@ -178,6 +187,7 @@ export function OrderLinesFilters({
         name={FILTERS.MATERIAL_TYPE_PHYSICAL}
         onChange={adaptedApplyFilters}
         materialTypes={materialTypes}
+        tenantId={tenantId}
       />
       <PluggableDonorsFilter
         id={FILTERS.DONOR}
@@ -186,6 +196,7 @@ export function OrderLinesFilters({
         labelId="ui-orders.line.accordion.donor"
         name={FILTERS.DONOR}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <PluggableOrganizationFilter
         id={FILTERS.VENDOR}
@@ -194,6 +205,7 @@ export function OrderLinesFilters({
         labelId="ui-orders.line.accordion.vendor"
         name={FILTERS.VENDOR}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <AcqTagsFilter
         activeFilters={activeFilters[FILTERS.TAGS]}
@@ -201,6 +213,7 @@ export function OrderLinesFilters({
         id={FILTERS.TAGS}
         name={FILTERS.TAGS}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <SourceFilter
         activeFilters={activeFilters[FILTERS.SOURCE_CODE]}
@@ -232,6 +245,7 @@ export function OrderLinesFilters({
         labelId="ui-orders.eresource.accessProvider"
         name={FILTERS.ACCESS_PROVIDER}
         onChange={adaptedApplyFilters}
+        tenantId={tenantId}
       />
       <BooleanFilter
         activeFilters={activeFilters[FILTERS.ACTIVATED]}
@@ -312,6 +326,7 @@ export function OrderLinesFilters({
         name={FILTERS.CREATED_BY}
         onChange={adaptedApplyFilters}
         disabled={disabled}
+        tenantId={tenantId}
       />
 
       <AcqDateRangeFilter
@@ -330,6 +345,7 @@ export function OrderLinesFilters({
         name={FILTERS.UPDATED_BY}
         onChange={adaptedApplyFilters}
         disabled={disabled}
+        tenantId={tenantId}
       />
 
       <AcqDateRangeFilter
@@ -360,4 +376,5 @@ OrderLinesFilters.propTypes = {
   disabled: PropTypes.bool,
   funds: PropTypes.arrayOf(PropTypes.object),
   materialTypes: PropTypes.arrayOf(PropTypes.object),
+  tenantId: PropTypes.string,
 };

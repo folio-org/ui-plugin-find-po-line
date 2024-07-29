@@ -1,14 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 
-import { stripesConnect } from '@folio/stripes/core';
-import {
-  prefixesResource,
-  SelectionFilter,
-} from '@folio/stripes-acq-components';
+import { SelectionFilter } from '@folio/stripes-acq-components';
 
-function PrefixFilter({ resources, ...rest }) {
-  const options = resources.prefixesSetting.records?.map(({ name }) => ({ label: name, value: name }));
+import { usePrefixes } from '../hooks';
+
+function PrefixFilter({ tenantId, ...rest }) {
+  const { prefixes } = usePrefixes({ tenantId });
+
+  const options = useMemo(() => prefixes.map(({ name }) => ({ label: name, value: name })), [prefixes]);
 
   return (
     <SelectionFilter
@@ -18,12 +18,8 @@ function PrefixFilter({ resources, ...rest }) {
   );
 }
 
-PrefixFilter.manifest = Object.freeze({
-  prefixesSetting: prefixesResource,
-});
-
 PrefixFilter.propTypes = {
-  resources: PropTypes.object.isRequired,
+  tenantId: PropTypes.string,
 };
 
-export default stripesConnect(PrefixFilter);
+export default PrefixFilter;

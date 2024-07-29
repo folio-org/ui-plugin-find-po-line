@@ -1,14 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import { useMemo } from 'react';
 
-import { stripesConnect } from '@folio/stripes/core';
-import {
-  SelectionFilter,
-  suffixesResource,
-} from '@folio/stripes-acq-components';
+import { SelectionFilter } from '@folio/stripes-acq-components';
 
-function SuffixFilter({ resources, ...rest }) {
-  const options = resources.suffixesSetting.records?.map(({ name }) => ({ label: name, value: name }));
+import { useSuffixes } from '../hooks';
+
+const SuffixFilter = ({ tenantId, ...rest }) => {
+  const { suffixes } = useSuffixes({ tenantId });
+
+  const options = useMemo(() => suffixes.map(({ name }) => ({ label: name, value: name })), [suffixes]);
 
   return (
     <SelectionFilter
@@ -16,14 +16,10 @@ function SuffixFilter({ resources, ...rest }) {
       options={options}
     />
   );
-}
-
-SuffixFilter.manifest = Object.freeze({
-  suffixesSetting: suffixesResource,
-});
-
-SuffixFilter.propTypes = {
-  resources: PropTypes.object.isRequired,
 };
 
-export default stripesConnect(SuffixFilter);
+SuffixFilter.propTypes = {
+  tenantId: PropTypes.string,
+};
+
+export default SuffixFilter;
