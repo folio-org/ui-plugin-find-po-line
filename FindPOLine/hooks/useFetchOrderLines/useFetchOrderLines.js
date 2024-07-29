@@ -54,7 +54,7 @@ export const useFetchOrderLines = (options = {}) => {
       totalRecords,
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [tenantId, timezone]);
 
   return { fetchOrderLines };
 };
