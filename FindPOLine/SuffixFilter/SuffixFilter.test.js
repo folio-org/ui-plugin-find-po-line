@@ -1,9 +1,15 @@
+import noop from 'lodash/noop';
 import { IntlProvider } from 'react-intl';
-import { noop } from 'lodash';
 
-import { render, cleanup } from '@folio/jest-config-stripes/testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
+import { useSuffixes } from '../hooks';
 import Filter from './SuffixFilter';
+
+jest.mock('../hooks', () => ({
+  ...jest.requireActual('../hooks'),
+  useSuffixes: jest.fn(),
+}));
 
 const suffixes = [
   {
@@ -15,7 +21,7 @@ const suffixes = [
 
 const filterAccordionTitle = 'labelId';
 
-const renderFilter = (records) => (render(
+const renderFilter = (props = {}) => render(
   <IntlProvider locale="en">
     <Filter
       id="filterId"
@@ -23,13 +29,17 @@ const renderFilter = (records) => (render(
       name="filterName"
       onChange={noop}
       labelId={filterAccordionTitle}
-      resources={{ suffixesSetting: { records } }}
+      {...props}
     />
   </IntlProvider>,
-));
+);
 
 describe('SuffixFilter component', () => {
-  afterEach(cleanup);
+  beforeEach(() => {
+    useSuffixes
+      .mockClear()
+      .mockReturnValue({ suffixes });
+  });
 
   it('should display passed title', () => {
     const { getByText } = renderFilter();
@@ -44,7 +54,7 @@ describe('SuffixFilter component', () => {
   });
 
   it('should render all passed options', async () => {
-    const { findAllByText } = renderFilter(suffixes);
+    const { findAllByText } = renderFilter();
 
     const renderedFilterOptions = await findAllByText(/suff/);
 
