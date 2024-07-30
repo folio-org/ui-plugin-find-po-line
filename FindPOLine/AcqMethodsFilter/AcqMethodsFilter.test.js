@@ -1,39 +1,43 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { noop } from 'lodash';
+import noop from 'lodash/noop';
 
-import { screen, render } from '@folio/jest-config-stripes/testing-library/react';
+import {
+  render,
+  screen,
+} from '@folio/jest-config-stripes/testing-library/react';
+import { useAcquisitionMethods } from '@folio/stripes-acq-components';
 
 import AcqMethodsFilter from './AcqMethodsFilter';
 
-const records = [
+jest.mock('@folio/stripes-acq-components', () => ({
+  ...jest.requireActual('@folio/stripes-acq-components'),
+  useAcquisitionMethods: jest.fn(() => ({ acquisitionMethods: [] })),
+}));
+
+const acquisitionMethods = [
   { id: '001', value: 'Acq-method 1' },
   { id: '002', value: 'Acq-method 2' },
 ];
 
 const filterAccordionTitle = 'ui-orders.poLine.acquisitionMethod';
 
-const queryClient = new QueryClient();
-
-// eslint-disable-next-line react/prop-types
-const wrapper = ({ children }) => (
-  <QueryClientProvider client={queryClient}>
-    {children}
-  </QueryClientProvider>
-);
-
-const renderFilter = () => render(
+const renderFilter = (props = {}) => render(
   <AcqMethodsFilter
     id="acq-methods"
     activeFilters={[]}
     name="acq-methods"
     onChange={noop}
     labelId={filterAccordionTitle}
-    resources={{ acquisitionMethods: { records } }}
+    {...props}
   />,
-  { wrapper },
 );
 
 describe('AcqMethodsFilter component', () => {
+  beforeEach(() => {
+    useAcquisitionMethods
+      .mockClear()
+      .mockReturnValue({ acquisitionMethods });
+  });
+
   it('should display passed title', () => {
     renderFilter();
 

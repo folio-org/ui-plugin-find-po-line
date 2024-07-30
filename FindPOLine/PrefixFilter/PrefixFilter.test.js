@@ -1,9 +1,15 @@
+import noop from 'lodash/noop';
 import { IntlProvider } from 'react-intl';
-import { noop } from 'lodash';
 
-import { render, cleanup } from '@folio/jest-config-stripes/testing-library/react';
+import { render } from '@folio/jest-config-stripes/testing-library/react';
 
+import { usePrefixes } from '../hooks';
 import Filter from './PrefixFilter';
+
+jest.mock('../hooks', () => ({
+  ...jest.requireActual('../hooks'),
+  usePrefixes: jest.fn(),
+}));
 
 const prefixes = [
   {
@@ -15,7 +21,7 @@ const prefixes = [
 
 const filterAccordionTitle = 'labelId';
 
-const renderFilter = (records) => (render(
+const renderFilter = (props = {}) => render(
   <IntlProvider locale="en">
     <Filter
       id="filterId"
@@ -23,13 +29,17 @@ const renderFilter = (records) => (render(
       name="filterName"
       onChange={noop}
       labelId={filterAccordionTitle}
-      resources={{ prefixesSetting: { records } }}
+      {...props}
     />
   </IntlProvider>,
-));
+);
 
 describe('PrefixFilter component', () => {
-  afterEach(cleanup);
+  beforeEach(() => {
+    usePrefixes
+      .mockClear()
+      .mockReturnValue({ prefixes });
+  });
 
   it('should display passed title', () => {
     const { getByText } = renderFilter();
@@ -44,7 +54,7 @@ describe('PrefixFilter component', () => {
   });
 
   it('should render all passed options', async () => {
-    const { findAllByText } = renderFilter(prefixes);
+    const { findAllByText } = renderFilter();
 
     const renderedFilterOptions = await findAllByText(/pref/);
 

@@ -7,9 +7,8 @@ import { AccordionStatus } from '@folio/stripes/components';
 import {
   FilterAccordion,
   TextField,
+  useOrderLine,
 } from '@folio/stripes-acq-components';
-
-import { useOrderLine } from '../hooks';
 
 export const LinkedPackagePOLineFilter = ({
   id,
@@ -19,6 +18,7 @@ export const LinkedPackagePOLineFilter = ({
   labelId,
   name,
   onChange,
+  tenantId,
 }) => {
   const intl = useIntl();
   const label = intl.formatMessage({ id: labelId });
@@ -26,7 +26,7 @@ export const LinkedPackagePOLineFilter = ({
   const {
     isFetching,
     orderLine,
-  } = useOrderLine(activeFilters?.[0]);
+  } = useOrderLine(activeFilters?.[0], { tenantId });
 
   const onSelectLine = useCallback(([{ id: poLineId }]) => {
     onChange({ name, values: [poLineId] });
@@ -61,6 +61,7 @@ export const LinkedPackagePOLineFilter = ({
           type="find-po-line"
           searchButtonStyle="link"
           searchLabel={intl.formatMessage({ id: 'ui-plugin-find-po-line.filter.linkedPackagePOLine.lookup.label' })}
+          tenantId={tenantId}
         >
           <FormattedMessage id="ui-orders.find-po-line-plugin-unavailable" />
         </Pluggable>
@@ -77,6 +78,7 @@ LinkedPackagePOLineFilter.propTypes = {
   labelId: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  tenantId: PropTypes.string,
 };
 
 LinkedPackagePOLineFilter.defaultProps = {

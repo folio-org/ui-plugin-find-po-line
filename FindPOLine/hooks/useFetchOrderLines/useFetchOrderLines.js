@@ -15,8 +15,10 @@ import {
   getLinesQuery,
 } from '../../utils';
 
-export const useFetchOrderLines = () => {
-  const ky = useOkapiKy();
+export const useFetchOrderLines = (options = {}) => {
+  const { tenantId } = options;
+
+  const ky = useOkapiKy({ tenant: tenantId });
   const { timezone } = useStripes();
 
   const fetchOrderLines = useCallback(async ({
@@ -52,7 +54,7 @@ export const useFetchOrderLines = () => {
       totalRecords,
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [tenantId, timezone]);
 
   return { fetchOrderLines };
 };

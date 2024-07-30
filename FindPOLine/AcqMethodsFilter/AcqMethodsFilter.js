@@ -1,12 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 import { MultiSelectionFilter } from '@folio/stripes/smart-components';
-import { stripesConnect } from '@folio/stripes/core';
 import {
-  acquisitionMethodsResource,
   FilterAccordion,
   useAcqMethodsOptions,
+  useAcquisitionMethods,
 } from '@folio/stripes-acq-components';
 
 const AcqMethodsFilter = ({
@@ -17,9 +15,10 @@ const AcqMethodsFilter = ({
   labelId,
   name,
   onChange,
-  resources,
+  tenantId,
 }) => {
-  const options = useAcqMethodsOptions(resources.acquisitionMethods?.records);
+  const { acquisitionMethods } = useAcquisitionMethods({ tenantId });
+  const options = useAcqMethodsOptions(acquisitionMethods);
 
   return (
     <FilterAccordion
@@ -44,10 +43,6 @@ const AcqMethodsFilter = ({
   );
 };
 
-AcqMethodsFilter.manifest = Object.freeze({
-  acquisitionMethods: acquisitionMethodsResource,
-});
-
 AcqMethodsFilter.propTypes = {
   activeFilters: PropTypes.arrayOf(PropTypes.string),
   closedByDefault: PropTypes.bool,
@@ -56,7 +51,7 @@ AcqMethodsFilter.propTypes = {
   labelId: PropTypes.string,
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  resources: PropTypes.object.isRequired,
+  tenantId: PropTypes.string,
 };
 
 AcqMethodsFilter.defaultProps = {
@@ -64,4 +59,4 @@ AcqMethodsFilter.defaultProps = {
   disabled: false,
 };
 
-export default stripesConnect(AcqMethodsFilter);
+export default AcqMethodsFilter;

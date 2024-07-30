@@ -4,34 +4,39 @@ import {
   useNamespace,
   useOkapiKy,
 } from '@folio/stripes/core';
-
 import {
   LIMIT_MAX,
-  MATERIAL_TYPE_API,
+  PREFIXES_API,
 } from '@folio/stripes-acq-components';
 
-export const useMaterialTypes = (options = {}) => {
+const DEFAULT_DATA = [];
+
+export const usePrefixes = (options = {}) => {
   const {
     tenantId,
     ...queryOptions
   } = options;
 
   const ky = useOkapiKy({ tenant: tenantId });
-  const [namespace] = useNamespace({ key: 'material-types' });
+  const [namespace] = useNamespace({ key: 'order-prefixes' });
 
   const searchParams = {
     limit: LIMIT_MAX,
     query: 'cql.allRecords=1 sortby name',
   };
 
-  const { isLoading, data = {} } = useQuery({
+  const {
+    data,
+    isLoading,
+  } = useQuery({
     queryKey: [namespace, tenantId],
-    queryFn: ({ signal }) => ky.get(MATERIAL_TYPE_API, { searchParams, signal }).json(),
+    queryFn: ({ signal }) => ky.get(PREFIXES_API, { searchParams, signal }).json(),
     ...queryOptions,
   });
 
   return ({
-    materialTypes: data.mtypes || [],
+    prefixes: data?.prefixes || DEFAULT_DATA,
+    totalRecords: data?.totalRecords,
     isLoading,
   });
 };

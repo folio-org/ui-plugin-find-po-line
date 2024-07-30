@@ -1,0 +1,1 @@
+export { useSuffixes } from './useSuffixes';

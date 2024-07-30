@@ -71,6 +71,7 @@ const FindPOLine = ({
   addLines,
   crossTenant: crossTenantProp,
   isSingleSelect,
+  tenantId,
   ...rest
 }) => {
   const stripes = useStripes();
@@ -79,8 +80,8 @@ const FindPOLine = ({
   const [records, setRecords] = useState([]);
   const [searchParams, setSearchParams] = useState({});
   const [isLoading, setIsLoading] = useState(false);
-  const { funds } = useFunds();
-  const { materialTypes } = useMaterialTypes();
+  const { funds } = useFunds({ tenantId });
+  const { materialTypes } = useMaterialTypes({ tenantId });
   const [pagination, setPagination] = useState(INIT_PAGINATION);
 
   const { enabled: isCentralOrderingEnabled } = useCentralOrderingSettings({
@@ -91,7 +92,7 @@ const FindPOLine = ({
     ? isCentralOrderingEnabled
     : crossTenantProp;
 
-  const { fetchOrderLines } = useFetchOrderLines();
+  const { fetchOrderLines } = useFetchOrderLines({ tenantId });
 
   const refreshRecords = useCallback((filters) => {
     setIsLoading(true);
@@ -142,9 +143,16 @@ const FindPOLine = ({
         materialTypes={materialTypes}
         disabled={isLoading}
         crossTenant={crossTenant}
+        tenantId={tenantId}
       />
     );
-  }, [crossTenant, funds, isLoading, materialTypes]);
+  }, [
+    crossTenant,
+    funds,
+    isLoading,
+    materialTypes,
+    tenantId,
+  ]);
 
   return (
     <FindRecords
@@ -179,6 +187,7 @@ FindPOLine.propTypes = {
   searchLabel: PropTypes.node,
   isSingleSelect: PropTypes.bool,
   addLines: PropTypes.func.isRequired,
+  tenantId: PropTypes.string,
 };
 
 FindPOLine.defaultProps = {
