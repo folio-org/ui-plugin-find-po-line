@@ -1,8 +1,8 @@
 {
     "meta.title": "オーダーライン",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
+    "addPOLine": "発注明細の追加",
+    "modal.title": "発注明細の選択",
+    "modal.footer.save": "保存",
     "modal.footer.close": "閉じる",
     "modal.footer.totalSelected": "選択済合計： {count}",
     "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
