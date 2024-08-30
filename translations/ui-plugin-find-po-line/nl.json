@@ -1,10 +1,10 @@
 {
-    "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}",
-    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
-    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
+    "meta.title": "Bestelregels",
+    "addPOLine": "Bestelregels Toevoegen",
+    "modal.title": "Bestelregels selecteren",
+    "modal.footer.save": "Opslaan",
+    "modal.footer.close": "Sluiten",
+    "modal.footer.totalSelected": "Totaal geselecteerd: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Gekoppeld pakket RPO",
+    "filter.linkedPackagePOLine.lookup.label": "Gekoppeld pakket RPO opzoeken"
 }
