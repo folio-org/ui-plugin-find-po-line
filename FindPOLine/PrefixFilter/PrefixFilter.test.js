@@ -6,6 +6,17 @@ import { render } from '@folio/jest-config-stripes/testing-library/react';
 import { usePrefixes } from '../hooks';
 import Filter from './PrefixFilter';
 
+jest.mock('@folio/stripes/components', () => ({
+  ...jest.requireActual('@folio/stripes/components'),
+  Selection: ({ id, dataOptions }) => (
+    <ul id={id}>
+      {
+        dataOptions.map((o) => <li>{o.label}</li>)
+      }
+    </ul>
+  ),
+}));
+
 jest.mock('../hooks', () => ({
   ...jest.requireActual('../hooks'),
   usePrefixes: jest.fn(),
