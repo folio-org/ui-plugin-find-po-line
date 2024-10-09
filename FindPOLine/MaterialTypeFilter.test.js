@@ -2,6 +2,17 @@ import { render } from '@folio/jest-config-stripes/testing-library/react';
 
 import MaterialTypeFilter from './MaterialTypeFilter';
 
+jest.mock('@folio/stripes/components', () => ({
+  ...jest.requireActual('@folio/stripes/components'),
+  Selection: ({ id, dataOptions }) => (
+    <ul id={id}>
+      {
+        dataOptions.map((o) => <li>{o.label}</li>)
+      }
+    </ul>
+  ),
+}));
+
 const mTypes = [
   { id: '001', name: 'mType #1' },
   { id: '002', name: 'mType #2' },
