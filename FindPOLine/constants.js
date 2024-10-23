@@ -23,6 +23,7 @@ export const FILTERS = {
   EXPENSE_CLASS: 'expenseClass',
   EXPORT_DATE: 'lastEDIExportDate',
   FUND_CODE: 'fundCode',
+  FUND_DISTRIBUTION: 'fundDistribution',
   IS_PACKAGE: 'isPackage',
   LOCATION: 'locations',
   MATERIAL_TYPE_ELECTRONIC: 'materialTypeElectronic',
