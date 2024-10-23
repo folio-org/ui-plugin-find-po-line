@@ -6,6 +6,7 @@
 * Adjust location filter to support cross-tenant search. Refs UIPFPOL-74.
 * Add support for filtering and searching for custom fields. Refs UIPFPOL-73.
 * ECS - Accept `tenantId` prop to search entries in the specified tenant. UIPFPOL-79.
+* Add the ability to search for purchase order lines by multiple funds. Refs UIPFPOL-82.
 
 ## [5.1.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.1.1) (2024-04-18)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.1.0...v5.1.1)
