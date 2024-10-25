@@ -59,7 +59,7 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN, locale
       [FILTERS.RECEIPT_DUE]: buildDateRangeQuery.bind(null, `physical.${FILTERS.RECEIPT_DUE}`),
       [FILTERS.CLAIM_SENT]: buildDateRangeQuery.bind(null, [FILTERS.CLAIM_SENT]),
       [FILTERS.TAGS]: buildArrayFieldQuery.bind(null, [FILTERS.TAGS]),
-      [FILTERS.FUND_CODE]: (filterValue) => `fundDistribution =/@fundId (${filterValue.join(' or ')})`,
+      [FILTERS.FUND_CODE]: (filterValue) => `fundDistribution =/@fundId (${Array.isArray(filterValue) ? filterValue.join(' or ') : filterValue})`,
       [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, [FILTERS.FUND_DISTRIBUTION]),
       [FILTERS.LOCATION]: (filterValue) => `(${
         [FILTERS.LOCATION, 'searchLocationIds']
