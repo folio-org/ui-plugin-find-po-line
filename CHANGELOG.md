@@ -1,6 +1,9 @@
 # Change history for ui-plugin-find-po-line
 
-## (5.2.0 IN PROGRESS)
+## (5.3.0 IN PROGRESS)
+
+## [5.2.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.2.0) (2024-10-30)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.1.1...v5.2.0)
 
 * Align the `finance.fund` interface version (`3.0`). Refs UIPFPOL-68.
 * Adjust location filter to support cross-tenant search. Refs UIPFPOL-74.
