@@ -13,8 +13,8 @@ import {
 export const LinkedPackagePOLineFilter = ({
   id,
   activeFilters,
-  closedByDefault,
-  disabled,
+  closedByDefault = true,
+  disabled = false,
   labelId,
   name,
   onChange,
@@ -79,9 +79,4 @@ LinkedPackagePOLineFilter.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   tenantId: PropTypes.string,
-};
-
-LinkedPackagePOLineFilter.defaultProps = {
-  closedByDefault: true,
-  disabled: false,
 };
