@@ -67,11 +67,14 @@ const resultsFormatter = {
 
 const INIT_PAGINATION = { limit: PLUGIN_RESULT_COUNT_INCREMENT, offset: 0 };
 
+const defaultSearchLabel = <FormattedMessage id="ui-plugin-find-po-line.addPOLine" />;
+
 const FindPOLine = ({
   addLines,
   crossTenant: crossTenantProp,
-  isSingleSelect,
+  isSingleSelect = false,
   tenantId,
+  searchLabel = defaultSearchLabel,
   ...rest
 }) => {
   const stripes = useStripes();
@@ -157,6 +160,7 @@ const FindPOLine = ({
   return (
     <FindRecords
       {...rest}
+      searchLabel={searchLabel}
       modalLabel={modalLabel}
       resultsPaneTitle={resultsPaneTitle}
       idPrefix={idPrefix}
@@ -188,11 +192,6 @@ FindPOLine.propTypes = {
   isSingleSelect: PropTypes.bool,
   addLines: PropTypes.func.isRequired,
   tenantId: PropTypes.string,
-};
-
-FindPOLine.defaultProps = {
-  isSingleSelect: false,
-  searchLabel: <FormattedMessage id="ui-plugin-find-po-line.addPOLine" />,
 };
 
 export default FindPOLine;

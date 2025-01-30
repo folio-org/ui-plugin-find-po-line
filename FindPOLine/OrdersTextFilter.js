@@ -13,11 +13,11 @@ import {
 const OrdersTextFilter = ({
   id,
   activeFilters,
-  closedByDefault,
-  disabled,
+  closedByDefault = true,
+  disabled = false,
   labelId,
   name,
-  type,
+  type = 'text',
   onChange,
 }) => {
   const changeFilter = useCallback((e) => {
@@ -60,12 +60,6 @@ OrdersTextFilter.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string,
-};
-
-OrdersTextFilter.defaultProps = {
-  closedByDefault: true,
-  disabled: false,
-  type: 'text',
 };
 
 export default OrdersTextFilter;

@@ -9,8 +9,8 @@ import {
 
 const AcqMethodsFilter = ({
   activeFilters,
-  closedByDefault,
-  disabled,
+  closedByDefault = true,
+  disabled = false,
   id,
   labelId,
   name,
@@ -52,11 +52,6 @@ AcqMethodsFilter.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   tenantId: PropTypes.string,
-};
-
-AcqMethodsFilter.defaultProps = {
-  closedByDefault: true,
-  disabled: false,
 };
 
 export default AcqMethodsFilter;
