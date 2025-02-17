@@ -3,6 +3,7 @@
 ## (5.3.0 IN PROGRESS)
 
 * React v19: refactor away from default props for functional components. Refs UIPFPOL-78.
+* Migrate to shared GA workflows. Refs UIPFPOL-84.
 
 ## [5.2.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v5.2.0) (2024-10-30)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.1.1...v5.2.0)
