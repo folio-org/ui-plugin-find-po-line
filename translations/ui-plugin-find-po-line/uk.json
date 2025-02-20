@@ -1,5 +1,5 @@
 {
-    "meta.title": "Riadky objednávok",
+    "meta.title": "Order lines",
     "addPOLine": "Add order lines",
     "modal.title": "Select order lines",
     "modal.footer.save": "Save",
