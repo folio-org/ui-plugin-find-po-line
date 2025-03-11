@@ -1,6 +1,9 @@
 # Change history for ui-plugin-find-po-line
 
-## (6.0.0 IN PROGRESS)
+## (6.1.0 IN PROGRESS)
+
+## [6.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.0.0) (2025-03-11)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.2.0...v6.0.0)
 
 * React v19: refactor away from default props for functional components. Refs UIPFPOL-78.
 * Migrate to shared GA workflows. Refs UIPFPOL-84.
