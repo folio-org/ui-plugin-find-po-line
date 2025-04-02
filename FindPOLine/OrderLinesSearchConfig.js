@@ -7,19 +7,21 @@ import {
   getCustomFieldsKeywordIndexes,
 } from '@folio/stripes-acq-components';
 
-const indexes = [
-  'contributors',
-  'poLineNumber',
-  'requester',
-  'titleOrPackage',
-  'publisher',
-  'vendorDetail.vendorAccount',
-  'vendorDetail.referenceNumbers',
-  'donor',
-  'selector',
-  'physical.volumes',
-  'details.productIds',
-];
+export const QUERY_INDEX = {
+  CONTRIBUTORS: 'contributors',
+  PO_LINE_NUMBER: 'poLineNumber',
+  REQUESTER: 'requester',
+  TITLE_OR_PACKAGE: 'titleOrPackage',
+  PUBLISHER: 'publisher',
+  VENDOR_ACCOUNT: 'vendorDetail.vendorAccount',
+  REFERENCE_NUMBERS: 'vendorDetail.referenceNumbers',
+  DONOR: 'donor',
+  SELECTOR: 'selector',
+  VOLUMES: 'physical.volumes',
+  PRODUCT_IDS: 'details.productIds',
+};
+
+const indexes = Object.values(QUERY_INDEX);
 
 export const indexISBN = {
   labelId: 'ui-orders.search.productIdISBN',
@@ -51,19 +53,25 @@ export const getCqlQuery = (query, sIndex, localeDateFormat, customFields) => {
 
 export const queryTemplate = generateQueryTemplate(indexes);
 
-export const getKeywordQuery = (query, localeDateFormat, customFields) => {
+const defaultSearchIndexQueryBuilder = (query, sIndex, localeDateFormat, customFields) => {
+  const cqlQuery = getCqlQuery(query, sIndex, localeDateFormat, customFields);
+
+  return `${sIndex}=="${cqlQuery}"`;
+};
+
+export const getKeywordQuery = (
+  query,
+  localeDateFormat,
+  customFields,
+  sIndexQueryBuildersDict = {},
+) => {
   const customFieldIndexes = getCustomFieldsKeywordIndexes(customFields);
 
-  return [...indexes, ...customFieldIndexes].reduce(
-    (acc, sIndex) => {
-      const cqlQuery = getCqlQuery(query, sIndex, localeDateFormat, customFields);
+  return [...indexes, ...customFieldIndexes].reduce((acc, sIndex) => {
+    const searchValue = sIndexQueryBuildersDict[sIndex]
+      ? sIndexQueryBuildersDict[sIndex](query)
+      : defaultSearchIndexQueryBuilder(query, sIndex, localeDateFormat, customFields);
 
-      if (acc) {
-        return `${acc} or ${sIndex}=="${cqlQuery}"`;
-      } else {
-        return `${sIndex}=="${cqlQuery}"`;
-      }
-    },
-    '',
-  );
+    return acc ? `${acc} or ${searchValue}` : searchValue;
+  }, '');
 };

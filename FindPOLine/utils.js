@@ -11,15 +11,23 @@ import {
   SEARCH_PARAMETER,
 } from '@folio/stripes-acq-components';
 
-import { FILTERS, QUALIFIER_SEPARATOR } from './constants';
+import {
+  FILTERS,
+  QUALIFIER_SEPARATOR,
+} from './constants';
 import {
   getCqlQuery,
   getKeywordQuery,
+  QUERY_INDEX,
 } from './OrderLinesSearchConfig';
 
+const buildProductIdsSearchQuery = (query) => {
+  return `productIds = "${query}*"`;
+};
+
 const defaultSearchFn = (localeDateFormat, customFields = []) => (query, qindex) => {
-  if (qindex === 'details.productIds') {
-    return `details.productIds = "/@productId = "${query}"* `;
+  if (qindex === QUERY_INDEX.PRODUCT_IDS) {
+    return buildProductIdsSearchQuery(query);
   }
 
   if (qindex) {
@@ -28,7 +36,14 @@ const defaultSearchFn = (localeDateFormat, customFields = []) => (query, qindex)
     return `(${qindex}==${cqlQuery})`;
   }
 
-  return getKeywordQuery(query, localeDateFormat, customFields);
+  return getKeywordQuery(
+    query,
+    localeDateFormat,
+    customFields,
+    {
+      [QUERY_INDEX.PRODUCT_IDS]: buildProductIdsSearchQuery,
+    },
+  );
 };
 
 export const getDateRangeValueAsString = (filterValue = '') => {
