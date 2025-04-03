@@ -2,6 +2,8 @@
 
 ## (6.1.0 IN PROGRESS)
 
+* Change query template for product IDs to optimize requests. Fixes UIPFPOL-89.
+
 ## [6.0.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.0.0) (2025-03-11)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v5.2.0...v6.0.0)
 
