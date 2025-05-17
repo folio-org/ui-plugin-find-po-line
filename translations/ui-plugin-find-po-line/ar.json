@@ -1,10 +1,10 @@
 {
     "meta.title": "سطور أوامر الشراء",
-    "addPOLine": "إضافة سطور طلبيات",
-    "modal.title": "تحديد سطور الطلبيات",
+    "addPOLine": "إضافة سطور أوامر شراء",
+    "modal.title": "تحديد سطور أوامر الشراء",
     "modal.footer.save": "حفظ",
     "modal.footer.close": "إغلاق",
     "modal.footer.totalSelected": "إجمالي المحدد: {count}",
-    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
-    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
+    "filter.linkedPackagePOLine.accordion.label": "سطر أمر شراء الحزمة المرتبطة",
+    "filter.linkedPackagePOLine.lookup.label": "البحث عن سطر أمر شراء الحزمة المرتبطة"
 }
