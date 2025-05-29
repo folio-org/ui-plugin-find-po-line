@@ -1,9 +1,9 @@
 {
     "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
+    "addPOLine": "Додати рядки замовлення",
     "modal.title": "Select order lines",
     "modal.footer.save": "Зберегти",
-    "modal.footer.close": "Close",
+    "modal.footer.close": "Закрити",
     "modal.footer.totalSelected": "Всього вибрано: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
     "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
