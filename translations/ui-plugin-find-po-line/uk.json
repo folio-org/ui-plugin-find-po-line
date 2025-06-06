@@ -1,7 +1,7 @@
 {
-    "meta.title": "Order lines",
+    "meta.title": "Рядки замовлень",
     "addPOLine": "Додати рядки замовлення",
-    "modal.title": "Select order lines",
+    "modal.title": "Виберіть рядки замовлення",
     "modal.footer.save": "Зберегти",
     "modal.footer.close": "Закрити",
     "modal.footer.totalSelected": "Всього вибрано: {count}",
