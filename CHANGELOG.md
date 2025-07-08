@@ -2,6 +2,8 @@
 
 ## (6.1.0 IN PROGRESS)
 
+* Add hints for deprecated suffixes and prefixes in filters for search. Refs UIPFPOL-90.
+
 ## [6.0.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.0.1) (2025-04-04)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v6.0.0...v6.0.1)
 
