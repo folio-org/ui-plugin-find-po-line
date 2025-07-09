@@ -5,7 +5,9 @@
 
   "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
   "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
-
+  
+  "filter.prefixFilter.deprecated": "deprecated",
+  
   "modal.title": "Select order lines",
 
   "modal.footer.save": "Save",
