@@ -4,11 +4,24 @@ import { useMemo } from 'react';
 import { SelectionFilter } from '@folio/stripes-acq-components';
 
 import { useSuffixes } from '../hooks';
+import { useIntl } from 'react-intl';
 
 const SuffixFilter = ({ tenantId, ...rest }) => {
   const { suffixes } = useSuffixes({ tenantId });
+  const intl = useIntl();
 
-  const options = useMemo(() => suffixes.map(({ name }) => ({ label: name, value: name })), [suffixes]);
+  const deprecatedText = intl.formatMessage({
+    id: "ui-plugin-find-po-line.filter.suffixFilter.deprecated",
+  });
+
+  const options = useMemo(
+    () =>
+      suffixes.map(({ name, deprecated }) => ({
+        label: deprecated ? `${name} (${deprecatedText})` : name,
+        value: name,
+      })),
+    [suffixes],
+  );
 
   return (
     <SelectionFilter

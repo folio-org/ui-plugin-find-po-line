@@ -7,6 +7,7 @@
   "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
   
   "filter.prefixFilter.deprecated": "deprecated",
+  "filter.suffixFilter.deprecated": "deprecated",
   
   "modal.title": "Select order lines",
 
