@@ -128,3 +128,9 @@ export function getLinesQuery(queryParams, ky, localeDateFormat, customFields) {
     return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType, localeDateFormat, customFields);
   };
 }
+
+export const getPrefixSuffixOptions = (records, deprecatedText) =>
+    records.map(({ name, deprecated }) => ({
+        label: deprecated ? `${name} (${deprecatedText})` : name,
+        value: name,
+      }));

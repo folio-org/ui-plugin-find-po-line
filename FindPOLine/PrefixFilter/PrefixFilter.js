@@ -5,6 +5,7 @@ import { SelectionFilter } from '@folio/stripes-acq-components';
 
 import { usePrefixes } from '../hooks';
 import { useIntl } from 'react-intl';
+import { getPrefixSuffixOptions } from '../utils';
 
 function PrefixFilter({ tenantId, ...rest }) {
   const { prefixes } = usePrefixes({ tenantId });
@@ -14,14 +15,7 @@ function PrefixFilter({ tenantId, ...rest }) {
     id: "ui-plugin-find-po-line.filter.prefixFilter.deprecated",
   });
 
-  const options = useMemo(
-    () =>
-      prefixes.map(({ name, deprecated }) => ({
-        label: deprecated ? `${name} (${deprecatedText})` : name,
-        value: name,
-      })),
-    [prefixes],
-  );
+  const options = getPrefixSuffixOptions(prefixes, deprecatedText);
 
   return (
     <SelectionFilter
