@@ -9,6 +9,7 @@ import { FILTERS } from './constants';
 import {
   buildOrderLinesQuery,
   getDateRangeValueAsString,
+  getPrefixSuffixOptions
 } from './utils';
 
 describe('Utils', () => {
@@ -73,5 +74,47 @@ describe('Utils', () => {
 
       expect(parts.every(s => query.includes(s))).toBe(true);
     });
+  });
+});
+
+describe('getPrefixSuffixOptions', () => {
+  it('should show a hint for deprecated prefixes', () => {
+    const records = [
+        {
+            "id": "db9f5d17-0ca3-4d14-ae49-16b63c8fc083",
+            "name": "pref",
+            "description": "Prefix for test purposes",
+            "deprecated": false
+        },
+        {
+            "id": "a91e8e98-2e83-4e05-abc7-908ba801edb0",
+            "name": "pref2",
+            "description": "test deprecated",
+            "deprecated": true
+        },
+        {
+            "id": "7daa881b-4209-44a1-8f37-2388385783b0",
+            "name": "pref3",
+            "description": "test deprecated",
+            "deprecated": false
+        }
+    ];
+    const deprecatedText = 'deprecated';
+    const actual = getPrefixSuffixOptions(records, deprecatedText);
+    const expected = [
+      {
+          "label": "pref",
+          "value": "pref"
+      },
+      {
+          "label": "pref2 (deprecated)",
+          "value": "pref2"
+      },
+      {
+          "label": "pref3",
+          "value": "pref3"
+      }
+    ];
+    expect(actual).toEqual(expected);
   });
 });
