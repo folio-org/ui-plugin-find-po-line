@@ -1,3 +1,4 @@
+import { useIntl } from 'react-intl';
 import {
   CUSTOM_FIELDS_FILTER,
   CUSTOM_FIELDS_FIXTURE,
@@ -6,11 +7,10 @@ import {
 } from '@folio/stripes-acq-components';
 
 import { FILTERS } from './constants';
-import { useIntl } from 'react-intl';
 import {
   buildOrderLinesQuery,
   getDateRangeValueAsString,
-  getPrefixSuffixOptions
+  getPrefixSuffixOptions,
 } from './utils';
 
 jest.mock('react-intl', () => ({
@@ -86,14 +86,13 @@ describe('Utils', () => {
 describe('getPrefixSuffixOptions', () => {
   beforeEach(() => {
     useIntl.mockReturnValue({
-      formatMessage: ({ }, { name }) => `${name} (deprecated)`,
+      formatMessage: (_, { name }) => `${name} (deprecated)`,
     });
   });
 
   afterEach(() => {
     jest.clearAllMocks();
   });
-
 
   it('should show a hint for deprecated prefixes', () => {
     const records = [
@@ -132,6 +131,7 @@ describe('getPrefixSuffixOptions', () => {
         value: 'pref3',
       },
     ];
+
     expect(actual).toEqual(expected);
   });
 });

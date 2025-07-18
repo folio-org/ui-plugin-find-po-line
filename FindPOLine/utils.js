@@ -129,18 +129,20 @@ export function getLinesQuery(queryParams, ky, localeDateFormat, customFields) {
   };
 }
 
-export const getPrefixSuffixOptions = (records, intl) =>
+export const getPrefixSuffixOptions = (records, intl) => (
   records.map(({ name, deprecated }) => {
     const deprecatedText = intl.formatMessage(
       {
         id: 'ui-plugin-find-po-line.filter.suffixFilter.deprecated',
       },
       {
-        name: name,
+        name,
       },
     );
+
     return {
       label: deprecated ? deprecatedText : name,
       value: name,
     };
-  });
+  })
+);
