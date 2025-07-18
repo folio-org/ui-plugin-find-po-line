@@ -11,11 +11,7 @@ const SuffixFilter = ({ tenantId, ...rest }) => {
   const { suffixes } = useSuffixes({ tenantId });
   const intl = useIntl();
 
-  const deprecatedText = intl.formatMessage({
-    id: "ui-plugin-find-po-line.filter.suffixFilter.deprecated",
-  });
-
-  const options = getPrefixSuffixOptions(suffixes, deprecatedText);
+  const options = getPrefixSuffixOptions(suffixes, intl);
 
   return (
     <SelectionFilter
