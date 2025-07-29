@@ -5,12 +5,12 @@ import { useIntl } from 'react-intl';
 import { SelectionFilter } from '@folio/stripes-acq-components';
 
 import { useSuffixes } from '../hooks';
-import { getPrefixSuffixOptions } from '../utils';
+import { getSuffixOptions } from '../utils';
 
 const SuffixFilter = ({ tenantId, ...rest }) => {
   const { suffixes } = useSuffixes({ tenantId });
   const intl = useIntl();
-  const options = getPrefixSuffixOptions(suffixes, intl);
+  const options = useMemo(() => getSuffixOptions(suffixes, intl), [suffixes, intl]);
 
   return (
     <SelectionFilter

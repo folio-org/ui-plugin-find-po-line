@@ -6,7 +6,8 @@
   "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
   "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
   
-  "filter.prefixSuffixFilter.deprecated": "{name} (deprecated)",
+  "filter.prefixFilter.deprecated": "{name} (deprecated)",
+  "filter.suffixFilter.deprecated": "{name} (deprecated)",
   
   "modal.title": "Select order lines",
 
