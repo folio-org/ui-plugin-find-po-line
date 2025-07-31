@@ -80,7 +80,7 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN, locale
         [FILTERS.LOCATION, 'searchLocationIds']
           .map((filterKey) => buildArrayFieldQuery(filterKey, filterValue))
           .join(' or ')
-        })`,
+      })`,
       [FILTERS.DONOR]: buildArrayFieldQuery.bind(null, [FILTERS.DONOR]),
       [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
       [FILTERS.MATERIAL_TYPE_PHYSICAL]: (filterValue) => `physical.materialType == ${filterValue}`,
