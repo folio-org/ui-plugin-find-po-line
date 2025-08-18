@@ -6,5 +6,7 @@
     "modal.footer.close": "Schließen",
     "modal.footer.totalSelected": "Insgesamt ausgewählt: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Verknüpfter Paketbestellposten",
-    "filter.linkedPackagePOLine.lookup.label": "Suche nach verknüpftem Paketbestellposten"
+    "filter.linkedPackagePOLine.lookup.label": "Suche nach verknüpftem Paketbestellposten",
+    "filter.prefixFilter.deprecated": "{name} (deprecated)",
+    "filter.suffixFilter.deprecated": "{name} (deprecated)"
 }

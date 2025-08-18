@@ -6,5 +6,7 @@
     "modal.footer.close": "Zamknij",
     "modal.footer.totalSelected": "Wybrano łącznie: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Połączony pakiet pozycji zamówienia",
-    "filter.linkedPackagePOLine.lookup.label": "Połącz znalezioną pozycję zamówionego pakietu"
+    "filter.linkedPackagePOLine.lookup.label": "Połącz znalezioną pozycję zamówionego pakietu",
+    "filter.prefixFilter.deprecated": "{name} (deprecated)",
+    "filter.suffixFilter.deprecated": "{name} (deprecated)"
 }

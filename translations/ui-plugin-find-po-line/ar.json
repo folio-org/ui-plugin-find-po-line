@@ -6,5 +6,7 @@
     "modal.footer.close": "إغلاق",
     "modal.footer.totalSelected": "إجمالي المحدد: {count}",
     "filter.linkedPackagePOLine.accordion.label": "سطر أمر شراء الحزمة المرتبطة",
-    "filter.linkedPackagePOLine.lookup.label": "البحث عن سطر أمر شراء الحزمة المرتبطة"
+    "filter.linkedPackagePOLine.lookup.label": "البحث عن سطر أمر شراء الحزمة المرتبطة",
+    "filter.prefixFilter.deprecated": "{name} (deprecated)",
+    "filter.suffixFilter.deprecated": "{name} (deprecated)"
 }
