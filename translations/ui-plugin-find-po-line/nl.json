@@ -6,5 +6,7 @@
     "modal.footer.close": "Sluiten",
     "modal.footer.totalSelected": "Totaal geselecteerd: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Gekoppeld pakket RPO",
-    "filter.linkedPackagePOLine.lookup.label": "Gekoppeld pakket RPO opzoeken"
+    "filter.linkedPackagePOLine.lookup.label": "Gekoppeld pakket RPO opzoeken",
+    "filter.prefixFilter.deprecated": "{name} (deprecated)",
+    "filter.suffixFilter.deprecated": "{name} (deprecated)"
 }

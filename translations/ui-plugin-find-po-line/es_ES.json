@@ -6,5 +6,7 @@
     "modal.footer.close": "Cerrar",
     "modal.footer.totalSelected": "Total seleccionadas: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
-    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup"
+    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
+    "filter.prefixFilter.deprecated": "{name} (deprecated)",
+    "filter.suffixFilter.deprecated": "{name} (deprecated)"
 }

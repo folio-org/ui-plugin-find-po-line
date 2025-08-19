@@ -6,5 +6,7 @@
     "modal.footer.close": "Закрити",
     "modal.footer.totalSelected": "Всього вибрано: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Пов'язаний з рядком замовлення на придбання пакет",
-    "filter.linkedPackagePOLine.lookup.label": "Пошук пов'язаного з рядком замовлення на придбання пакету"
+    "filter.linkedPackagePOLine.lookup.label": "Пошук пов'язаного з рядком замовлення на придбання пакету",
+    "filter.prefixFilter.deprecated": "{name} (застаріло)",
+    "filter.suffixFilter.deprecated": "{name} (застаріло)"
 }
