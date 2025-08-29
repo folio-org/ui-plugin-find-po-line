@@ -7,6 +7,6 @@
     "modal.footer.totalSelected": "Totaal geselecteerd: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Gekoppeld pakket RPO",
     "filter.linkedPackagePOLine.lookup.label": "Gekoppeld pakket RPO opzoeken",
-    "filter.prefixFilter.deprecated": "{name} (deprecated)",
-    "filter.suffixFilter.deprecated": "{name} (deprecated)"
+    "filter.prefixFilter.deprecated": "{naam} (verouderd)",
+    "filter.suffixFilter.deprecated": "{naam} (verouderd)"
 }
