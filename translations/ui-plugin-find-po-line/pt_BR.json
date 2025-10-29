@@ -6,7 +6,7 @@
     "modal.footer.close": "Fechar",
     "modal.footer.totalSelected": "Total selecionado: {count}",
     "filter.linkedPackagePOLine.accordion.label": "Pacote vinculado na Linha do pedido de compra",
-    "filter.linkedPackagePOLine.lookup.label": "Buscar na linha do pedido de compra por pacote vinculado",
+    "filter.linkedPackagePOLine.lookup.label": "Consultar linha do pedido de compra por pacote vinculado",
     "filter.prefixFilter.deprecated": "{name} (descontinuado)",
     "filter.suffixFilter.deprecated": "{name} (descontinuado)"
 }
