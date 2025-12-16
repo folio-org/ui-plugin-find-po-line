@@ -1,19 +1,16 @@
 import { useCallback } from 'react';
-import moment from 'moment';
 
 import {
   useOkapiKy,
   useStripes,
 } from '@folio/stripes/core';
 import {
-  LINES_API,
   getFiltersCount,
+  LINES_API,
   PLUGIN_RESULT_COUNT_INCREMENT,
 } from '@folio/stripes-acq-components';
 
-import {
-  getLinesQuery,
-} from '../../utils';
+import { getLinesQuery } from '../../utils';
 
 export const useFetchOrderLines = (options = {}) => {
   const { tenantId } = options;
@@ -33,11 +30,7 @@ export const useFetchOrderLines = (options = {}) => {
       return { poLines: [], totalRecords: 0 };
     }
 
-    moment.tz.setDefault(timezone);
-
-    const query = await buildLinesQuery();
-
-    moment.tz.setDefault();
+    const query = await buildLinesQuery({ timezone });
 
     const builtSearchParams = {
       query,
