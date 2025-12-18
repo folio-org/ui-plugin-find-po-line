@@ -1,3 +1,4 @@
+import moment from 'moment';
 import { useCallback } from 'react';
 
 import {
@@ -30,7 +31,11 @@ export const useFetchOrderLines = (options = {}) => {
       return { poLines: [], totalRecords: 0 };
     }
 
-    const query = await buildLinesQuery({ timezone });
+    moment.tz.setDefault(timezone);
+
+    const query = await buildLinesQuery();
+
+    moment.tz.setDefault();
 
     const builtSearchParams = {
       query,
