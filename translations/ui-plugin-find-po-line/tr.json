@@ -1,12 +1,12 @@
 {
-    "meta.title": "Order lines",
-    "addPOLine": "Add order lines",
-    "modal.title": "Select order lines",
-    "modal.footer.save": "Save",
-    "modal.footer.close": "Close",
-    "modal.footer.totalSelected": "Total selected: {count}",
-    "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
-    "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
-    "filter.prefixFilter.deprecated": "{name} (deprecated)",
-    "filter.suffixFilter.deprecated": "{name} (deprecated)"
+    "meta.title": "Sipariş kalemleri",
+    "addPOLine": "Sipariş kalemleri ekle",
+    "modal.title": "Sipariş kalemlerini seçin",
+    "modal.footer.save": "Kaydet",
+    "modal.footer.close": "Kapat",
+    "modal.footer.totalSelected": "Toplam seçildi: {count}",
+    "filter.linkedPackagePOLine.accordion.label": "Bağlı paket Satın alma kalemi",
+    "filter.linkedPackagePOLine.lookup.label": "Bağlı paket satın alma kalemi ara",
+    "filter.prefixFilter.deprecated": "{name} (kullanımdan kaldırılmıştır)",
+    "filter.suffixFilter.deprecated": "{name} (kullanımdan kaldırılmıştır)"
 }
