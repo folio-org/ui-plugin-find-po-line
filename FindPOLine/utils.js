@@ -54,7 +54,14 @@ export const getDateRangeValueAsString = (filterValue = '') => {
   return filterValue;
 };
 
-export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN, localeDateFormat, customFields) => {
+export const buildOrderLinesQuery = (
+  queryParams,
+  isbnId,
+  normalizedISBN,
+  localeDateFormat,
+  customFields,
+  options = {},
+) => {
   const searchFn = normalizedISBN
     ? () => `details.productIds all \\"productId\\": \\"${normalizedISBN}\\"  AND details.productIds all  \\"productIdType\\": \\"${isbnId}\\"`
     : defaultSearchFn(localeDateFormat, customFields);
@@ -90,6 +97,8 @@ export const buildOrderLinesQuery = (queryParams, isbnId, normalizedISBN, locale
       [FILTERS.TRIAL]: (filterValue) => `eresource.${FILTERS.TRIAL} == ${filterValue}`,
       ...getCustomFieldsFilterMap(customFields),
     },
+    true,
+    options,
   );
 
   const filterQuery = queryParamsFilterQuery || 'cql.allRecords=1';
@@ -120,12 +129,19 @@ export function getLinesQuery(queryParams, ky, localeDateFormat, customFields) {
   const isISBNSearch = queryParams[SEARCH_INDEX_PARAMETER] === 'productIdISBN';
   const isbnNumber = queryParams[SEARCH_PARAMETER]?.split(QUALIFIER_SEPARATOR)[0];
 
-  return async () => {
+  return async (options = {}) => {
     const isbnData = await (isISBNSearch ? getNormalizedISBN(isbnNumber, ky) : Promise.resolve({}));
 
     if (isbnData?.isError) return undefined;
 
-    return buildOrderLinesQuery(queryParams, isbnData?.isbn, isbnData?.isbnType, localeDateFormat, customFields);
+    return buildOrderLinesQuery(
+      queryParams,
+      isbnData?.isbn,
+      isbnData?.isbnType,
+      localeDateFormat,
+      customFields,
+      options,
+    );
   };
 }
 
