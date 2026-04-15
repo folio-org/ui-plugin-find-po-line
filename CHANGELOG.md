@@ -1,6 +1,9 @@
 # Change history for ui-plugin-find-po-line
 
-## (6.1.0 IN PROGRESS)
+## 6.2.0 (IN PROGRESS)
+
+## [6.1.0](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.1.0) (2026-04-15)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v6.0.1...v6.1.0)
 
 * Add hints for deprecated suffixes and prefixes in filters for search. Refs UIPFPOL-90.
 * Remove usage of the `moment` library. Refs UIPFPOL-87.
