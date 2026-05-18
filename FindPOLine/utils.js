@@ -33,7 +33,7 @@ const defaultSearchFn = (localeDateFormat, customFields = []) => (query, qindex)
   if (qindex) {
     const cqlQuery = getCqlQuery(query, qindex, localeDateFormat, customFields);
 
-    return `(${qindex}==${cqlQuery})`;
+    return `(${qindex}=="${cqlQuery}")`;
   }
 
   return getKeywordQuery(

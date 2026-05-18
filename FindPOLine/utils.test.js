@@ -62,7 +62,7 @@ describe('Utils', () => {
         CUSTOM_FIELDS_FIXTURE,
       );
 
-      expect(query).toContain('(customFields.datepicker==2021-01-30*)');
+      expect(query).toContain('(customFields.datepicker=="2021-01-30*")');
     });
 
     it('should return keyword query with custom fields indexes', () => {
