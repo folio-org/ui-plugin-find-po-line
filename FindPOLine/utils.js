@@ -21,8 +21,12 @@ import {
   QUERY_INDEX,
 } from './OrderLinesSearchConfig';
 
+const TRUNCATION_WILDCARD = '*';
+
 const buildProductIdsSearchQuery = (query) => {
-  return `productIds = "${query}*"`;
+  const sanitizedQuery = query?.replaceAll(TRUNCATION_WILDCARD, '');
+
+  return `productIds = "${sanitizedQuery}*"`;
 };
 
 const defaultSearchFn = (localeDateFormat, customFields = []) => (query, qindex) => {
