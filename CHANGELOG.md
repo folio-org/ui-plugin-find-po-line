@@ -2,6 +2,9 @@
 
 ## 6.2.0 (IN PROGRESS)
 
+## [6.1.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.1.1) (2026-05-22)
+[Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v6.1.0...v6.1.1)
+
 * Title with special characters is not found in receiving search. Refs UIREC-500.
 * Wildcard search by PO lines returns an error. Refs UIPFPOL-92.
 
