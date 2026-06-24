@@ -1,8 +1,11 @@
+import { CQLBuilder } from '@folio/stripes-acq-components';
+
 import {
   getKeywordQuery,
   QUERY_INDEX,
 } from './OrderLinesSearchConfig';
 
+const { EQUAL, FUZZY } = CQLBuilder.OPERATORS;
 const QUERY = 'query';
 
 it('should return keyword query', () => {
@@ -13,5 +16,17 @@ it('should return keyword query', () => {
     { [QUERY_INDEX.PRODUCT_IDS]: (q) => `productIds = "${q}*"` },
   );
 
-  expect(keywordQuery).toBe(`contributors=="*${QUERY}*" or poLineNumber=="*${QUERY}*" or requester=="*${QUERY}*" or titleOrPackage=="*${QUERY}*" or publisher=="*${QUERY}*" or vendorDetail.vendorAccount=="*${QUERY}*" or vendorDetail.referenceNumbers=="*${QUERY}*" or donor=="*${QUERY}*" or selector=="*${QUERY}*" or physical.volumes=="*${QUERY}*" or productIds = "${QUERY}*"`);
+  expect(keywordQuery).toBe([
+    `contributorName${FUZZY}"${QUERY}"`,
+    `poLineNumber${EQUAL}"${QUERY}"`,
+    `requester${FUZZY}"${QUERY}"`,
+    `titleOrPackage${FUZZY}"${QUERY}"`,
+    `publisher${FUZZY}"${QUERY}"`,
+    `vendorDetail.vendorAccount${EQUAL}"${QUERY}"`,
+    `vendorDetail.referenceNumbers${FUZZY}"${QUERY}"`,
+    `donor${FUZZY}"${QUERY}"`,
+    `selector${FUZZY}"${QUERY}"`,
+    `physicalVolumes${FUZZY}"${QUERY}"`,
+    `productIds${FUZZY}"${QUERY}"`,
+  ].join(' or '));
 });

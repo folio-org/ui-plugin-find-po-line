@@ -1,6 +1,8 @@
 # Change history for ui-plugin-find-po-line
 
-## 6.2.0 (IN PROGRESS)
+## 7.0.0 (IN PROGRESS)
+
+* *BREAKING* Update CQL queries to use the new indices. Refs UIPFPOL-94.
 
 ## [6.1.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.1.1) (2026-05-22)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v6.1.0...v6.1.1)
