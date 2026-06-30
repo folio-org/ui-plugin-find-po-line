@@ -44,7 +44,7 @@ export const getDateRangeValueAsString = (filterValue = '') => {
 const buildEqualCqlQuery = (sIndex, sQuery) => new CQLBuilder().equal(sIndex, sQuery).build();
 
 const buildMultiOptionCqlEqualQuery = (sIndex, sQuery) => {
-  return buildMultiOptionCqlQuery(sIndex, sQuery, { operator: CQLBuilder.OPERATORS.EQUALS });
+  return buildMultiOptionCqlQuery(sIndex, sQuery, { operator: CQLBuilder.OPERATORS.EQUAL });
 };
 
 const buildLocationsQuery = (filterValue) => {
