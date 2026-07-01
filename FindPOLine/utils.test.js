@@ -1,5 +1,6 @@
 import { useIntl } from 'react-intl';
 import {
+  CQLBuilder,
   CUSTOM_FIELDS_FILTER,
   CUSTOM_FIELDS_FIXTURE,
   SEARCH_INDEX_PARAMETER,
@@ -19,6 +20,9 @@ jest.mock('react-intl', () => ({
   useIntl: jest.fn(),
 }));
 
+const { EQUAL, FUZZY, OR } = CQLBuilder.OPERATORS;
+const QUERY_PARTS_SEPARATOR = ` ${OR} `;
+
 describe('Utils', () => {
   describe('getDateRangeValueAsString', () => {
     it('should return string value', () => {
@@ -31,7 +35,10 @@ describe('Utils', () => {
     it('should return search query based on location filter', () => {
       const query = buildOrderLinesQuery({ [FILTERS.LOCATION]: 'locationId' });
 
-      expect(query).toContain('(locations=="*locationId*" or searchLocationIds=="*locationId*")');
+      expect(query).toContain(`(${[
+        'locations =/@locationId "locationId"',
+        'searchLocations="locationId"',
+      ].join(QUERY_PARTS_SEPARATOR)})`);
     });
 
     it('should return filter query based on datepicker custom field', () => {
@@ -62,7 +69,7 @@ describe('Utils', () => {
         CUSTOM_FIELDS_FIXTURE,
       );
 
-      expect(query).toContain('(customFields.datepicker=="2021-01-30*")');
+      expect(query).toContain(`(${CUSTOM_FIELDS_FILTER}.datepicker${EQUAL}"2021-01-30*")`);
     });
 
     it('should return keyword query with custom fields indexes', () => {
@@ -74,9 +81,9 @@ describe('Utils', () => {
         CUSTOM_FIELDS_FIXTURE,
       );
       const parts = [
-        'datepicker=="Invalid Date*"',
-        'shorttext=="*abc*"',
-        'longtext=="*abc*"',
+        `datepicker${EQUAL}"Invalid Date*"`,
+        `shorttext${FUZZY}"abc"`,
+        `longtext${FUZZY}"abc"`,
       ].map((s) => `${CUSTOM_FIELDS_FILTER}.${s}`);
 
       expect(parts.every(s => query.includes(s))).toBe(true);

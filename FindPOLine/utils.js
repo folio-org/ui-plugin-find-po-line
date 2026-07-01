@@ -1,10 +1,11 @@
 import {
-  buildArrayFieldQuery,
   buildDateRangeQuery,
   buildDateTimeRangeQuery,
   buildFilterQuery,
+  buildMultiOptionCqlQuery,
   buildSortingQuery,
   connectQuery,
+  CQLBuilder,
   getCustomFieldsFilterMap,
   IDENTIFIER_TYPES_API,
   SEARCH_INDEX_PARAMETER,
@@ -16,37 +17,19 @@ import {
   QUALIFIER_SEPARATOR,
 } from './constants';
 import {
-  getCqlQuery,
+  formatSearchCql,
   getKeywordQuery,
-  QUERY_INDEX,
 } from './OrderLinesSearchConfig';
 
-const TRUNCATION_WILDCARD = '*';
-
-const buildProductIdsSearchQuery = (query) => {
-  const sanitizedQuery = query?.replaceAll(TRUNCATION_WILDCARD, '');
-
-  return `productIds = "${sanitizedQuery}*"`;
-};
-
 const defaultSearchFn = (localeDateFormat, customFields = []) => (query, qindex) => {
-  if (qindex === QUERY_INDEX.PRODUCT_IDS) {
-    return buildProductIdsSearchQuery(query);
-  }
-
   if (qindex) {
-    const cqlQuery = getCqlQuery(query, qindex, localeDateFormat, customFields);
-
-    return `(${qindex}=="${cqlQuery}")`;
+    return formatSearchCql(query, qindex, localeDateFormat, customFields);
   }
 
   return getKeywordQuery(
     query,
     localeDateFormat,
     customFields,
-    {
-      [QUERY_INDEX.PRODUCT_IDS]: buildProductIdsSearchQuery,
-    },
   );
 };
 
@@ -56,6 +39,19 @@ export const getDateRangeValueAsString = (filterValue = '') => {
   }
 
   return filterValue;
+};
+
+const buildEqualCqlQuery = (sIndex, sQuery) => new CQLBuilder().equal(sIndex, sQuery).build();
+
+const buildMultiOptionCqlEqualQuery = (sIndex, sQuery) => {
+  return buildMultiOptionCqlQuery(sIndex, sQuery, { operator: CQLBuilder.OPERATORS.EQUAL });
+};
+
+const buildLocationsQuery = (filterValue) => {
+  return [
+    buildMultiOptionCqlQuery(FILTERS.LOCATION, filterValue, { modifiers: [{ name: '@locationId' }] }),
+    buildMultiOptionCqlQuery('searchLocations', filterValue),
+  ].join(` ${CQLBuilder.OPERATORS.OR} `);
 };
 
 export const buildOrderLinesQuery = (
@@ -84,21 +80,17 @@ export const buildOrderLinesQuery = (
       [FILTERS.EXPECTED_RECEIPT_DATE]: buildDateRangeQuery.bind(null, `physical.${FILTERS.EXPECTED_RECEIPT_DATE}`),
       [FILTERS.RECEIPT_DUE]: buildDateRangeQuery.bind(null, `physical.${FILTERS.RECEIPT_DUE}`),
       [FILTERS.CLAIM_SENT]: buildDateRangeQuery.bind(null, [FILTERS.CLAIM_SENT]),
-      [FILTERS.TAGS]: buildArrayFieldQuery.bind(null, [FILTERS.TAGS]),
-      [FILTERS.FUND_CODE]: (filterValue) => `fundDistribution =/@fundId (${Array.isArray(filterValue) ? filterValue.join(' or ') : filterValue})`,
-      [FILTERS.EXPENSE_CLASS]: buildArrayFieldQuery.bind(null, [FILTERS.FUND_DISTRIBUTION]),
-      [FILTERS.LOCATION]: (filterValue) => `(${
-        [FILTERS.LOCATION, 'searchLocationIds']
-          .map((filterKey) => buildArrayFieldQuery(filterKey, filterValue))
-          .join(' or ')
-      })`,
-      [FILTERS.DONOR]: buildArrayFieldQuery.bind(null, [FILTERS.DONOR]),
-      [FILTERS.ACQUISITIONS_UNIT]: buildArrayFieldQuery.bind(null, [FILTERS.ACQUISITIONS_UNIT]),
-      [FILTERS.MATERIAL_TYPE_PHYSICAL]: (filterValue) => `physical.materialType == ${filterValue}`,
-      [FILTERS.MATERIAL_TYPE_ELECTRONIC]: (filterValue) => `eresource.materialType == ${filterValue}`,
-      [FILTERS.ACCESS_PROVIDER]: (filterValue) => `eresource.${FILTERS.ACCESS_PROVIDER} == ${filterValue}`,
-      [FILTERS.ACTIVATED]: (filterValue) => `eresource.${FILTERS.ACTIVATED} == ${filterValue}`,
-      [FILTERS.TRIAL]: (filterValue) => `eresource.${FILTERS.TRIAL} == ${filterValue}`,
+      [FILTERS.TAGS]: buildMultiOptionCqlQuery.bind(null, FILTERS.TAGS),
+      [FILTERS.FUND_CODE]: (filterValue) => buildMultiOptionCqlQuery(FILTERS.FUND_DISTRIBUTION, filterValue, { modifiers: [{ name: '@fundId' }] }),
+      [FILTERS.EXPENSE_CLASS]: buildMultiOptionCqlQuery.bind(null, FILTERS.FUND_DISTRIBUTION),
+      [FILTERS.LOCATION]: (filterValue) => buildLocationsQuery(filterValue),
+      [FILTERS.DONOR]: buildMultiOptionCqlQuery.bind(null, [FILTERS.DONOR]),
+      [FILTERS.ACQUISITIONS_UNIT]: buildMultiOptionCqlQuery.bind(null, FILTERS.ACQUISITIONS_UNIT),
+      [FILTERS.MATERIAL_TYPE_PHYSICAL]: buildEqualCqlQuery.bind(null, 'physical.materialType'),
+      [FILTERS.MATERIAL_TYPE_ELECTRONIC]: buildEqualCqlQuery.bind(null, 'eresource.materialType'),
+      [FILTERS.ACCESS_PROVIDER]: buildEqualCqlQuery.bind(null, `eresource.${FILTERS.ACCESS_PROVIDER}`),
+      [FILTERS.ACTIVATED]: buildMultiOptionCqlEqualQuery.bind(null, `eresource.${FILTERS.ACTIVATED}`),
+      [FILTERS.TRIAL]: buildMultiOptionCqlEqualQuery.bind(null, `eresource.${FILTERS.TRIAL}`),
       ...getCustomFieldsFilterMap(customFields),
     },
     true,
