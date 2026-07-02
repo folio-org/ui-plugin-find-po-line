@@ -48,10 +48,12 @@ const buildMultiOptionCqlEqualQuery = (sIndex, sQuery) => {
 };
 
 const buildLocationsQuery = (filterValue) => {
-  return [
+  const query = [
     buildMultiOptionCqlQuery(FILTERS.LOCATION, filterValue, { modifiers: [{ name: '@locationId' }] }),
     buildMultiOptionCqlQuery('searchLocations', filterValue),
   ].join(` ${CQLBuilder.OPERATORS.OR} `);
+
+  return `(${query})`;
 };
 
 export const buildOrderLinesQuery = (
