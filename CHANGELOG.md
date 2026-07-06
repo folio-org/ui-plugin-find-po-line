@@ -3,6 +3,7 @@
 ## 7.0.0 (IN PROGRESS)
 
 * *BREAKING* Update CQL queries to use the new indices. Refs UIPFPOL-94.
+* Show deprecated acquisition methods in the order-lines filter. Refs UIPFPOL-95.
 
 ## [6.1.1](https://github.com/folio-org/ui-plugin-find-po-line/tree/v6.1.1) (2026-05-22)
 [Full Changelog](https://github.com/folio-org/ui-plugin-find-po-line/compare/v6.1.0...v6.1.1)
