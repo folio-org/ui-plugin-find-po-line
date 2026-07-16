@@ -18,7 +18,7 @@ const AcqMethodsFilter = ({
   tenantId,
 }) => {
   const { acquisitionMethods } = useAcquisitionMethods({ tenantId });
-  const options = useAcqMethodsOptions(acquisitionMethods);
+  const options = useAcqMethodsOptions(acquisitionMethods, { withDeprecatedSuffix: true });
 
   return (
     <FilterAccordion
