@@ -91,6 +91,14 @@ export function OrderLinesFilters({
         onChange={adaptedApplyFilters}
         options={PAYMENT_STATUS_FILTER_OPTIONS}
       />
+      <BooleanFilter
+        activeFilters={activeFilters[FILTERS.MULTI_YEAR_PAYMENT]}
+        disabled={disabled}
+        id={FILTERS.MULTI_YEAR_PAYMENT}
+        labelId="ui-orders.poLine.multiYearPayment"
+        name={FILTERS.MULTI_YEAR_PAYMENT}
+        onChange={adaptedApplyFilters}
+      />
       <PrefixFilter
         id={FILTERS.PREFIX}
         activeFilters={activeFilters[FILTERS.PREFIX]}
