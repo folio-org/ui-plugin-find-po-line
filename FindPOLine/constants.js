@@ -28,6 +28,7 @@ export const FILTERS = {
   LOCATION: 'locations',
   MATERIAL_TYPE_ELECTRONIC: 'materialTypeElectronic',
   MATERIAL_TYPE_PHYSICAL: 'materialTypePhysical',
+  MULTI_YEAR_PAYMENT: 'multiYearPayment',
   ORDER_FORMAT: 'orderFormat',
   PAYMENT_STATUS: 'paymentStatus',
   PACKAGE_PO_LINE: 'packagePoLineId',
