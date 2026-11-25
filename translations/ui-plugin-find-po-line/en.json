@@ -3,6 +3,13 @@
 
   "addPOLine": "Add order lines",
 
+  "filter.exported": "Exported",
+
+  "filter.transmissionMethod": "Transmission method",
+  "filter.transmissionMethod.email": "Email",
+  "filter.transmissionMethod.ftp": "FTP",
+  "filter.transmissionMethod.fileDownload": "File download",
+
   "filter.linkedPackagePOLine.accordion.label": "Linked package POL",
   "filter.linkedPackagePOLine.lookup.label": "Linked package POL lookup",
   

@@ -10,6 +10,7 @@ import {
   CUSTOM_FIELDS_FIXTURE,
 } from '@folio/stripes-acq-components';
 
+import { FILTERS } from './constants';
 import { OrderLinesFilters } from './OrderLinesFilters';
 
 jest.mock('@folio/stripes-acq-components', () => ({
@@ -38,6 +39,10 @@ const renderOrderLinesFilters = (props) => render(
 );
 
 describe('OrderLinesFilters component', () => {
+  afterEach(() => {
+    AcqDateRangeFilter.mockReturnValue('AcqDateRangeFilter');
+  });
+
   it('should display filters', () => {
     const { getByText, getAllByText } = renderOrderLinesFilters();
 
@@ -75,6 +80,28 @@ describe('OrderLinesFilters component', () => {
       AcqDateRangeFilter.mock.calls[0][0].onChange(filterValues);
     });
     expect(applyFilters).toHaveBeenCalledWith(filterValues.name, filterValues.values[0]);
+  });
+
+  it('should display exported and transmission method filters next to the export date filter', () => {
+    AcqDateRangeFilter.mockImplementation(({ name }) => name);
+
+    renderOrderLinesFilters();
+
+    const exportedFilter = document.getElementById(FILTERS.EXPORTED);
+    const transmissionMethodFilter = document.getElementById(FILTERS.TRANSMISSION_METHOD);
+
+    expect(exportedFilter).toHaveTextContent('ui-plugin-find-po-line.filter.exported');
+    expect(exportedFilter.nextSibling.textContent).toBe(FILTERS.EXPORT_DATE);
+    expect(transmissionMethodFilter).toHaveTextContent('ui-plugin-find-po-line.filter.transmissionMethod');
+    expect(transmissionMethodFilter.previousSibling.textContent).toBe(FILTERS.EXPORT_DATE);
+  });
+
+  it('should display transmission method options', () => {
+    renderOrderLinesFilters();
+
+    expect(screen.getByText('ui-plugin-find-po-line.filter.transmissionMethod.email')).toBeInTheDocument();
+    expect(screen.getByText('ui-plugin-find-po-line.filter.transmissionMethod.ftp')).toBeInTheDocument();
+    expect(screen.getByText('ui-plugin-find-po-line.filter.transmissionMethod.fileDownload')).toBeInTheDocument();
   });
 
   it('should display correct filters for custom fields', () => {
