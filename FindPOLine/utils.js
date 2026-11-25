@@ -47,6 +47,19 @@ const buildMultiOptionCqlEqualQuery = (sIndex, sQuery) => {
   return buildMultiOptionCqlQuery(sIndex, sQuery, { operator: CQLBuilder.OPERATORS.EQUAL });
 };
 
+const EXPORTED_QUERY = {
+  true: `${FILTERS.EXPORT_DATE}=""`,
+  false: `cql.allRecords=1 NOT ${FILTERS.EXPORT_DATE}=""`,
+};
+
+// Both options checked means no restriction, `buildFilterQuery` drops the empty result.
+const buildExportedQuery = (filterValue) => {
+  const values = [filterValue].flat();
+  const query = values.length === 1 && EXPORTED_QUERY[values[0]];
+
+  return query ? `(${query})` : undefined;
+};
+
 const buildLocationsQuery = (filterValue) => {
   const query = [
     buildMultiOptionCqlQuery(FILTERS.LOCATION, filterValue, { modifiers: [{ name: '@locationId' }] }),
@@ -72,7 +85,8 @@ export const buildOrderLinesQuery = (
     queryParams,
     searchFn,
     {
-      [FILTERS.EXPORT_DATE]: buildDateRangeQuery.bind(null, FILTERS.EXPORT_DATE),
+      [FILTERS.EXPORTED]: buildExportedQuery,
+      [FILTERS.EXPORT_DATE]: buildDateTimeRangeQuery.bind(null, FILTERS.EXPORT_DATE),
       [FILTERS.DATE_CREATED]: buildDateTimeRangeQuery.bind(null, FILTERS.DATE_CREATED),
       [FILTERS.DATE_UPDATED]: buildDateTimeRangeQuery.bind(null, FILTERS.DATE_UPDATED),
       [FILTERS.EXPECTED_ACTIVATION_DATE]: buildDateRangeQuery.bind(null, `eresource.${FILTERS.EXPECTED_ACTIVATION_DATE}`),

@@ -88,6 +88,30 @@ describe('Utils', () => {
 
       expect(parts.every(s => query.includes(s))).toBe(true);
     });
+
+    it('should return filter query for exported lines', () => {
+      const query = buildOrderLinesQuery({ [FILTERS.EXPORTED]: ['true'] });
+
+      expect(query).toContain('(lastEDIExportDate="")');
+    });
+
+    it('should return filter query for lines that have not been exported', () => {
+      const query = buildOrderLinesQuery({ [FILTERS.EXPORTED]: 'false' });
+
+      expect(query).toContain('(cql.allRecords=1 NOT lastEDIExportDate="")');
+    });
+
+    it('should not filter by export when both exported options are selected', () => {
+      const query = buildOrderLinesQuery({ [FILTERS.EXPORTED]: ['true', 'false'] });
+
+      expect(query).toBe(buildOrderLinesQuery({}));
+    });
+
+    it('should return filter query based on transmission methods', () => {
+      const query = buildOrderLinesQuery({ [FILTERS.TRANSMISSION_METHOD]: ['Email', 'File download'] });
+
+      expect(query).toContain('lastExport.transmissionMethod==("Email" or "File download")');
+    });
   });
 });
 

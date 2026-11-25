@@ -21,6 +21,7 @@ export const FILTERS = {
   EXPECTED_ACTIVATION_DATE: 'expectedActivation',
   EXPECTED_RECEIPT_DATE: 'expectedReceiptDate',
   EXPENSE_CLASS: 'expenseClass',
+  EXPORTED: 'exported',
   EXPORT_DATE: 'lastEDIExportDate',
   FUND_CODE: 'fundCode',
   FUND_DISTRIBUTION: 'fundDistribution',
@@ -41,6 +42,7 @@ export const FILTERS = {
   SUBSCRIPTION_TO: 'subscriptionTo',
   SUFFIX: 'purchaseOrder.poNumberSuffix',
   TAGS: 'tags',
+  TRANSMISSION_METHOD: 'lastExport.transmissionMethod',
   TRIAL: 'trial',
   VENDOR: 'purchaseOrder.vendor',
   CREATED_BY: 'metadata.createdByUserId',
@@ -56,6 +58,17 @@ export const PAYMENT_STATUS_FILTER_OPTIONS = Object.keys(PAYMENT_STATUS).map(sta
 export const RECEIPT_STATUS_FILTER_OPTIONS = Object.keys(RECEIPT_STATUS).map(status => ({
   value: RECEIPT_STATUS[status],
   label: <FormattedMessage id={`ui-orders.receipt_status.${status}`} />,
+}));
+
+const TRANSMISSION_METHOD = {
+  email: 'Email',
+  ftp: 'FTP',
+  fileDownload: 'File download',
+};
+
+export const TRANSMISSION_METHOD_FILTER_OPTIONS = Object.keys(TRANSMISSION_METHOD).map(method => ({
+  value: TRANSMISSION_METHOD[method],
+  label: <FormattedMessage id={`ui-plugin-find-po-line.filter.transmissionMethod.${method}`} />,
 }));
 
 export const QUALIFIER_SEPARATOR = ' ';

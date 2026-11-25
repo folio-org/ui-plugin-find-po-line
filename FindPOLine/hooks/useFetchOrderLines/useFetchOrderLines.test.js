@@ -102,10 +102,10 @@ describe('useFetchOrderLines', () => {
     const datetimeFilters = [
       FILTERS.DATE_CREATED,
       FILTERS.DATE_UPDATED,
+      FILTERS.EXPORT_DATE,
     ];
 
     const dateFiltersMap = {
-      [FILTERS.EXPORT_DATE]: FILTERS.EXPORT_DATE,
       [FILTERS.EXPECTED_ACTIVATION_DATE]: `eresource.${FILTERS.EXPECTED_ACTIVATION_DATE}`,
       [FILTERS.SUBSCRIPTION_FROM]: `details.${FILTERS.SUBSCRIPTION_FROM}`,
       [FILTERS.SUBSCRIPTION_TO]: `details.${FILTERS.SUBSCRIPTION_TO}`,
